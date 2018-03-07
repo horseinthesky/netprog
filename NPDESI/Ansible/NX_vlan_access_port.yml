@@ -1,0 +1,27 @@
+---
+
+- name: Configure access port on NX
+  hosts: nx
+  connection: local
+
+  tasks:
+
+    - name: ENSURE VLAN EXISTS
+      nxos_vlan:
+        vlan_id: 113
+        name: native
+        vlan_state: active
+        provider: "{{ cli }}"
+
+    - name: ENSURE INTERFACE IS L2
+      nxos_interface:
+        interface: eth1/2
+        mode: layer2
+        provider: "{{ cli }}"
+
+    - name: ENSURE INTERFACE IS CONFIGURED FOR V113
+      nxos_switchport:
+        interface: eth1/2
+        mode: access
+        access_vlan: 113
+        provider: "{{ cli }}"

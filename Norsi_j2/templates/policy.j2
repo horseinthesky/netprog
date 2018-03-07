@@ -1,0 +1,23 @@
+edit {{ policy_number }}
+    set name {{ vpn_name | default('DSZN_Norsi_VPN0479_') }}{{ subnet }}/{{ netmask }}
+    set srcintf {{ srcintf | default('TO_DSZN_VPN0479') }}
+    set dstintf {{ dstintf | default('INET_DSZN_Norsi') }}
+    set srcaddr {{ vpn_name | default('DSZN_Norsi_VPN0479_') }}{{ subnet }}/{{ netmask }}
+    set dstaddr all
+    set action accept
+    set schedule always
+    set service ALL
+    set logtraffic all
+    set logtraffic all
+    {% if webfiler %}
+    set webfilter-profile {{ webprofile }}
+    set profile-protocol-options {{ webprofile  }}
+    set ssl-ssh-profile "certificate-inspection"
+    {% endif %}
+    set nat enable
+    {% if poolname %}
+    set ippool enable
+    set poolname {{ poolname }}
+    {% endif %}
+next
+

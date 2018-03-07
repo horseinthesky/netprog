@@ -1,0 +1,7 @@
+---
+
+cli:
+  host: "{{ inventory_hostname }}"
+  username: "cisco"
+  password: "cisco"
+  transport: nxapi

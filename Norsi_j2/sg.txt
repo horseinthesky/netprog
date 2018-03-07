@@ -1,0 +1,1168 @@
+set policy id 1 from "DSZN_VPN" to "DSZN_Inet"  "10.57.121.128/26" "Any" "ANY" nat src permit log 
+set policy id 1
+exit
+set policy id 2 from "DSZN_VPN" to "DSZN_Inet"  "10.57.39.192/26" "Any" "ANY" nat src permit log 
+set policy id 2
+exit
+set policy id 3 from "DSZN_VPN" to "DSZN_Inet"  "10.57.38.64/26" "Any" "ANY" nat src permit log 
+set policy id 3
+exit
+set policy id 4 from "DSZN_VPN" to "DSZN_Inet"  "10.57.128.64/26" "Any" "ANY" nat src permit log 
+set policy id 4
+exit
+set policy id 5 from "DSZN_VPN" to "DSZN_Inet"  "10.57.190.192/26" "Any" "ANY" nat src permit log 
+set policy id 5
+exit
+set policy id 6 from "DSZN_VPN" to "DSZN_Inet"  "10.57.189.128/26" "Any" "ANY" nat src permit log 
+set policy id 6
+exit
+set policy id 7 from "DSZN_VPN" to "DSZN_Inet"  "10.57.189.64/26" "Any" "ANY" nat src permit log 
+set policy id 7
+exit
+set policy id 8 from "DSZN_VPN" to "DSZN_Inet"  "10.57.189.0/26" "Any" "ANY" nat src permit log 
+set policy id 8
+exit
+set policy id 9 from "DSZN_VPN" to "DSZN_Inet"  "10.57.188.192/26" "Any" "ANY" nat src permit log 
+set policy id 9
+exit
+set policy id 10 from "DSZN_VPN" to "DSZN_Inet"  "10.57.188.128/26" "Any" "ANY" nat src permit log 
+set policy id 10
+exit
+set policy id 11 from "DSZN_VPN" to "DSZN_Inet"  "10.57.45.128/26" "Any" "ANY" nat src permit log 
+set policy id 11
+exit
+set policy id 12 from "DSZN_VPN" to "DSZN_Inet"  "10.57.154.192/26" "Any" "ANY" nat src permit log 
+set policy id 12
+exit         
+set policy id 13 from "DSZN_VPN" to "DSZN_Inet"  "10.57.189.192/26" "Any" "ANY" nat src permit log 
+set policy id 13
+set log session-init
+exit
+set policy id 15 from "DSZN_VPN" to "DSZN_Inet"  "10.57.165.192/26" "Any" "ANY" nat src permit log 
+set policy id 15
+exit
+set policy id 16 from "DSZN_VPN" to "DSZN_Inet"  "10.57.102.192/26" "Any" "ANY" nat src permit log 
+set policy id 16
+exit
+set policy id 17 from "DSZN_VPN" to "DSZN_Inet"  "10.57.35.192/26" "Any" "ANY" nat src permit log 
+set policy id 17
+exit
+set policy id 18 from "DSZN_VPN" to "DSZN_Inet"  "10.120.49.0/24" "Any" "ANY" nat src permit log 
+set policy id 18
+exit
+set policy id 19 from "DSZN_VPN" to "DSZN_Inet"  "10.120.33.0/24" "Any" "ANY" nat src permit log 
+set policy id 19
+exit         
+set policy id 20 from "DSZN_VPN" to "DSZN_Inet"  "10.120.15.0/24" "Any" "ANY" nat src permit log 
+set policy id 20
+exit
+set policy id 21 from "DSZN_VPN" to "DSZN_Inet"  "10.120.76.0/24" "Any" "ANY" nat src permit log 
+set policy id 21
+exit
+set policy id 22 from "DSZN_VPN" to "DSZN_Inet"  "10.57.188.64/26" "Any" "ANY" nat src permit log 
+set policy id 22
+exit
+set policy id 23 from "DSZN_VPN" to "DSZN_Inet"  "10.57.190.64/26" "Any" "ANY" nat src permit log 
+set policy id 23
+exit
+set policy id 24 from "DSZN_VPN" to "DSZN_Inet"  "10.120.35.0/24" "Any" "ANY" nat src permit log 
+set policy id 24
+exit
+set policy id 25 from "DSZN_VPN" to "DSZN_Inet"  "10.57.35.64/26" "Any" "ANY" nat src permit log 
+set policy id 25
+exit
+set policy id 26 from "DSZN_VPN" to "DSZN_Inet"  "10.57.60.192/26" "Any" "ANY" nat src permit log 
+set policy id 26
+exit
+set policy id 27 from "DSZN_VPN" to "DSZN_Inet"  "10.57.48.64/26" "Any" "ANY" nat src permit log 
+set policy id 27
+exit
+set policy id 28 from "DSZN_VPN" to "DSZN_Inet"  "10.57.132.64/26" "Any" "ANY" nat src permit log 
+set policy id 28
+exit
+set policy id 29 from "DSZN_VPN" to "DSZN_Inet"  "10.57.36.64/26" "Any" "ANY" nat src permit log 
+set policy id 29
+exit
+set policy id 30 from "DSZN_VPN" to "DSZN_Inet"  "10.57.27.192/26" "Any" "ANY" nat src permit log 
+set policy id 30
+exit
+set policy id 31 from "DSZN_VPN" to "DSZN_Inet"  "10.57.36.128/26" "Any" "ANY" nat src permit log 
+set policy id 31
+exit
+set policy id 32 from "DSZN_VPN" to "DSZN_Inet"  "10.57.35.128/26" "Any" "ANY" nat src permit log 
+set policy id 32
+exit
+set policy id 33 from "DSZN_VPN" to "DSZN_Inet"  "10.57.35.0/26" "Any" "ANY" nat src permit log 
+set policy id 33
+exit
+set policy id 34 from "DSZN_VPN" to "DSZN_Inet"  "10.57.33.0/26" "Any" "ANY" nat src permit log 
+set policy id 34
+exit
+set policy id 35 from "DSZN_VPN" to "DSZN_Inet"  "10.57.50.192/26" "Any" "ANY" nat src permit log 
+set policy id 35
+exit
+set policy id 36 from "DSZN_VPN" to "DSZN_Inet"  "10.57.44.0/26" "Any" "ANY" nat src permit log 
+set policy id 36
+exit
+set policy id 37 from "DSZN_VPN" to "DSZN_Inet"  "10.57.39.128/26" "Any" "ANY" nat src permit log 
+set policy id 37
+exit
+set policy id 38 from "DSZN_VPN" to "DSZN_Inet"  "10.57.60.128/26" "Any" "ANY" nat src permit log 
+set policy id 38
+exit
+set policy id 39 from "DSZN_VPN" to "DSZN_Inet"  "10.120.21.0/24" "Any" "ANY" nat src permit log 
+set policy id 39
+exit
+set policy id 40 from "DSZN_VPN" to "DSZN_Inet"  "10.57.36.192/26" "Any" "ANY" nat src permit log 
+set policy id 40
+exit
+set policy id 41 from "DSZN_VPN" to "DSZN_Inet"  "10.120.18.0/24" "Any" "ANY" nat src permit log 
+set policy id 41
+exit         
+set policy id 42 from "DSZN_VPN" to "DSZN_Inet"  "10.57.172.192/26" "Any" "ANY" nat src permit log 
+set policy id 42
+exit
+set policy id 43 from "DSZN_VPN" to "DSZN_Inet"  "10.57.50.128/26" "Any" "ANY" nat src permit log 
+set policy id 43
+exit
+set policy id 44 from "DSZN_VPN" to "DSZN_Inet"  "10.57.66.192/26" "Any" "ANY" nat src permit log 
+set policy id 44
+exit
+set policy id 45 from "DSZN_VPN" to "DSZN_Inet"  "10.120.14.0/24" "Any" "ANY" nat src permit log 
+set policy id 45
+exit
+set policy id 46 from "DSZN_VPN" to "DSZN_Inet"  "10.57.47.128/26" "Any" "ANY" nat src permit log 
+set policy id 46
+exit
+set policy id 47 from "DSZN_VPN" to "DSZN_Inet"  "10.120.60.0/24" "Any" "ANY" nat src permit log 
+set policy id 47
+exit
+set policy id 48 from "DSZN_VPN" to "DSZN_Inet"  "10.120.62.0/24" "Any" "ANY" nat src permit log 
+set policy id 48
+exit
+set policy id 49 from "DSZN_VPN" to "DSZN_Inet"  "10.57.48.0/26" "Any" "ANY" nat src permit log 
+set policy id 49
+exit
+set policy id 50 from "DSZN_VPN" to "DSZN_Inet"  "10.57.49.192/26" "Any" "ANY" nat src permit log 
+set policy id 50
+exit
+set policy id 51 from "DSZN_VPN" to "DSZN_Inet"  "10.57.44.128/26" "Any" "ANY" nat src permit log 
+set policy id 51
+exit
+set policy id 52 from "DSZN_VPN" to "DSZN_Inet"  "10.57.130.192/26" "Any" "ANY" nat src permit log 
+set policy id 52
+exit
+set policy id 53 from "DSZN_VPN" to "DSZN_Inet"  "10.57.130.64/26" "Any" "ANY" nat src permit log 
+set policy id 53
+exit
+set policy id 54 from "DSZN_VPN" to "DSZN_Inet"  "10.57.46.64/26" "Any" "ANY" nat src permit log 
+set policy id 54
+exit
+set policy id 55 from "DSZN_VPN" to "DSZN_Inet"  "10.57.118.128/26" "Any" "ANY" nat src permit log 
+set policy id 55
+exit
+set policy id 56 from "DSZN_VPN" to "DSZN_Inet"  "10.120.31.0/24" "Any" "ANY" nat src permit log 
+set policy id 56
+exit
+set policy id 57 from "DSZN_VPN" to "DSZN_Inet"  "10.57.96.64/26" "Any" "ANY" nat src permit log 
+set policy id 57
+exit
+set policy id 58 from "DSZN_VPN" to "DSZN_Inet"  "10.57.64.64/26" "Any" "ANY" nat src permit log 
+set policy id 58
+exit
+set policy id 59 from "DSZN_VPN" to "DSZN_Inet"  "10.57.52.64/26" "Any" "ANY" nat src permit log 
+set policy id 59
+exit
+set policy id 60 from "DSZN_VPN" to "DSZN_Inet"  "10.57.59.64/26" "Any" "ANY" nat src permit log 
+set policy id 60
+exit
+set policy id 61 from "DSZN_VPN" to "DSZN_Inet"  "10.57.34.128/26" "Any" "ANY" nat src permit log 
+set policy id 61
+exit
+set policy id 62 from "DSZN_VPN" to "DSZN_Inet"  "10.57.32.0/26" "Any" "ANY" nat src permit log 
+set policy id 62
+exit
+set policy id 63 from "DSZN_VPN" to "DSZN_Inet"  "10.57.42.128/26" "Any" "ANY" nat src permit log 
+set policy id 63
+exit         
+set policy id 64 from "DSZN_VPN" to "DSZN_Inet"  "10.57.53.0/26" "Any" "ANY" nat src permit log 
+set policy id 64
+exit
+set policy id 65 from "DSZN_VPN" to "DSZN_Inet"  "10.57.131.64/26" "Any" "ANY" nat src permit log 
+set policy id 65
+exit
+set policy id 66 from "DSZN_VPN" to "DSZN_Inet"  "10.57.43.0/26" "Any" "ANY" nat src permit log 
+set policy id 66
+exit
+set policy id 67 from "DSZN_VPN" to "DSZN_Inet"  "10.57.43.64/26" "Any" "ANY" nat src permit log 
+set policy id 67
+exit
+set policy id 68 from "DSZN_VPN" to "DSZN_Inet"  "10.57.38.0/26" "Any" "ANY" nat src permit log 
+set policy id 68
+exit
+set policy id 69 from "DSZN_VPN" to "DSZN_Inet"  "10.57.60.64/26" "Any" "ANY" nat src permit log 
+set policy id 69
+exit
+set policy id 70 from "DSZN_VPN" to "DSZN_Inet"  "10.57.59.128/26" "Any" "ANY" nat src permit log 
+set policy id 70
+exit
+set policy id 71 from "DSZN_VPN" to "DSZN_Inet"  "10.57.53.192/26" "Any" "ANY" nat src permit log 
+set policy id 71
+exit
+set policy id 72 from "DSZN_VPN" to "DSZN_Inet"  "10.57.52.192/26" "Any" "ANY" nat src permit log 
+set policy id 72
+exit
+set policy id 73 from "DSZN_VPN" to "DSZN_Inet"  "10.57.34.192/26" "Any" "ANY" nat src permit log 
+set policy id 73
+exit
+set policy id 74 from "DSZN_VPN" to "DSZN_Inet"  "10.57.31.64/26" "Any" "ANY" nat src permit log 
+set policy id 74
+exit
+set policy id 75 from "DSZN_VPN" to "DSZN_Inet"  "10.57.21.128/26" "Any" "ANY" nat src permit log 
+set policy id 75
+exit
+set policy id 76 from "DSZN_VPN" to "DSZN_Inet"  "10.57.67.128/26" "Any" "ANY" nat src permit log 
+set policy id 76
+exit
+set policy id 77 from "DSZN_VPN" to "DSZN_Inet"  "10.57.138.128/26" "Any" "ANY" nat src permit log 
+set policy id 77
+exit
+set policy id 78 from "DSZN_VPN" to "DSZN_Inet"  "10.57.40.64/26" "Any" "ANY" nat src permit log 
+set policy id 78
+exit
+set policy id 79 from "DSZN_VPN" to "DSZN_Inet"  "10.57.58.192/26" "Any" "ANY" nat src permit log 
+set policy id 79
+exit
+set policy id 80 from "DSZN_VPN" to "DSZN_Inet"  "10.57.139.192/26" "Any" "ANY" nat src permit log 
+set policy id 80
+exit
+set policy id 81 from "DSZN_VPN" to "DSZN_Inet"  "10.57.43.192/26" "Any" "ANY" nat src permit log 
+set policy id 81
+exit
+set policy id 82 from "DSZN_VPN" to "DSZN_Inet"  "10.57.40.192/26" "Any" "ANY" nat src permit log 
+set policy id 82
+exit
+set policy id 83 from "DSZN_VPN" to "DSZN_Inet"  "10.57.34.64/26" "Any" "ANY" nat src permit log 
+set policy id 83
+exit
+set policy id 84 from "DSZN_VPN" to "DSZN_Inet"  "10.57.128.128/26" "Any" "ANY" nat src permit log 
+set policy id 84
+exit
+set policy id 85 from "DSZN_VPN" to "DSZN_Inet"  "10.57.57.192/26" "Any" "ANY" nat src permit log 
+set policy id 85
+exit         
+set policy id 86 from "DSZN_VPN" to "DSZN_Inet"  "10.57.51.128/26" "Any" "ANY" nat src permit log 
+set policy id 86
+exit
+set policy id 87 from "DSZN_VPN" to "DSZN_Inet"  "10.57.44.64/26" "Any" "ANY" nat src permit log 
+set policy id 87
+exit
+set policy id 88 from "DSZN_VPN" to "DSZN_Inet"  "10.57.44.192/26" "Any" "ANY" nat src permit log 
+set policy id 88
+exit
+set policy id 89 from "DSZN_VPN" to "DSZN_Inet"  "10.57.56.0/26" "Any" "ANY" nat src permit log 
+set policy id 89
+exit
+set policy id 90 from "DSZN_VPN" to "DSZN_Inet"  "10.57.164.128/26" "Any" "ANY" nat src permit log 
+set policy id 90
+exit
+set policy id 91 from "DSZN_VPN" to "DSZN_Inet"  "10.57.39.0/26" "Any" "ANY" nat src permit log 
+set policy id 91
+exit
+set policy id 92 from "DSZN_VPN" to "DSZN_Inet"  "10.120.17.0/24" "Any" "ANY" nat src permit log 
+set policy id 92
+exit
+set policy id 93 from "DSZN_VPN" to "DSZN_Inet"  "10.120.51.0/24" "Any" "ANY" nat src permit log 
+set policy id 93
+exit
+set policy id 94 from "DSZN_VPN" to "DSZN_Inet"  "10.57.37.0/26" "Any" "ANY" nat src permit log 
+set policy id 94
+exit
+set policy id 95 from "DSZN_VPN" to "DSZN_Inet"  "10.57.63.64/26" "Any" "ANY" nat src permit log 
+set policy id 95
+exit
+set policy id 96 from "DSZN_VPN" to "DSZN_Inet"  "10.57.33.192/26" "Any" "ANY" nat src permit log 
+set policy id 96
+exit
+set policy id 97 from "DSZN_VPN" to "DSZN_Inet"  "10.57.139.0/26" "Any" "ANY" nat src permit log 
+set policy id 97
+exit
+set policy id 98 from "DSZN_VPN" to "DSZN_Inet"  "10.57.47.192/26" "Any" "ANY" nat src permit log 
+set policy id 98
+exit
+set policy id 99 from "DSZN_VPN" to "DSZN_Inet"  "10.57.174.192/26" "Any" "ANY" nat src permit log 
+set policy id 99
+exit
+set policy id 100 from "DSZN_VPN" to "DSZN_Inet"  "10.120.77.0/24" "Any" "ANY" nat src permit log 
+set policy id 100
+exit
+set policy id 101 from "DSZN_VPN" to "DSZN_Inet"  "10.57.42.192/26" "Any" "ANY" nat src permit log 
+set policy id 101
+exit
+set policy id 102 from "DSZN_VPN" to "DSZN_Inet"  "10.120.52.0/24" "Any" "ANY" nat src permit log 
+set policy id 102
+exit
+set policy id 103 from "DSZN_VPN" to "DSZN_Inet"  "10.120.58.0/24" "Any" "ANY" nat src permit log 
+set policy id 103
+exit
+set policy id 104 from "DSZN_VPN" to "DSZN_Inet"  "10.120.81.0/24" "Any" "ANY" nat src permit log 
+set policy id 104
+exit
+set policy id 105 from "DSZN_VPN" to "DSZN_Inet"  "10.57.121.192/26" "Any" "ANY" nat src permit log 
+set policy id 105
+exit
+set policy id 106 from "DSZN_VPN" to "DSZN_Inet"  "10.120.22.0/24" "Any" "ANY" nat src permit log 
+set policy id 106
+exit
+set policy id 107 from "DSZN_VPN" to "DSZN_Inet"  "10.120.30.0/24" "Any" "ANY" nat src permit log 
+set policy id 107
+exit         
+set policy id 108 from "DSZN_VPN" to "DSZN_Inet"  "10.120.55.0/24" "Any" "ANY" nat src permit log 
+set policy id 108
+exit
+set policy id 109 from "DSZN_VPN" to "DSZN_Inet"  "10.57.171.0/26" "Any" "ANY" nat src permit log 
+set policy id 109
+exit
+set policy id 110 from "DSZN_VPN" to "DSZN_Inet"  "10.57.165.128/26" "Any" "ANY" nat src permit log 
+set policy id 110
+exit
+set policy id 111 from "DSZN_VPN" to "DSZN_Inet"  "10.57.166.0/26" "Any" "ANY" nat src permit log 
+set policy id 111
+exit
+set policy id 112 from "DSZN_VPN" to "DSZN_Inet"  "10.120.105.0/24" "Any" "ANY" nat src permit log 
+set policy id 112
+exit
+set policy id 113 from "DSZN_VPN" to "DSZN_Inet"  "10.57.164.64/26" "Any" "ANY" nat src permit log 
+set policy id 113
+exit
+set policy id 114 from "DSZN_VPN" to "DSZN_Inet"  "10.57.166.192/26" "Any" "ANY" nat src permit log 
+set policy id 114
+exit
+set policy id 115 from "DSZN_VPN" to "DSZN_Inet"  "10.57.70.64/26" "Any" "ANY" nat src permit log 
+set policy id 115
+exit
+set policy id 116 from "DSZN_VPN" to "DSZN_Inet"  "10.57.65.64/26" "Any" "ANY" nat src permit log 
+set policy id 116
+exit
+set policy id 117 from "DSZN_VPN" to "DSZN_Inet"  "10.120.83.0/24" "Any" "ANY" nat src permit log 
+set policy id 117
+exit
+set policy id 118 from "DSZN_VPN" to "DSZN_Inet"  "10.120.26.0/24" "Any" "ANY" nat src permit log 
+set policy id 118
+exit
+set policy id 119 from "DSZN_VPN" to "DSZN_Inet"  "10.120.12.0/24" "Any" "ANY" nat src permit log 
+set policy id 119
+exit
+set policy id 120 from "DSZN_VPN" to "DSZN_Inet"  "10.120.79.0/24" "Any" "ANY" nat src permit log 
+set policy id 120
+exit
+set policy id 121 from "DSZN_VPN" to "DSZN_Inet"  "10.120.57.0/24" "Any" "ANY" nat src permit log 
+set policy id 121
+exit
+set policy id 122 from "DSZN_VPN" to "DSZN_Inet"  "10.120.24.0/24" "Any" "ANY" nat src permit log 
+set policy id 122
+exit
+set policy id 123 from "DSZN_VPN" to "DSZN_Inet"  "10.57.60.0/26" "Any" "ANY" nat src permit log 
+set policy id 123
+exit
+set policy id 124 from "DSZN_VPN" to "DSZN_Inet"  "10.57.173.64/26" "Any" "ANY" nat src permit log 
+set policy id 124
+exit
+set policy id 125 from "DSZN_VPN" to "DSZN_Inet"  "10.57.173.128/26" "Any" "ANY" nat src permit log 
+set policy id 125
+exit
+set policy id 126 from "DSZN_VPN" to "DSZN_Inet"  "10.57.180.0/26" "Any" "ANY" nat src permit log 
+set policy id 126
+exit
+set policy id 127 from "DSZN_VPN" to "DSZN_Inet"  "10.57.133.64/26" "Any" "ANY" nat src permit log 
+set policy id 127
+exit
+set policy id 128 from "DSZN_VPN" to "DSZN_Inet"  "10.57.58.128/26" "Any" "ANY" nat src permit log 
+set policy id 128
+exit
+set policy id 129 from "DSZN_VPN" to "DSZN_Inet"  "10.120.20.0/24" "Any" "ANY" nat src permit log 
+set policy id 129
+exit         
+set policy id 130 from "DSZN_VPN" to "DSZN_Inet"  "10.120.23.0/24" "Any" "ANY" nat src permit log 
+set policy id 130
+exit
+set policy id 131 from "DSZN_VPN" to "DSZN_Inet"  "10.120.56.0/24" "Any" "ANY" nat src permit log 
+set policy id 131
+exit
+set policy id 132 from "DSZN_VPN" to "DSZN_Inet"  "10.120.59.0/24" "Any" "ANY" nat src permit log 
+set policy id 132
+exit
+set policy id 133 from "DSZN_VPN" to "DSZN_Inet"  "10.57.124.192/26" "Any" "ANY" nat src permit log 
+set policy id 133
+exit
+set policy id 134 from "DSZN_VPN" to "DSZN_Inet"  "10.57.135.128/26" "Any" "ANY" nat src permit log 
+set policy id 134
+exit
+set policy id 135 from "DSZN_VPN" to "DSZN_Inet"  "10.57.57.0/26" "Any" "ANY" nat src permit log 
+set policy id 135
+exit
+set policy id 136 from "DSZN_VPN" to "DSZN_Inet"  "10.57.121.0/26" "Any" "ANY" nat src permit log 
+set policy id 136
+exit
+set policy id 137 from "DSZN_VPN" to "DSZN_Inet"  "10.57.37.128/26" "Any" "ANY" nat src permit log 
+set policy id 137
+exit
+set policy id 138 from "DSZN_VPN" to "DSZN_Inet"  "10.57.47.0/26" "Any" "ANY" nat src permit log 
+set policy id 138
+exit
+set policy id 139 from "DSZN_VPN" to "DSZN_Inet"  "10.57.134.64/26" "Any" "ANY" nat src permit log 
+set policy id 139
+exit
+set policy id 140 from "DSZN_VPN" to "DSZN_Inet"  "10.57.50.0/26" "Any" "ANY" nat src permit log 
+set policy id 140
+exit
+set policy id 141 from "DSZN_VPN" to "DSZN_Inet"  "10.57.51.64/26" "Any" "ANY" nat src permit log 
+set policy id 141
+exit
+set policy id 142 from "DSZN_VPN" to "DSZN_Inet"  "10.57.59.192/26" "Any" "ANY" nat src permit log 
+set policy id 142
+exit
+set policy id 143 from "DSZN_VPN" to "DSZN_Inet"  "10.57.124.64/26" "Any" "ANY" nat src permit log 
+set policy id 143
+exit
+set policy id 144 from "DSZN_VPN" to "DSZN_Inet"  "10.57.37.64/26" "Any" "ANY" nat src permit log 
+set policy id 144
+exit
+set policy id 145 from "DSZN_VPN" to "DSZN_Inet"  "10.57.147.0/26" "Any" "ANY" nat src permit log 
+set policy id 145
+exit
+set policy id 146 from "DSZN_VPN" to "DSZN_Inet"  "10.120.71.0/24" "Any" "ANY" nat src permit log 
+set policy id 146
+exit
+set policy id 147 from "DSZN_VPN" to "DSZN_Inet"  "10.57.163.0/26" "Any" "ANY" nat src permit log 
+set policy id 147
+exit
+set policy id 148 from "DSZN_VPN" to "DSZN_Inet"  "10.57.181.0/26" "Any" "ANY" nat src permit log 
+set policy id 148
+exit
+set policy id 149 from "DSZN_VPN" to "DSZN_Inet"  "10.57.162.64/26" "Any" "ANY" nat src permit log 
+set policy id 149
+exit
+set policy id 150 from "DSZN_VPN" to "DSZN_Inet"  "10.57.182.128/26" "Any" "ANY" nat src permit log 
+set policy id 150
+exit
+set policy id 151 from "DSZN_VPN" to "DSZN_Inet"  "10.57.182.64/26" "Any" "ANY" nat src permit log 
+set policy id 151
+exit         
+set policy id 152 from "DSZN_VPN" to "DSZN_Inet"  "10.57.182.0/26" "Any" "ANY" nat src permit log 
+set policy id 152
+exit
+set policy id 153 from "DSZN_VPN" to "DSZN_Inet"  "10.57.173.192/26" "Any" "ANY" nat src permit log 
+set policy id 153
+exit
+set policy id 154 from "DSZN_VPN" to "DSZN_Inet"  "10.57.168.192/26" "Any" "ANY" nat src permit log 
+set policy id 154
+exit
+set policy id 155 from "DSZN_VPN" to "DSZN_Inet"  "10.120.97.0/24" "Any" "ANY" nat src permit log 
+set policy id 155
+exit
+set policy id 156 from "DSZN_VPN" to "DSZN_Inet"  "10.57.180.128/26" "Any" "ANY" nat src permit log 
+set policy id 156
+exit
+set policy id 157 from "DSZN_VPN" to "DSZN_Inet"  "10.57.171.192/26" "Any" "ANY" nat src permit log 
+set policy id 157
+exit
+set policy id 158 from "DSZN_VPN" to "DSZN_Inet"  "10.120.113.0/24" "Any" "ANY" nat src permit log 
+set policy id 158
+exit
+set policy id 159 from "DSZN_VPN" to "DSZN_Inet"  "10.57.167.128/26" "Any" "ANY" nat src permit log 
+set policy id 159
+exit
+set policy id 160 from "DSZN_VPN" to "DSZN_Inet"  "10.57.41.0/26" "Any" "ANY" nat src permit log 
+set policy id 160
+exit
+set policy id 161 from "DSZN_VPN" to "DSZN_Inet"  "10.57.172.128/26" "Any" "ANY" nat src permit log 
+set policy id 161
+exit
+set policy id 162 from "DSZN_VPN" to "DSZN_Inet"  "10.57.173.0/26" "Any" "ANY" nat src permit log 
+set policy id 162
+exit
+set policy id 163 from "DSZN_VPN" to "DSZN_Inet"  "10.57.171.64/26" "Any" "ANY" nat src permit log 
+set policy id 163
+exit
+set policy id 164 from "DSZN_VPN" to "DSZN_Inet"  "10.57.170.128/26" "Any" "ANY" nat src permit log 
+set policy id 164
+exit
+set policy id 165 from "DSZN_VPN" to "DSZN_Inet"  "10.57.174.128/26" "Any" "ANY" nat src permit log 
+set policy id 165
+exit
+set policy id 166 from "DSZN_VPN" to "DSZN_Inet"  "10.57.169.0/26" "Any" "ANY" nat src permit log 
+set policy id 166
+exit
+set policy id 167 from "DSZN_VPN" to "DSZN_Inet"  "10.57.167.0/26" "Any" "ANY" nat src permit log 
+set policy id 167
+exit
+set policy id 168 from "DSZN_VPN" to "DSZN_Inet"  "10.57.174.64/26" "Any" "ANY" nat src permit log 
+set policy id 168
+exit
+set policy id 169 from "DSZN_VPN" to "DSZN_Inet"  "10.57.166.128/26" "Any" "ANY" nat src permit log 
+set policy id 169
+exit
+set policy id 170 from "DSZN_VPN" to "DSZN_Inet"  "10.57.166.64/26" "Any" "ANY" nat src permit log 
+set policy id 170
+exit
+set policy id 171 from "DSZN_VPN" to "DSZN_Inet"  "10.57.165.0/26" "Any" "ANY" nat src permit log 
+set policy id 171
+exit
+set policy id 172 from "DSZN_VPN" to "DSZN_Inet"  "10.57.46.128/26" "Any" "ANY" nat src permit log 
+set policy id 172
+exit
+set policy id 173 from "DSZN_VPN" to "DSZN_Inet"  "10.57.164.192/26" "Any" "ANY" nat src permit log 
+set policy id 173
+exit         
+set policy id 174 from "DSZN_VPN" to "DSZN_Inet"  "10.57.164.0/26" "Any" "ANY" nat src permit log 
+set policy id 174
+exit
+set policy id 175 from "DSZN_VPN" to "DSZN_Inet"  "10.57.163.64/26" "Any" "ANY" nat src permit log 
+set policy id 175
+exit
+set policy id 176 from "DSZN_VPN" to "DSZN_Inet"  "10.57.162.192/26" "Any" "ANY" nat src permit log 
+set policy id 176
+exit
+set policy id 177 from "DSZN_VPN" to "DSZN_Inet"  "10.57.32.128/26" "Any" "ANY" nat src permit log 
+set policy id 177
+exit
+set policy id 178 from "DSZN_VPN" to "DSZN_Inet"  "10.57.169.64/26" "Any" "ANY" nat src permit log 
+set policy id 178
+exit
+set policy id 179 from "DSZN_VPN" to "DSZN_Inet"  "10.57.171.128/26" "Any" "ANY" nat src permit log 
+set policy id 179
+exit
+set policy id 180 from "DSZN_VPN" to "DSZN_Inet"  "10.57.181.64/26" "Any" "ANY" nat src permit log 
+set policy id 180
+exit
+set policy id 182 from "DSZN_VPN" to "DSZN_Inet"  "10.57.131.192/26" "Any" "ANY" nat src permit log 
+set policy id 182
+exit
+set policy id 183 from "DSZN_VPN" to "DSZN_Inet"  "10.57.120.0/26" "Any" "ANY" nat src permit log 
+set policy id 183
+exit
+set policy id 184 from "DSZN_VPN" to "DSZN_Inet"  "10.57.40.128/26" "Any" "ANY" nat src permit log 
+set policy id 184
+exit
+set policy id 185 from "DSZN_VPN" to "DSZN_Inet"  "10.57.42.0/26" "Any" "ANY" nat src permit log 
+set policy id 185
+exit
+set policy id 186 from "DSZN_VPN" to "DSZN_Inet"  "10.57.139.128/26" "Any" "ANY" nat src permit log 
+set policy id 186
+exit
+set policy id 187 from "DSZN_VPN" to "DSZN_Inet"  "10.57.139.64/26" "Any" "ANY" nat src permit log 
+set policy id 187
+exit
+set policy id 188 from "DSZN_VPN" to "DSZN_Inet"  "10.57.138.192/26" "Any" "ANY" nat src permit log 
+set policy id 188
+exit
+set policy id 189 from "DSZN_VPN" to "DSZN_Inet"  "10.57.138.64/26" "Any" "ANY" nat src permit log 
+set policy id 189
+exit
+set policy id 190 from "DSZN_VPN" to "DSZN_Inet"  "10.57.138.0/26" "Any" "ANY" nat src permit log 
+set policy id 190
+exit
+set policy id 191 from "DSZN_VPN" to "DSZN_Inet"  "10.57.137.192/26" "Any" "ANY" nat src permit log 
+set policy id 191
+exit
+set policy id 192 from "DSZN_VPN" to "DSZN_Inet"  "10.57.140.0/26" "Any" "ANY" nat src permit log 
+set policy id 192
+exit
+set policy id 193 from "DSZN_VPN" to "DSZN_Inet"  "10.57.118.64/26" "Any" "ANY" nat src permit log 
+set policy id 193
+exit
+set policy id 194 from "DSZN_VPN" to "DSZN_Inet"  "10.57.134.0/26" "Any" "ANY" nat src permit log 
+set policy id 194
+exit
+set policy id 195 from "DSZN_VPN" to "DSZN_Inet"  "10.57.61.128/26" "Any" "ANY" nat src permit log 
+set policy id 195
+exit
+set policy id 196 from "DSZN_VPN" to "DSZN_Inet"  "10.57.126.128/26" "Any" "ANY" nat src permit log 
+set policy id 196
+exit         
+set policy id 197 from "DSZN_VPN" to "DSZN_Inet"  "10.57.130.0/26" "Any" "ANY" nat src permit log 
+set policy id 197
+exit
+set policy id 198 from "DSZN_VPN" to "DSZN_Inet"  "10.57.54.128/26" "Any" "ANY" nat src permit log 
+set policy id 198
+exit
+set policy id 199 from "DSZN_VPN" to "DSZN_Inet"  "10.57.127.192/26" "Any" "ANY" nat src permit log 
+set policy id 199
+exit
+set policy id 200 from "DSZN_VPN" to "DSZN_Inet"  "10.57.46.0/26" "Any" "ANY" nat src permit log 
+set policy id 200
+exit
+set policy id 201 from "DSZN_VPN" to "DSZN_Inet"  "10.57.131.128/26" "Any" "ANY" nat src permit log 
+set policy id 201
+exit
+set policy id 202 from "DSZN_VPN" to "DSZN_Inet"  "10.57.126.192/26" "Any" "ANY" nat src permit log 
+set policy id 202
+exit
+set policy id 203 from "DSZN_VPN" to "DSZN_Inet"  "10.57.117.128/26" "Any" "ANY" nat src permit log 
+set policy id 203
+exit
+set policy id 204 from "DSZN_VPN" to "DSZN_Inet"  "10.57.123.64/26" "Any" "ANY" nat src permit log 
+set policy id 204
+exit
+set policy id 205 from "DSZN_VPN" to "DSZN_Inet"  "10.57.121.64/26" "Any" "ANY" nat src permit log 
+set policy id 205
+exit
+set policy id 206 from "DSZN_VPN" to "DSZN_Inet"  "10.57.78.64/26" "Any" "ANY" nat src permit log 
+set policy id 206
+exit
+set policy id 207 from "DSZN_VPN" to "DSZN_Inet"  "10.57.31.192/26" "Any" "ANY" nat src permit log 
+set policy id 207
+exit
+set policy id 208 from "DSZN_VPN" to "DSZN_Inet"  "10.57.32.64/26" "Any" "ANY" nat src permit log 
+set policy id 208
+exit
+set policy id 209 from "DSZN_VPN" to "DSZN_Inet"  "10.57.41.64/26" "Any" "ANY" nat src permit log 
+set policy id 209
+exit
+set policy id 210 from "DSZN_VPN" to "DSZN_Inet"  "10.120.13.0/24" "Any" "ANY" nat src permit log 
+set policy id 210
+exit
+set policy id 211 from "DSZN_VPN" to "DSZN_Inet"  "10.120.53.0/24" "Any" "ANY" nat src permit log 
+set policy id 211
+exit
+set policy id 212 from "DSZN_VPN" to "DSZN_Inet"  "10.57.54.192/26" "Any" "ANY" nat src permit log 
+set policy id 212
+exit
+set policy id 213 from "DSZN_VPN" to "DSZN_Inet"  "10.57.34.0/26" "Any" "ANY" nat src permit log 
+set policy id 213
+exit
+set policy id 214 from "DSZN_VPN" to "DSZN_Inet"  "10.57.170.0/26" "Any" "ANY" nat src permit log 
+set policy id 214
+exit
+set policy id 215 from "DSZN_VPN" to "DSZN_Inet"  "10.57.174.0/26" "Any" "ANY" nat src permit log 
+set policy id 215
+exit
+set policy id 216 from "DSZN_VPN" to "DSZN_Inet"  "10.57.42.64/26" "Any" "ANY" nat src permit log 
+set policy id 216
+exit
+set policy id 217 from "DSZN_VPN" to "DSZN_Inet"  "10.57.45.0/26" "Any" "ANY" nat src permit log 
+set policy id 217
+exit
+set policy id 218 from "DSZN_VPN" to "DSZN_Inet"  "10.120.73.0/24" "Any" "ANY" nat src permit log 
+set policy id 218
+exit         
+set policy id 219 from "DSZN_VPN" to "DSZN_Inet"  "10.57.40.0/26" "Any" "ANY" nat src permit log 
+set policy id 219
+exit
+set policy id 220 from "DSZN_VPN" to "DSZN_Inet"  "10.57.109.0/26" "Any" "ANY" nat src permit log 
+set policy id 220
+exit
+set policy id 221 from "DSZN_VPN" to "DSZN_Inet"  "10.57.45.192/26" "Any" "ANY" nat src permit log 
+set policy id 221
+exit
+set policy id 222 from "DSZN_VPN" to "DSZN_Inet"  "10.57.38.192/26" "Any" "ANY" nat src permit log 
+set policy id 222
+exit
+set policy id 223 from "DSZN_VPN" to "DSZN_Inet"  "10.57.123.0/26" "Any" "ANY" nat src permit log 
+set policy id 223
+exit
+set policy id 224 from "DSZN_VPN" to "DSZN_Inet"  "10.57.55.128/26" "Any" "ANY" nat src permit log 
+set policy id 224
+exit
+set policy id 225 from "DSZN_VPN" to "DSZN_Inet"  "10.57.50.64/26" "Any" "ANY" nat src permit log 
+set policy id 225
+exit
+set policy id 226 from "DSZN_VPN" to "DSZN_Inet"  "10.57.122.0/26" "Any" "ANY" nat src permit log 
+set policy id 226
+exit
+set policy id 227 from "DSZN_VPN" to "DSZN_Inet"  "10.57.115.192/26" "Any" "ANY" nat src permit log 
+set policy id 227
+exit
+set policy id 228 from "DSZN_VPN" to "DSZN_Inet"  "10.57.48.192/26" "Any" "ANY" nat src permit log 
+set policy id 228
+exit
+set policy id 229 from "DSZN_VPN" to "DSZN_Inet"  "10.57.36.0/26" "Any" "ANY" nat src permit log 
+set policy id 229
+exit
+set policy id 230 from "DSZN_VPN" to "DSZN_Inet"  "10.57.57.64/26" "Any" "ANY" nat src permit log 
+set policy id 230
+exit
+set policy id 231 from "DSZN_VPN" to "DSZN_Inet"  "10.57.55.64/26" "Any" "ANY" nat src permit log 
+set policy id 231
+exit
+set policy id 232 from "DSZN_VPN" to "DSZN_Inet"  "10.57.61.64/26" "Any" "ANY" nat src permit log 
+set policy id 232
+exit
+set policy id 233 from "DSZN_VPN" to "DSZN_Inet"  "10.120.129.0/24" "Any" "ANY" nat src permit log 
+set policy id 233
+exit
+set policy id 234 from "DSZN_VPN" to "DSZN_Inet"  "10.120.50.0/24" "Any" "ANY" nat src permit log 
+set policy id 234
+exit
+set policy id 235 from "DSZN_VPN" to "DSZN_Inet"  "10.57.126.0/26" "Any" "ANY" nat src permit log 
+set policy id 235
+exit
+set policy id 236 from "DSZN_VPN" to "DSZN_Inet"  "10.57.122.64/26" "Any" "ANY" nat src permit log 
+set policy id 236
+exit
+set policy id 237 from "DSZN_VPN" to "DSZN_Inet"  "10.57.123.192/26" "Any" "ANY" nat src permit log 
+set policy id 237
+exit
+set policy id 238 from "DSZN_VPN" to "DSZN_Inet"  "10.57.37.192/26" "Any" "ANY" nat src permit log 
+set policy id 238
+exit
+set policy id 239 from "DSZN_VPN" to "DSZN_Inet"  "10.57.167.64/26" "Any" "ANY" nat src permit log 
+set policy id 239
+exit
+set policy id 240 from "DSZN_VPN" to "DSZN_Inet"  "10.57.146.192/26" "Any" "ANY" nat src permit log 
+set policy id 240
+exit         
+set policy id 241 from "DSZN_VPN" to "DSZN_Inet"  "10.57.157.192/26" "Any" "ANY" nat src permit log 
+set policy id 241
+exit
+set policy id 242 from "DSZN_VPN" to "DSZN_Inet"  "10.57.52.128/26" "Any" "ANY" nat src permit log 
+set policy id 242
+exit
+set policy id 243 from "DSZN_VPN" to "DSZN_Inet"  "10.57.149.192/26" "Any" "ANY" nat src permit log 
+set policy id 243
+exit
+set policy id 244 from "DSZN_VPN" to "DSZN_Inet"  "10.57.147.192/26" "Any" "ANY" nat src permit log 
+set policy id 244
+exit
+set policy id 245 from "DSZN_VPN" to "DSZN_Inet"  "10.57.147.128/26" "Any" "ANY" nat src permit log 
+set policy id 245
+exit
+set policy id 246 from "DSZN_VPN" to "DSZN_Inet"  "10.57.158.0/26" "Any" "ANY" nat src permit log 
+set policy id 246
+exit
+set policy id 248 from "DSZN_VPN" to "DSZN_Inet"  "10.57.79.128/26" "Any" "ANY" nat src permit log 
+set policy id 248
+exit
+set policy id 249 from "DSZN_VPN" to "DSZN_Inet"  "10.57.63.128/26" "Any" "ANY" nat src permit log 
+set policy id 249
+exit
+set policy id 250 from "DSZN_VPN" to "DSZN_Inet"  "10.57.129.128/26" "Any" "ANY" nat src permit log 
+set policy id 250
+exit
+set policy id 251 from "DSZN_VPN" to "DSZN_Inet"  "10.120.48.0/26" "Any" "ANY" nat src permit log 
+set policy id 251
+exit
+set policy id 252 from "DSZN_VPN" to "DSZN_Inet"  "10.57.105.0/26" "Any" "ANY" nat src permit log 
+set policy id 252
+exit
+set policy id 253 from "DSZN_VPN" to "DSZN_Inet"  "10.57.114.192/26" "Any" "ANY" nat src permit log 
+set policy id 253
+exit
+set policy id 254 from "DSZN_VPN" to "DSZN_Inet"  "10.120.75.0/24" "Any" "ANY" nat src permit log 
+set policy id 254
+exit
+set policy id 255 from "DSZN_VPN" to "DSZN_Inet"  "10.57.31.128/26" "Any" "ANY" nat src permit log 
+set policy id 255
+exit
+set policy id 256 from "DSZN_VPN" to "DSZN_Inet"  "10.120.104.0/24" "Any" "ANY" nat src permit log 
+set policy id 256
+exit
+set policy id 257 from "DSZN_VPN" to "DSZN_Inet"  "10.57.124.0/26" "Any" "ANY" nat src permit log 
+set policy id 257
+exit
+set policy id 258 from "DSZN_VPN" to "DSZN_Inet"  "10.57.134.192/26" "Any" "ANY" nat src permit log 
+set policy id 258
+exit
+set policy id 259 from "DSZN_VPN" to "DSZN_Inet"  "10.57.128.0/26" "Any" "ANY" nat src permit log 
+set policy id 259
+exit
+set policy id 260 from "DSZN_VPN" to "DSZN_Inet"  "10.57.59.0/26" "Any" "ANY" nat src permit log 
+set policy id 260
+exit
+set policy id 261 from "DSZN_VPN" to "DSZN_Inet"  "10.57.135.192/26" "Any" "ANY" nat src permit log 
+set policy id 261
+exit
+set policy id 262 from "DSZN_VPN" to "DSZN_Inet"  "10.57.129.0/26" "Any" "ANY" nat src permit log 
+set policy id 262
+exit
+set policy id 263 from "DSZN_VPN" to "DSZN_Inet"  "10.57.103.64/26" "Any" "ANY" nat src permit log 
+set policy id 263
+exit         
+set policy id 264 from "DSZN_VPN" to "DSZN_Inet"  "10.57.41.128/26" "Any" "ANY" nat src permit log 
+set policy id 264
+exit
+set policy id 265 from "DSZN_VPN" to "DSZN_Inet"  "10.57.68.128/26" "Any" "ANY" nat src permit log 
+set policy id 265
+exit
+set policy id 266 from "DSZN_VPN" to "DSZN_Inet"  "10.57.38.128/26" "Any" "ANY" nat src permit log 
+set policy id 266
+exit
+set policy id 267 from "DSZN_VPN" to "DSZN_Inet"  "10.57.51.0/26" "Any" "ANY" nat src permit log 
+set policy id 267
+exit
+set policy id 268 from "DSZN_VPN" to "DSZN_Inet"  "10.57.45.64/26" "Any" "ANY" nat src permit log 
+set policy id 268
+exit
+set policy id 269 from "DSZN_VPN" to "DSZN_Inet"  "10.57.46.192/26" "Any" "ANY" nat src permit log 
+set policy id 269
+exit
+set policy id 270 from "DSZN_VPN" to "DSZN_Inet"  "10.57.48.128/26" "Any" "ANY" nat src permit log 
+set policy id 270
+exit
+set policy id 271 from "DSZN_VPN" to "DSZN_Inet"  "10.57.118.192/26" "Any" "ANY" nat src permit log 
+set policy id 271
+exit
+set policy id 272 from "DSZN_VPN" to "DSZN_Inet"  "10.57.49.64/26" "Any" "ANY" nat src permit log 
+set policy id 272
+exit
+set policy id 273 from "DSZN_VPN" to "DSZN_Inet"  "10.57.39.64/26" "Any" "ANY" nat src permit log 
+set policy id 273
+exit
+set policy id 274 from "DSZN_VPN" to "DSZN_Inet"  "10.57.58.0/26" "Any" "ANY" nat src permit log 
+set policy id 274
+exit
+set policy id 275 from "DSZN_VPN" to "DSZN_Inet"  "10.57.55.192/26" "Any" "ANY" nat src permit log 
+set policy id 275
+exit
+set policy id 276 from "DSZN_VPN" to "DSZN_Inet"  "10.120.54.0/24" "Any" "ANY" nat src permit log 
+set policy id 276
+set log session-init
+exit
+set policy id 277 from "DSZN_VPN" to "DSZN_Inet"  "10.57.149.128/26" "Any" "ANY" nat src permit log 
+set policy id 277
+exit
+set policy id 278 from "DSZN_VPN" to "DSZN_Inet"  "10.57.149.64/26" "Any" "ANY" nat src permit log 
+set policy id 278
+exit
+set policy id 279 from "DSZN_VPN" to "DSZN_Inet"  "10.57.149.0/26" "Any" "ANY" nat src permit log 
+set policy id 279
+exit
+set policy id 280 from "DSZN_VPN" to "DSZN_Inet"  "10.57.148.0/26" "Any" "ANY" nat src permit log 
+set policy id 280
+exit
+set policy id 281 from "DSZN_VPN" to "DSZN_Inet"  "10.57.148.128/26" "Any" "ANY" nat src permit log 
+set policy id 281
+exit
+set policy id 282 from "DSZN_VPN" to "DSZN_Inet"  "10.57.148.64/26" "Any" "ANY" nat src permit log 
+set policy id 282
+exit
+set policy id 283 from "DSZN_VPN" to "DSZN_Inet"  "10.57.147.64/26" "Any" "ANY" nat src permit log 
+set policy id 283
+exit
+set policy id 284 from "DSZN_VPN" to "DSZN_Inet"  "10.120.94.0/24" "Any" "ANY" nat src permit log 
+set policy id 284
+exit
+set policy id 285 from "DSZN_VPN" to "DSZN_Inet"  "10.57.146.0/26" "Any" "ANY" nat src permit log 
+set policy id 285
+exit
+set policy id 286 from "DSZN_VPN" to "DSZN_Inet"  "10.57.127.0/26" "Any" "ANY" nat src permit log 
+set policy id 286
+exit
+set policy id 287 from "DSZN_VPN" to "DSZN_Inet"  "10.57.129.64/26" "Any" "ANY" nat src permit log 
+set policy id 287
+exit
+set policy id 288 from "DSZN_VPN" to "DSZN_Inet"  "10.57.117.0/26" "Any" "ANY" nat src permit log 
+set policy id 288
+exit
+set policy id 289 from "DSZN_VPN" to "DSZN_Inet"  "10.57.54.64/26" "Any" "ANY" nat src permit log 
+set policy id 289
+exit
+set policy id 290 from "DSZN_VPN" to "DSZN_Inet"  "10.57.131.0/26" "Any" "ANY" nat src permit log 
+set policy id 290
+exit
+set policy id 291 from "DSZN_VPN" to "DSZN_Inet"  "10.120.19.0/24" "Any" "ANY" nat src permit log 
+set policy id 291
+exit
+set policy id 292 from "DSZN_VPN" to "DSZN_Inet"  "10.57.47.64/26" "Any" "ANY" nat src permit log 
+set policy id 292
+exit         
+set policy id 293 from "DSZN_VPN" to "DSZN_Inet"  "10.57.120.128/26" "Any" "ANY" nat src permit log 
+set policy id 293
+exit
+set policy id 295 from "DSZN_VPN" to "DSZN_Inet"  "10.57.53.64/26" "Any" "ANY" nat src permit log 
+set policy id 295
+exit
+set policy id 296 from "DSZN_VPN" to "DSZN_Inet"  "10.57.56.128/26" "Any" "ANY" nat src permit log 
+set policy id 296
+exit
+set policy id 297 from "DSZN_VPN" to "DSZN_Inet"  "10.57.112.128/26" "Any" "ANY" nat src permit log 
+set policy id 297
+exit
+set policy id 298 from "DSZN_VPN" to "DSZN_Inet"  "10.57.51.192/26" "Any" "ANY" nat src permit log 
+set policy id 298
+exit
+set policy id 299 from "DSZN_VPN" to "DSZN_Inet"  "10.120.78.0/24" "Any" "ANY" nat src permit log 
+set policy id 299
+exit
+set policy id 300 from "DSZN_VPN" to "DSZN_Inet"  "10.57.136.128/26" "Any" "ANY" nat src permit log 
+set policy id 300
+exit
+set policy id 301 from "DSZN_VPN" to "DSZN_Inet"  "10.120.32.0/24" "Any" "ANY" nat src permit log 
+set policy id 301
+exit
+set policy id 302 from "DSZN_VPN" to "DSZN_Inet"  "10.120.100.0/24" "Any" "ANY" nat src permit log 
+set policy id 302
+exit
+set policy id 303 from "DSZN_VPN" to "DSZN_Inet"  "10.57.54.0/26" "Any" "ANY" nat src permit log 
+set policy id 303
+exit
+set policy id 304 from "DSZN_VPN" to "DSZN_Inet"  "10.57.170.192/26" "Any" "ANY" nat src permit log 
+set policy id 304
+exit
+set policy id 305 from "DSZN_VPN" to "DSZN_Inet"  "10.120.27.0/24" "Any" "ANY" nat src permit log 
+set policy id 305
+exit
+set policy id 306 from "DSZN_VPN" to "DSZN_Inet"  "10.57.49.0/26" "Any" "ANY" nat src permit log 
+set policy id 306
+exit
+set policy id 307 from "DSZN_VPN" to "DSZN_Inet"  "10.57.177.64/26" "Any" "ANY" nat src permit log 
+set policy id 307
+exit
+set policy id 308 from "DSZN_VPN" to "DSZN_Inet"  "10.57.151.64/26" "Any" "ANY" nat src permit log 
+set policy id 308
+exit
+set policy id 309 from "DSZN_VPN" to "DSZN_Inet"  "10.57.150.192/26" "Any" "ANY" nat src permit log 
+set policy id 309
+exit
+set policy id 310 from "DSZN_VPN" to "DSZN_Inet"  "10.57.150.128/26" "Any" "ANY" nat src permit log 
+set policy id 310
+exit
+set policy id 311 from "DSZN_VPN" to "DSZN_Inet"  "10.57.156.192/26" "Any" "ANY" nat src permit log 
+set policy id 311
+exit
+set policy id 312 from "DSZN_VPN" to "DSZN_Inet"  "10.57.180.192/26" "Any" "ANY" nat src permit log 
+set policy id 312
+exit
+set policy id 313 from "DSZN_VPN" to "DSZN_Inet"  "10.57.150.0/26" "Any" "ANY" nat src permit log 
+set policy id 313
+exit
+set policy id 314 from "DSZN_VPN" to "DSZN_Inet"  "10.120.16.0/24" "Any" "ANY" nat src permit log 
+set policy id 314
+exit
+set policy id 315 from "DSZN_VPN" to "DSZN_Inet"  "10.57.41.192/26" "Any" "ANY" nat src permit log 
+set policy id 315
+exit         
+set policy id 316 from "DSZN_VPN" to "DSZN_Inet"  "10.120.114.0/24" "Any" "ANY" nat src permit log 
+set policy id 316
+exit
+set policy id 317 from "DSZN_VPN" to "DSZN_Inet"  "10.57.52.0/26" "Any" "ANY" nat src permit log 
+set policy id 317
+set log session-init
+exit
+set policy id 318 from "DSZN_VPN" to "DSZN_Inet"  "10.57.31.0/26" "Any" "ANY" nat src permit log 
+set policy id 318
+exit
+set policy id 319 from "DSZN_VPN" to "DSZN_Inet"  "10.120.29.0/24" "Any" "ANY" nat src permit log 
+set policy id 319
+exit
+set policy id 320 from "DSZN_VPN" to "DSZN_Inet"  "10.57.57.128/26" "Any" "ANY" nat src permit log 
+set policy id 320
+exit
+set policy id 321 from "DSZN_VPN" to "DSZN_Inet"  "10.57.58.64/26" "Any" "ANY" nat src permit log 
+set policy id 321
+exit
+set policy id 322 from "DSZN_VPN" to "DSZN_Inet"  "10.57.123.128/26" "Any" "ANY" nat src permit log 
+set policy id 322
+exit         
+set policy id 323 from "DSZN_VPN" to "DSZN_Inet"  "10.57.49.128/26" "Any" "ANY" nat src permit log 
+set policy id 323
+exit
+set policy id 324 from "DSZN_VPN" to "DSZN_Inet"  "10.57.181.192/26" "Any" "ANY" nat src permit log 
+set policy id 324
+exit
+set policy id 325 from "DSZN_VPN" to "DSZN_Inet"  "10.57.193.0/26" "Any" "ANY" nat src permit log 
+set policy id 325
+exit
+set policy id 326 from "DSZN_VPN" to "DSZN_Inet"  "10.57.168.64/26" "Any" "ANY" nat src permit log 
+set policy id 326
+exit
+set policy id 327 from "DSZN_VPN" to "DSZN_Inet"  "10.57.127.64/26" "Any" "ANY" nat src permit log 
+set policy id 327
+exit
+set policy id 328 from "DSZN_VPN" to "DSZN_Inet"  "10.57.33.128/26" "Any" "ANY" nat src permit log 
+set policy id 328
+exit
+set policy id 329 from "DSZN_VPN" to "DSZN_Inet"  "10.57.193.128/26" "Any" "ANY" nat src permit log 
+set policy id 329
+exit
+set policy id 330 from "DSZN_VPN" to "DSZN_Inet"  "10.57.193.64/26" "Any" "ANY" nat src permit log 
+set policy id 330
+exit
+set policy id 331 from "DSZN_VPN" to "DSZN_Inet"  "10.57.193.192/26" "Any" "ANY" nat src permit log 
+set policy id 331
+exit
+set policy id 332 from "DSZN_VPN" to "DSZN_Inet"  "10.57.194.192/26" "Any" "ANY" nat src permit log 
+set policy id 332
+exit
+set policy id 333 from "DSZN_VPN" to "DSZN_Inet"  "10.57.190.128/26" "Any" "ANY" nat src permit log 
+set policy id 333
+exit
+set policy id 334 from "DSZN_VPN" to "DSZN_Inet"  "10.57.196.0/26" "Any" "ANY" nat src permit log 
+set policy id 334
+exit
+set policy id 335 from "DSZN_VPN" to "DSZN_Inet"  "10.57.199.128/26" "Any" "ANY" nat src permit log 
+set policy id 335
+exit
+set policy id 336 from "DSZN_VPN" to "DSZN_Inet"  "10.57.200.128/26" "Any" "ANY" nat src permit log 
+set policy id 336
+exit
+set policy id 337 from "DSZN_VPN" to "DSZN_Inet"  "10.57.198.192/26" "Any" "ANY" nat src permit log 
+set policy id 337
+exit
+set policy id 338 from "DSZN_VPN" to "DSZN_Inet"  "10.57.200.192/26" "Any" "ANY" nat src permit log 
+set policy id 338
+exit
+set policy id 339 from "DSZN_VPN" to "DSZN_Inet"  "10.57.197.192/26" "Any" "ANY" nat src permit log 
+set policy id 339
+exit
+set policy id 340 from "DSZN_VPN" to "DSZN_Inet"  "10.57.200.64/26" "Any" "ANY" nat src permit log 
+set policy id 340
+exit
+set policy id 341 from "DSZN_VPN" to "DSZN_Inet"  "10.57.199.192/26" "Any" "ANY" nat src permit log 
+set policy id 341
+exit
+set policy id 342 from "DSZN_VPN" to "DSZN_Inet"  "10.57.201.0/26" "Any" "ANY" nat src permit log 
+set policy id 342
+exit
+set policy id 343 from "DSZN_VPN" to "DSZN_Inet"  "10.57.198.128/26" "Any" "ANY" nat src permit log 
+set policy id 343
+exit
+set policy id 344 from "DSZN_VPN" to "DSZN_Inet"  "10.57.200.0/26" "Any" "ANY" nat src permit log 
+set policy id 344
+exit         
+set policy id 345 from "DSZN_VPN" to "DSZN_Inet"  "10.57.199.0/26" "Any" "ANY" nat src permit log 
+set policy id 345
+exit
+set policy id 346 from "DSZN_VPN" to "DSZN_Inet"  "10.57.198.0/26" "Any" "ANY" nat src permit log 
+set policy id 346
+exit
+set policy id 347 from "DSZN_VPN" to "DSZN_Inet"  "10.57.198.64/26" "Any" "ANY" nat src permit log 
+set policy id 347
+exit
+set policy id 348 from "DSZN_VPN" to "DSZN_Inet"  "10.57.201.64/26" "Any" "ANY" nat src permit log 
+set policy id 348
+exit
+set policy id 349 from "DSZN_VPN" to "DSZN_Inet"  "10.57.199.64/26" "Any" "ANY" nat src permit log 
+set policy id 349
+exit
+set policy id 350 from "DSZN_VPN" to "DSZN_Inet"  "10.57.177.128/26" "Any" "ANY" nat src permit log 
+set policy id 350
+exit
+set policy id 351 from "DSZN_VPN" to "DSZN_Inet"  "10.57.177.192/26" "Any" "ANY" nat src permit log 
+set policy id 351
+exit
+set policy id 352 from "DSZN_VPN" to "DSZN_Inet"  "10.57.56.193/26" "Any" "ANY" nat src permit log 
+set policy id 352
+exit
+set policy id 353 from "DSZN_VPN" to "DSZN_Inet"  "10.57.201.192/26" "Any" "ANY" nat src permit log 
+set policy id 353
+exit
+set policy id 354 from "DSZN_VPN" to "DSZN_Inet"  "10.57.202.0/26" "Any" "ANY" nat src permit log 
+set policy id 354
+set log session-init
+exit
+set policy id 355 from "DSZN_VPN" to "DSZN_Inet"  "10.57.202.64/26" "Any" "ANY" nat src permit log 
+set policy id 355
+exit
+set policy id 356 from "DSZN_VPN" to "DSZN_Inet"  "10.57.203.128/26" "Any" "ANY" nat src permit log 
+set policy id 356
+exit
+set policy id 357 from "DSZN_VPN" to "DSZN_Inet"  "10.57.204.193/26" "Any" "ANY" nat src permit log 
+set policy id 357
+exit
+set policy id 358 from "DSZN_VPN" to "DSZN_Inet"  "10.57.202.128/26" "Any" "ANY" nat src permit log 
+set policy id 358
+exit
+set policy id 359 from "DSZN_VPN" to "DSZN_Inet"  "10.57.205.128/26" "Any" "ANY" nat src permit log 
+set policy id 359
+exit
+set policy id 360 from "DSZN_VPN" to "DSZN_Inet"  "10.57.206.128/26" "Any" "ANY" nat src permit log 
+set policy id 360
+exit
+set policy id 361 from "DSZN_VPN" to "DSZN_Inet"  "10.57.206.64/26" "Any" "ANY" nat src permit log 
+set policy id 361
+exit
+set policy id 362 from "DSZN_VPN" to "DSZN_Inet"  "10.57.206.0/26" "Any" "ANY" nat src permit log 
+set policy id 362
+exit
+set policy id 363 from "DSZN_VPN" to "DSZN_Inet"  "10.57.5.0/26" "Any" "ANY" nat src permit log 
+set policy id 363
+exit
+set policy id 364 from "DSZN_VPN" to "DSZN_Inet"  "10.57.207.0/24" "Any" "ANY" nat src permit log 
+set policy id 364
+exit
+set policy id 365 from "DSZN_VPN" to "DSZN_Inet"  "10.57.207.192/26" "Any" "ANY" nat src permit log 
+set policy id 365
+exit
+set policy id 366 name "B43647" from "DSZN_VPN" to "DSZN_Inet"  "10.2.196.0/22" "Any" "ANY" nat src permit log 
+set policy id 366
+exit
+set policy id 367 name "B21782" from "DSZN_VPN" to "DSZN_Inet"  "10.2.40.0/22" "Any" "ANY" nat src permit log 
+set policy id 367
+exit
+set policy id 368 name "B48542" from "DSZN_VPN" to "DSZN_Inet"  "10.57.209.0/26" "Any" "ANY" nat src permit log 
+set policy id 368
+set log session-init
+exit
+set policy id 369 name "B48479" from "DSZN_VPN" to "DSZN_Inet"  "10.57.209.64/26" "Any" "ANY" nat src permit log 
+set policy id 369
+set log session-init
+exit
+set policy id 370 name "B48085" from "DSZN_VPN" to "DSZN_Inet"  "10.57.124.128/26" "Any" "ANY" nat src permit log 
+set policy id 370
+set log session-init
+exit
+set policy id 371 name "B47501" from "DSZN_VPN" to "DSZN_Inet"  "10.57.151.192/26" "Any" "ANY" nat src permit log 
+set policy id 371
+set log session-init
+exit
+set policy id 374 name "B48637" from "DSZN_VPN" to "DSZN_Inet"  "10.57.144.192/26" "Any" "ANY" nat src permit log 
+set policy id 374
+set log session-init
+exit
+set policy id 375 from "DSZN_Inet" to "DSZN_VPN"  "Any" "MIP(62.117.98.33)" "ANY" permit log 
+set policy id 375
+set log session-init
+exit
+set policy id 376 from "VPN0591_norsisport" to "DSZN_Inet"  "10.64.0.0/16" "Any" "ANY" nat src permit log 
+set policy id 376
+set log session-init
+exit
+set policy id 378 name "B48637" from "DSZN_Inet" to "DSZN_VPN"  "Any" "MIP(62.117.98.34)" "ANY" permit log 
+set policy id 378
+set log session-init
+exit
+set policy id 379 name "B51525" from "DSZN_VPN" to "DSZN_Inet"  "10.57.210.0/26" "Any" "ANY" nat src permit log 
+set policy id 379
+set log session-init
+exit
+set policy id 380 name "B51570" from "DSZN_VPN" to "DSZN_Inet"  "10.57.210.224/29" "Any" "ANY" nat src permit log 
+set policy id 380
+set log session-init
+exit         
+set policy id 381 name "B51439" from "DSZN_VPN" to "DSZN_Inet"  "10.57.211.0/26" "Any" "ANY" nat src permit log 
+set policy id 381
+set log session-init
+exit
+set policy id 382 from "DSZN_VPN" to "DSZN_Inet"  "10.57.196.64/26" "Any" "ANY" nat src permit log 
+set policy id 382
+set log session-init
+exit
+set policy id 383 name "B51714" from "DSZN_VPN" to "DSZN_Inet"  "10.57.210.208/28" "Any" "ANY" nat src permit log 
+set policy id 383
+set log session-init
+exit
+set policy id 384 name "WIFI_KF" from "DSZN_VPN" to "DSZN_Inet"  "10.7.0.0/16" "Any" "ANY" nat src permit log 
+set policy id 384
+exit
+set policy id 391 from "Trust" to "DSZN_Inet"  "Any" "black" "ANY" nat src deny log 
+set policy id 391
+exit
+set policy id 385 from "Trust" to "DSZN_Inet"  "172.17.4.0/24" "Any" "ANY" nat src permit log 
+set policy id 385
+exit
+set policy id 386 name "B52029" from "DSZN_VPN" to "DSZN_Inet"  "10.57.211.192/26" "Any" "ANY" nat src permit log 
+set policy id 386
+set log session-init
+exit
+set policy id 387 name "B50469" from "DSZN_VPN" to "DSZN_Inet"  "10.158.57.0/26" "Any" "ANY" nat src permit log 
+set policy id 387
+set log session-init
+exit
+set policy id 388 name "B50333" from "DSZN_VPN" to "DSZN_Inet"  "10.158.55.64/26" "Any" "ANY" nat src permit log 
+set policy id 388
+set log session-init
+exit
+set policy id 389 name "B50184" from "DSZN_VPN" to "DSZN_Inet"  "10.158.52.193/26" "Any" "ANY" nat src permit log 
+set policy id 389

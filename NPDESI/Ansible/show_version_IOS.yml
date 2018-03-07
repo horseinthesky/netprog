@@ -1,0 +1,28 @@
+---
+
+- name: Run show version command
+  hosts: ios
+  connection: local
+
+  tasks:
+
+    - name: run show version
+      ios_command:
+        commands: show version
+        provider: "{{ cli }}"
+      register: sh_ver_output
+
+    - name: debug register var
+      debug:
+        var: sh_ver_output.stdout_lines
+
+    - name: Verity OS
+      assert:
+        that:
+          - "'Version 16.04.01' in sh_ver_output.stdout[0]"
+
+    - name: Ensure SNMP RO exists
+      ios_config:
+        commands:
+          - snmp-server community PUBLIC_SECURITY RO
+        provider: "{{ cli }}"
