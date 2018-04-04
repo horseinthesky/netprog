@@ -1,0 +1,814 @@
+---
+switches_domain: ".yndx.net"
+rrs_domain: ".netinfra.cloud.yandex.net"
+
+communities:
+  ipv6_net: "13238:3099"
+  vpn_cloud_specific: "13238:35001"
+  vpn_cloud_aggregate: "13238:35002"
+  no_reannounce: "13238:35099"
+  cloud_vpn_rr_lo: "13238:35100"
+  global_vpn_rr_lo: "13238:35101"
+  cloud_rkub_rr_lo: "13238:35110"
+  global_rkub_rr_lo: "13238:35111"
+  cloud_fv_rr_lo: "13238:35112"
+  global_fv_rr_lo: "13238:35113"
+  cloud_slb_rr_lo: "13238:35114"
+  global_slb_rr_lo: "13238:35115"
+  br_lo: "13238:35130"
+  cgw_lo: "13238:35130"  
+  tor_lo: "13238:35170"
+  spine_lo: "13238:35190"
+  yc_net_specific: "13238:35200"
+  yc_net_aggregate: "13238:35201"
+  this_dc: "13238:35400"
+  geo_russia: "13238:35700"
+  yc: "13238:35999"
+
+vpn_cloud_nets: "10.0.0.0/8"
+vlans: [4,5,6,333,1519,1526]
+interfaces:
+  - name: "vlanif4"
+    description: "VNF"
+    ip_version: "4"
+    ip: "10.255.254.1/24"
+    vrf: ""
+  - name: "vlanif5"
+    description: "VNF. RRS"
+    ip_version: "4"
+    ip: "10.255.255.1/24"
+    vrf: ""
+
+
+  - name: "vlanif6"
+    description: "VNF. CGWS IPV6"
+    ip_version: "6"
+    ip: "FE80::CD:1/link-local"
+    vrf: "HBF"
+
+vrfs:
+  - name: "cloud"
+    ipv4:
+      rd: "1113"
+      rt_import: "13238:1113"
+      rt_export: "13238:1113"
+    ipv6:
+      rd: "1113"
+      rt_import: "13238:1113"
+      rt_export: "13238:1113"
+  - name: "mgmt"
+    ipv4:
+      rd: ""
+      rt_import: ""
+      rt_export: ""
+    ipv6: ""
+  - name: "hbf"
+    ipv4: ""
+    ipv6:
+      rd: "3000"
+      rt_import: ""
+      rt_export: ""
+aaa:
+  users:
+    - name: eucariot
+      pwd_hash: $1c$,,p>ENX1Q-$;):)Rtr\3:qg7W"fMMk=Bs{MS5N}6I`"sSH}$Ny5$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: horseinthesky
+      pwd_hash: $1c$M~2_Gd<ec$$=I8p7}ajyAb,j{S]_X>TAEE^;D%y"DF+7-4kD@YJ$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: axscrew
+      pwd_hash: $1a$eWcH'5dD~1$l<vvDig#@.)I|;ZASgH'%Kv~N)&DA=[i<R@.'{%>$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: v0lk
+      pwd_hash: $1c$'5@#GOlT~)$HeDGSN-3nSYSb["1[s6&Q%&R"k}$uHo(6HYkVJN$$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: vvenglovskii 
+      pwd_hash: $1c$ryes~r/<=1$h[%CMp.739JlF'%k:7J#7_[:OFs_yUA5C5Bg38~T$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: racktables
+      pwd_hash: $1a$34qx,Zl^W*$)Zj6;+qRHKAQSoP4mk18s*C=4|I-yD"=j.DEFMCG$
+      level: 1
+      protocols:
+        - terminal
+        - telnet
+        - ssh
+    - name: monitor
+      pwd_hash: $1c$a&fwNNDB5S$Ow8f!o>8y-Uc-p9tY}dLvu!|Jdl<sR:CKGHeex)1$
+      level: 1
+      protocols:
+        - terminal
+        - telnet
+        - ssh
+    - name: scamp
+      pwd_hash: $1c$ww9[TJ({p>$23MxDeQx^+ijKe!DR1p"XSe$:C1!F,TLB~*RyB):$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+    - name: alex-limonov
+      pwd_hash: $$1c$RR_]23K:A/$4Bb2($&('5'=[UN7!dS8\kI[M|v_A<x4o!%"PVl=$
+      level: 3
+      protocols:
+        - terminal
+        - ssh
+
+rsa_keys:
+  - user: v0lk 
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjtsYFheJYX+S5oHPyXA0vNpv9NMCWsCTc6kL6qdHcuudUcZld3omcGkcAKAGuBmb/e/oN7ZEXPPCcQ8iJwS6+m6pGYgtmCjFyBlI+ETpdr0TMZnQC41/6Hc3pa0/t4pneCHLJnsyQuVK2iVuzXdun6tXyRE5+cfyTOiCF0COWw/J7K2nAfIN+hhsKMfEdpT1XlFq57okrKAhLO9yS0NlyheU4oTQNAi52rHKB39eL3shYgX3bBlpRFlKCXgFS5AOrgehZRBw4ledT22W/wH6cYe4u52VbpxFhS+X5Jp+b7TaglPqlXz/3eoXt04wxYsrLY4y9Gm8cm9fXgBmq0sKl rsa-key
+  - user: axscrew
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2aU3tQRdplshyBPQH/cn1m82VWny6QJK05sYmRExLoboV+Nj3OlYrx1A6e1LD5oozmscpiUAmH8cEYbE4jdQ9ZXIaALYRjjaSIrXJIAFr7fo5iy8pXRbuHXyAcVimhHyAxfAwKsIs2rk91GX2JiCv6xYVN1xzlTMM6Eb0ZdEhrafen/74z5r6Dc5OZOwpz0pIPSgih3N1Mo1jvJPmxR8omZVLPkLM9OlepEbZikzfP1uEDNnuNYflPhpsJ/GeRhtU/7nS74cSgx+Up/05ATrnGLUSMhUtvcuQ2XR3xmRTGy9TzvrqDiKQc6TWHKC9zZKHK0rsYdi3Qasiaq2Lxqix rsa-key
+  - user: eucariot
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrQ1PBIWN8JQZRi9MsouWl7H7hUz4Y66l9n2BsNfMeDNqVOYP76LZcNP6j0XXGWdASm22v7quyz/bwyZBkPrNohWERnnuTqdaHqjgz5rI1/VXisu9o3O9k1xROlVKe/pipDCBkKxYyC6wJOcBhUdmi6S3bILW6EUYmX6JJ7gysx3kYkfBG1v2qqJek/UwuNdc6lSKZfr6IPnKdCb0Ovd1HrhVBhOeVmrNPrK8IUeARSa9V0WDTm/LhcgV0LVlt6MQtsBVH3tx0jLidZTC2d4SKm/D7TrQO5cCcv5Tcpnt+Aooqgz6118oekQdj6J3SZYoWmk7TD6f5+BlhoYJySpvj rsa-key
+  - user: vvenglovskii
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDW8xR4WjUFOt3mA9fbFieIQCvx4IuACLkyN/5pUhBLp20mD0TSGZ5pf6defpWrSPsY8i63PMtTfhrdxBC3nDDlv89zApHt6afl0vuJFWGgHnXH+bRqWUlVG6p6O+YGC0GeorOGZsvDXn8WYLKw2LzG9qW5B91CSfGhKpZ/XKpLLtKzQ0wBOw6kpacycYq3Dq7BuXhNlXJ8puUGgas6r8SzJsJas4ViRaJVfrvQDooMMaNrhSghmZZXcA8khjyyGA0/EcOuVCYqFIIXemE/Ln453I8klcO9FRwM4slORGXR8u4Bebs77ozwssOnfPDZoUaluiVZNbv14vlb7HnbKQQz rsa-key
+  - user: horseinthesky
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAqhERXX4TLpmfhANWWvL2dci2Gcboc9VoJjIfwDAQlUl3JBodzuF5e9FwDD7isMQ9edUqQW+MCRqWisj3IWBAUvxSYciY5aUZFi22p9H/+nIWf6E++I4qfFjixAtZ2XORt6OxUxnKjQ4EYuc43vFC3gep1SC6Ei5LW171iJJsP3dJuvDuFjbXzFNq0J7b43l01CTVWhd+uOxJhudmhVpo10II1tgNBvOa1Lk+aHmtQyRVwQD6VRZUrS0kOid6Jy4IqI9MiDL4Nnc1AcPqXcF/FQIIn0wbGmQ6RgOw2yUph9uWeg4GYPr2qT4Hw2Tux62iEUyL/w13CBEIwmL2s0xKZQ== rsa-key
+  - user: alex-limonov
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCOVtb0JX+QkUgIOZlNixOXG1J9RkBW+dOAcw48YEK73lN/FyEaF1qwIr19NhMyh2wGIVhSI9V1sGV8CZEeGm7Wrgndj45gkq1FFxIvjIO/GWniz3UFGiedNDQp64p+C75TTfYHOartp1S3Sguzdhb4yPEaiUAzjMp+SZ6hwT7s9mrOB2+c59GH17e3OoqTdGY8Pgq+vmeisWqmkPwSNq1bAuNLL3mIErIet6Tm1yDx5dnAp6vP41Shx8ss/cDwRmCZf9HwCW82i2SiOwbj/2Md0Ac2WSEVqH12S8mMRDpomUV/vVuSLBqF4DH/NkKsxYvHP8Az8gSB4ysjrSh5a3z rsa-key
+  - user: scamp
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDuYguYnZDbljJQjLfDSY4xtHsJdYrUANJJWQ9hNfDSEVsOx0Hx9ME70X5YNCJprgACLUE1o7oRpU3M/3fcWpw9A9iYrXSMyq+sVt8SYFGbGeWs2J5DbMV8WxkVeppSJL2kjGqyNu4sh1ijLU9H1B1MO6T+3/bqPq+PO/UWfZ5a5578peXF3rKPehCD+AyLmffpbxMigOnlc20Scaqb6fc+p84neD91b/L5C7fnLcB8dL3r2RtSytAuqKj3SSorNDzTASjK19rHTa+6OaOKgHJ/ionT6DsHivQTMDjFjrmqvCukHB4L08lw2L0zjvVTDvy06IOraeGu59KvGG0hFN+h rsa-key
+
+regions:
+  ru_central:
+    external_rrs:
+      - hostname: "cloud-sas2-9fvrr1"
+        server: "sas9-c3068-003.cloud.yandex.net"
+        mgmt_ip: "10.10.30.4"
+        lo0_ip: "37.140.141.80"
+        type: "fv"
+        model: "juniper vrr"
+      #- hostname: "cloud-vla1-2fvrr1"
+        #server: "vla-2-2-c3068-013.cloud.yandex.net"
+        #mgmt_ip: "2a02:6b8:bf00:1::cd:f1"
+        #lo0_ip: "37.140.141.81"
+        #type: "fv"
+        #model: "juniper vrr"
+      #- hostname: "cloud-myt-6fvrr1"
+        #server: "myt2-c3068-018.cloud.yandex.net"
+        #mgmt_ip: "2a02:6b8:bf00:2000::cd:f1"
+        #lo0_ip: "37.140.141.82"
+        #type: "fv"
+        #model: "juniper vrr"
+
+    data_centers:
+      sas:
+        dc_community: "13238:35701"
+        dc_public_net: 
+         - "130.193.32.0/24"
+        dns_servers:
+          - "213.180.205.1"
+          - "178.154.179.254"
+        ntp_servers:
+          - "37.140.149.198"
+          - "37.140.149.199"
+          - "95.108.129.181"
+          - "95.108.129.183"
+          - "178.154.179.254"
+        snmp_servers:
+          - "77.88.1.117"
+          - "93.158.158.93"
+        syslog_servers:
+          - "93.158.157.113"
+          - "93.158.158.93"
+          - "77.88.1.117"
+        timezone:
+          msk: add 03:00:00
+        buildings:
+          sasta:
+            modules:
+              sas-09:
+                bgp:
+                  local_as: "65401"
+                  spine_as: "13238"
+                  vnf_as: "13238"
+                  cgw_as: "13238"
+                  cloud_vpn_rr_as: "13238"
+                  vrfs:
+                    cloud:
+                      ipv6_peer_groups:
+                        - name: RR_D2
+                          peers:
+                          - FE80::11:D2
+                          - FE80::12:D2
+                          connect_interface: "100GE1/0/29.3031"
+                          peer_as: "64996"
+                        - name: RR_D4
+                          peers:
+                          - FE80::11:D4
+                          - FE80::12:D4
+                          connect_interface: "100GE1/0/30.3031"
+                          peer_as: "64996"
+                    hbf:
+                      ipv6_peer_groups:
+                        - name: RR_D2
+                          peers:
+                          - FE80::11:D2
+                          - FE80::12:D2
+                          connect_interface: "100GE1/0/29.3002"
+                          peer_as: "64996"
+                        - name: RR_D4
+                          peers:
+                          - FE80::11:D4
+                          - FE80::12:D4
+                          connect_interface: "100GE1/0/30.3002"
+                          peer_as: "64996"
+                module_community: "13238:35720"
+                vpn_rrs:
+                  - hostname: "cloud-sas2-9vpnrr1"
+                    lo0_ip: "172.16.1.0/32"
+                    mgmt_ip: "10.10.30.5"
+                    model: "juniper vrr"
+                  #- hostname: "cloud-sas2-9vpnrr2"
+                    #lo0_ip: "172.16.1.1/32"
+                    #mgmt_ip: "2A02:6b8:bf00:1000::cd:d1/64"
+                    #model: "juniper vrr"
+        
+                racks:
+                        vlan333: "2a02:6b8:c02:452::1/64"
+                        vlan1519: "10.0.0.1/24"
+                        vlan1526: "2A02:6B8:BF00:1000::1/64"
+                        mgmt:
+                          ip: "178.154.176.212/22"
+                          gw: "178.154.179.254"
+                          description: "sas2-i20 gi0/0/40"
+                        lo0_ip: "172.16.2.0/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "sas2-9d2 100ge3/0/4"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC1:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3002"
+                                ip: "FE80::EC1:D2/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.120.1.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/30"
+                            description: "sas2-9d4 100ge3/0/4"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC1:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3002"
+                                ip: "FE80::EC1:D4/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.140.1.1/24"
+                                vrf: ""
+    
+      
+                  09.06.10:
+                    switches:
+                      cloud-sas2-9s2:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c02:454::1/64"
+                        vlan1519: "10.0.1.1/24"
+                        vlan1526: "2A02:6B8:BF00:1001::1/64"
+                        mgmt:
+                          ip: "178.154.176.213/22"
+                          gw: "178.154.179.254"
+                          description: "sas2-i20 gi0/0/32"
+                        lo0_ip: "172.16.2.1/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "sas2-9d2 100ge3/0/2"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC2:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.120.2.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/30"
+                            description: "sas2-9d4 100ge3/0/2"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC2:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.140.2.1/24"
+                                vrf: ""
+      
+                  09.06.11:
+                    switches:
+                      cloud-sas2-9s3:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c02:453::1/64"
+                        vlan1519: "10.0.2.1/24"
+                        vlan1526: "2A02:6B8:BF00:1002::1/64"
+                        mgmt:
+                          ip: "178.154.176.214/22"
+                          gw: "178.154.179.254"
+                          description: "sas2-i20 gi0/0/36"
+                        lo0_ip: "172.16.2.2/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "sas2-9d2 100ge3/0/3"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC3:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.120.3.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/30"
+                            description: "sas2-9d4 100ge3/0/3"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC3:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.140.3.1/24"
+                                vrf: ""
+      
+                  09.06.13:
+                    switches:
+                      cloud-sas2-9s4:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c02:455::1/64"
+                        vlan1519: "10.0.3.1/24"
+                        vlan1526: "2A02:6B8:BF00:1003::1/64"
+                        mgmt:
+                          ip: "178.154.176.215/22"
+                          gw: "178.154.179.254"
+                          description: "sas2-i20 gi0/0/44"
+                        lo0_ip: "172.16.2.3/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "sas2-9d2 100ge3/0/5"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC4:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.120.4.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/30"
+                            description: "sas2-9d4 100ge3/0/5"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC4:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.140.4.1/24"
+                                vrf: ""
+
+      vladimir:
+        dc_community: "13238:35702"
+        dc_public_ipv4_nets: 
+          - "130.193.33.0/24"
+        dns_servers:
+          - "213.180.205.1"
+          - "93.158.171.254"
+        ntp_servers:
+          - "37.140.149.198"
+          - "37.140.149.199"
+          - "93.158.171.254"
+          - "95.108.129.181"
+          - "95.108.129.183"
+        snmp_servers:
+          - "77.88.1.117"
+          - "93.158.158.93"
+        syslog_servers:
+          - "93.158.157.113"
+          - "93.158.158.93"
+          - "77.88.1.117"
+        timezone:
+          msk: add 03:00:00
+        buildings:
+          alpha:
+            modules:
+              vla-02:
+                bgp:
+                  local_as: "65401"
+                  spine_as: "13238"
+                  vnf_as: "13238"
+                  cgw_as: "13238"
+                  cloud_vpn_rr_as: "13238"
+                  vrfs:
+                    cloud:
+                      ipv6_peer_groups:
+                        - name: RR_D2
+                          peers:
+                          - FE80::11:D2
+                          - FE80::12:D2
+                          connect_interface: "100GE1/0/31.3031"
+                          peer_as: "64996"
+                        - name: RR_D4
+                          peers:
+                          - FE80::11:D4
+                          - FE80::12:D4
+                          connect_interface: "100GE1/0/29.3031"
+                          peer_as: "64996"
+                    hbf:
+                      ipv6_peer_groups:
+                        - name: RR_D2
+                          peers:
+                          - FE80::11:D2
+                          - FE80::12:D2
+                          connect_interface: "100GE1/0/31.3000"
+                          peer_as: "64996"
+                        - name: RR_D4
+                          peers:
+                          - FE80::11:D4
+                          - FE80::12:D4
+                          connect_interface: "100GE1/0/29.3000"
+                          peer_as: "64996"
+                module_community: "13238:35730"
+                #vpn_rrs:
+                  #- hostname: "cloud-vla1-2vpnrr1"
+                    #lo0_ip: "172.16.1.4"
+                    #mgmt_ip: "2A02:6B8:BF00:1::cd:d1/64"
+                    #model: "juniper vrr"
+                  #- hostname: "cloud-vla1-2vpnrr2"
+                    #lo0_ip: "172.16.1.5"
+                    #mgmt_ip: "2A02:6b8:bf00::cd:d1/64"
+                    #model: "juniper vrr"
+
+                racks:
+                  2B42:
+                    switches:
+                      cloud-vla1-2s1:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c0e:124::1/64"
+                        vlan1519: "10.0.32.1/24"
+                        vlan1526: "2A02:6B8:BF00::1/64"
+                        mgmt:
+                          ip: "93.158.170.250/23"
+                          gw: "93.158.171.254"
+                          description: "vla1-i24 gi0/0/21"
+                        lo0_ip: "172.16.2.32/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "vla1-2d4 100ge4/0/21"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC1:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC1:D4/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.140.1.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/31"
+                            description: "vla1-2d2 100ge4/0/21"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC1:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC1:D2/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.120.1.1/24"
+                                vrf: ""
+    
+                  2B43:
+                    switches:
+                      cloud-vla1-2s2:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c0e:13e::1/64"
+                        vlan1519: "10.0.33.1/24"
+                        vlan1526: "2A02:6B8:BF00:1::1/64"
+                        mgmt:
+                          ip: "93.158.170.251/23"
+                          gw: "93.158.171.254"
+                          description: "vla1-i24 gi0/0/25"
+                        lo0_ip: "172.16.2.33/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "vla1-2d4 100ge4/0/22"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC2:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC2:D4/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.140.2.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/31"
+                            description: "vla1-2d2 100ge4/0/22"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC2:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC2:D2/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.120.2.1/24"
+                                vrf: ""
+    
+                  2B44:
+                    switches:              
+                      cloud-vla1-2s3:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c0e:13f::1/64"
+                        vlan1519: "10.0.34.1/24"
+                        vlan1526: "2A02:6B8:BF00:2::1/64"
+                        mgmt:
+                          ip: "93.158.170.252/23"
+                          gw: "93.158.171.254"
+                          description: "vla1-i24 gi0/0/29"
+                        lo0_ip: "172.16.2.34/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "vla1-2d4 100ge4/0/23"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC3:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC3:D4/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.140.3.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/31"
+                            description: "vla1-2d2 100ge4/0/23"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC3:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC3:D2/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.120.3.1/24"
+                                vrf: ""
+    
+                  2B45:
+                    switches:
+                      cloud-vla1-2s4:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c0e:140::1/64"
+                        vlan1519: "10.0.35.1/24"
+                        vlan1526: "2A02:6B8:BF00:3::1/64"
+                        mgmt:
+                          ip: "93.158.170.253/23"
+                          gw: "93.158.171.254"
+                          description: "vla1-i24 gi0/0/2"
+                        lo0_ip: "172.16.2.35/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100GE1/0/29"
+                            description: "vla1-2d4 100ge4/0/30"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC4:D4/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC4:D4/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.140.4.1/24"
+                                vrf: ""
+                          - interface: "100GE1/0/31"
+                            description: "vla1-2d2 100ge4/0/30"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "FE80::EC4:D2/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3000"
+                                ip: "FE80::EC4:D2/link-local"
+                                vrf: "HBF"
+                              - vlan: "3032"
+                                ip: "10.120.4.1/24"
+                                vrf: ""
+
+      myt:
+        dc_community: "13238:35703"
+        dc_public_net: 
+          - "130.193.34.0/24"
+        dns_servers:
+          - "213.180.205.1"
+          - "95.108.246.254"
+        ntp_servers:
+          - "37.140.149.198"
+          - "37.140.149.199"
+          - "95.108.129.181"
+          - "95.108.129.183"
+          - "178.154.179.254"
+        snmp_servers:
+          - "77.88.1.117"
+          - "93.158.158.93"
+        syslog_servers:
+          - "93.158.157.113"
+          - "93.158.158.93"
+          - "77.88.1.117"
+        timezone:
+          msk: add 03:00:00
+        buildings:
+          mplmass:
+            modules:
+              myt-2:
+                bgp:
+                  local_as: "65401"
+                  spine_as: "13238"
+                  vnf_as: "13238"
+                  cgw_as: "13238"
+                  cloud_vpn_rr_as: "13238"
+                  vrfs:
+                    cloud:
+                      ipv6_peer_groups:
+                        - name: "SPINE_V6"
+                          peers:
+                          - FE80::C1:D1
+                          connect_interface: "100GE1/0/29.3031"
+                          peer_as: "13238"
+                    hbf:
+                      ipv6_peer_groups:
+                        - name: "SPINE_V6"
+                          peers:
+                          - FE80::C1:D1
+                          connect_interface: "100GE1/0/29.3000"
+                          peer_as: "13238"
+                #vpn_rrs:
+                  #- hostname: "cloud-myt-6vpnrr1"
+                    #lo0_ip: "172.16.1.8/32"
+                    #mgmt_ip: "2A02:6b8:bf00:2000::cd:d1/64"
+                    #model: "juniper vrr"
+                  #- hostname: "cloud-myt-6vpnrr2"
+                    #lo0_ip: "172.16.1.9/32"
+                    #mgmt_ip: "2A02:6b8:bf00:2001::cd:d1/64"
+                    #model: "juniper vrr"
+                module_community: "13238:35740"
+                racks:
+                  28:
+                    switches:
+                      cloud-myt-6s1:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c03:400::1/64"
+                        vlan1519: "10.0.64.1/24"
+                        vlan1526: "2a02:6b8:bf00:2000::1/64"
+                        mgmt:
+                          ip: "95.108.246.82/24"
+                          gw: "95.108.246.254"
+                          description: "myt2-i2 gi0/11"
+                        lo0_ip: "172.16.2.64/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100ge1/0/29"
+                            description: "myt-e1 40ge11/0/9"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "fe80::ce1:d1/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.110.1.1/24"
+                                vrf: ""
+                              - vlan: "3000"
+                                ip: "fe80::ce1:d1/link-local"
+                                vrf: "HBF"
+
+
+                  23:
+                    switches:
+                      cloud-myt-6s2:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c03:401::1/64"
+                        vlan1519: "10.0.65.1/24"
+                        vlan1526: "2a02:6b8:bf00:2001::1/64"
+                        mgmt:
+                          ip: "95.108.246.85/24"
+                          gw: "95.108.246.254"
+                          description: "myt2-i2 gi0/44"
+                        lo0_ip: "172.16.2.65/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100ge1/0/29"
+                            description: "myt-e1 40ge11/0/8"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "fe80::ce2:d1/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.110.2.1/24"
+                                vrf: ""
+                              - vlan: "3000"
+                                ip: "fe80::ce2:d1/link-local"
+                                vrf: "HBF"
+              myt-4:
+                bgp:
+                  local_as: "65401"
+                  spine_as: "13238"
+                  vnf_as: "13238"
+                  cgw_as: "13238"
+                  cloud_vpn_rr_as: "13238"
+                  vrfs:
+                    cloud:
+                      ipv6_peer_groups:
+                        - name: "SPINE_V6"
+                          peers:
+                          - FE80::C1:D1
+                          connect_interface: "100GE1/0/29.3031"
+                          peer_as: "13238"
+                    hbf:
+                      ipv6_peer_groups:
+                        - name: "SPINE_V6"
+                          peers:
+                          - FE80::C1:D1
+                          connect_interface: "100GE1/0/29.3000"
+                          peer_as: "13238"
+                #vpn_rrs:
+                  #- hostname: "cloud-myt-6vpnrr1"
+                    #lo0_ip: "172.16.1.8/32"
+                    #mgmt_ip: "2A02:6b8:bf00:2000::cd:d1/64"
+                    #model: "juniper vrr"
+                  #- hostname: "cloud-myt-6vpnrr2"
+                    #lo0_ip: "172.16.1.9/32"
+                    #mgmt_ip: "2A02:6b8:bf00:2001::cd:d1/64"
+                    #model: "juniper vrr"
+                module_community: "13238:35741"
+                racks:
+                  40:
+                    switches:
+                      cloud-myt-6s3:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c03:402::1/64"
+                        vlan1519: "10.0.66.1/24"
+                        vlan1526: "2a02:6b8:bf00:2002::1/64"
+                        mgmt:
+                          ip: "95.108.246.86/24 "
+                          gw: "95.108.246.254"
+                          description: ""
+                        lo0_ip: "172.16.2.66/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100ge1/0/29"
+                            description: "myt-e1 100ge8/0/10"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "fe80::ce3:d1/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.110.3.1/24"
+                                vrf: ""
+                              - vlan: "3000"
+                                ip: "fe80::ce3:d1/link-local"
+                                vrf: "HBF"
+                  32:
+                    switches:
+                      cloud-myt-6s4:
+                        model: "HUAWEI CE8850-32CQ-EI"
+                        type: "tor"
+                        vlan333: "2a02:6b8:c03:403::1/64"
+                        vlan1519: "10.0.67.1/24"
+                        vlan1526: "2a02:6b8:bf00:2003::1/64"
+                        mgmt:
+                          ip: "95.108.246.87/24"
+                          gw: "95.108.246.254"
+                          description: ""
+                        lo0_ip: "172.16.2.67/32"
+                        downlinks: "1-24"
+                        uplinks:
+                          - interface: "100ge1/0/29"
+                            description: "myt-e1 100ge8/0/11"
+                            subinterfaces:
+                              - vlan: "3031"
+                                ip: "fe80::ce4:d1/link-local"
+                                vrf: "CLOUD"
+                              - vlan: "3032"
+                                ip: "10.110.4.1/24"
+                                vrf: ""
+                              - vlan: "3000"
+                                ip: "fe80::ce4:d1/link-local"
+                                vrf: "HBF"
+

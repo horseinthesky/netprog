@@ -1,0 +1,303 @@
+configuration:
+  '@': {'junos:changed-localtime': '2018-03-09 20:39:37 UTC', 'junos:changed-seconds': '1520627977'}
+  interfaces:
+    interface:
+    - name: em0
+      unit:
+      - family:
+          inet:
+            address:
+            - {name: 192.168.0.110/24}
+        name: 0
+    - name: em1
+      unit:
+      - family:
+          inet:
+            address:
+            - {name: 1.1.1.1/24}
+            - name: 1.1.2.1/24
+              preferred: [null]
+              primary: [null]
+        name: 1
+        vlan-id: 1
+      - family:
+          inet:
+            address:
+            - {name: 2.2.2.2/32}
+        name: 2
+        vlan-id: 2
+      - family:
+          inet6:
+            address:
+            - {name: '2a02:6b8:bf00:1002:5254:00ff:fe6f:34ca/64'}
+        name: 6
+        vlan-id: 6
+      vlan-tagging: [null]
+  policy-options:
+    community:
+    - members: ['13238:309']
+      name: CLOUD_REANNOUNCE
+    - members: ['13238:35100']
+      name: CLOUD_VPN_RR_LO
+    - members: ['13238:35701']
+      name: GEO_DC
+    - members: ['13238:35720']
+      name: GEO_MODULE
+    - members: ['13238:35011']
+      name: SPINE_1
+    - members: ['13238:35012']
+      name: SPINE_2
+    - members: ['13238:35400']
+      name: THIS_DC
+    - members: ['13238:35170']
+      name: TOR_LO
+    - members: ['13238:35002']
+      name: VPN_CLOUD_AGG
+    - members: ['13238:35002', '13238:35400']
+      name: VPN_CLOUD_AGG_AND_THIS_DC
+    - members: ['13238:35002', '13238:35400', '13238:35011']
+      name: VPN_CLOUD_AGG_AND_THIS_DC_AND_SPINE_1
+    - members: ['13238:35002', '13238:35400', '13238:35012']
+      name: VPN_CLOUD_AGG_AND_THIS_DC_AND_SPINE_2
+    - members: ['13238:35001']
+      name: VPN_CLOUD_SPECIFIC
+    - members: ['13238:35999']
+      name: YC
+    policy-statement:
+    - name: LO
+      term:
+      - from:
+          interface: [lo0.0]
+        name: LO
+        then:
+          accept: [null]
+          community:
+          - add: [null]
+            community-name: GEO_DC
+          - add: [null]
+            community-name: GEO_MODULE
+          - add: [null]
+            community-name: YC
+          - add: [null]
+            community-name: CLOUD_VPN_RR_LO
+      - name: DEFAULT_REJECT
+        then:
+          reject: [null]
+    - name: SPINE_1
+      term:
+      - from:
+          community: [VPN_CLOUD_AGG_AND_THIS_DC_AND_SPINE_1]
+        name: REMOVE_THIS_DC_AGGREGATE_COMMUNITY
+        then:
+          accept: [null]
+          community:
+          - community-name: THIS_DC
+            delete: [null]
+          - community-name: SPINE_1
+            delete: [null]
+          - add: [null]
+            community-name: GEO_DC
+          - add: [null]
+            community-name: GEO_MODULE
+          - add: [null]
+            community-name: YC
+      - from:
+          community: [VPN_CLOUD_SPECIFIC]
+        name: ALLOW_VPN_CLOUD_SPECIFIC
+        then:
+          accept: [null]
+          community:
+          - add: [null]
+            community-name: GEO_DC
+          - add: [null]
+            community-name: GEO_MODULE
+          - add: [null]
+            community-name: YC
+          - add: [null]
+            community-name: VPN_CLOUD_AGG
+          - add: [null]
+            community-name: CLOUD_REANNOUNCE
+      - name: DEFAULT_REJECT
+        then:
+          reject: [null]
+    - name: SPINE_2
+      term:
+      - from:
+          community: [VPN_CLOUD_AGG_AND_THIS_DC_AND_SPINE_2]
+        name: REMOVE_THIS_DC_AGGREGATE_COMMUNITY
+        then:
+          accept: [null]
+          community:
+          - community-name: THIS_DC
+            delete: [null]
+          - community-name: SPINE_2
+            delete: [null]
+          - add: [null]
+            community-name: GEO_DC
+          - add: [null]
+            community-name: GEO_MODULE
+          - add: [null]
+            community-name: YC
+      - from:
+          community: [VPN_CLOUD_SPECIFIC]
+        name: ALLOW_VPN_CLOUD_SPECIFIC
+        then:
+          accept: [null]
+          community:
+          - add: [null]
+            community-name: GEO_DC
+          - add: [null]
+            community-name: GEO_MODULE
+          - add: [null]
+            community-name: YC
+          - add: [null]
+            community-name: VPN_CLOUD_AGG
+          - add: [null]
+            community-name: CLOUD_REANNOUNCE
+      - name: DEFAULT_REJECT
+        then:
+          reject: [null]
+    - name: TOR
+      term:
+      - from:
+          community: [VPN_CLOUD_AGG_AND_THIS_DC]
+        name: DENY_THIS_DC_AGGREGATE
+        then:
+          reject: [null]
+      - from:
+          community: [VPN_CLOUD_AGG]
+        name: ALLOW_REMOTE_DC_AGGREGATE
+        then:
+          accept: [null]
+      - from:
+          community: [VPN_CLOUD_SPECIFIC]
+        name: ALLOW_REMOTE_VPN_CLOUD_SPECIFIC
+        then:
+          accept: [null]
+      - name: DEFAULT_REJECT
+        then:
+          reject: [null]
+  protocols:
+    bgp:
+      group:
+      - export: [LO]
+        family:
+          inet:
+            labeled-unicast: [null]
+        local-address: 192.168.0.110
+        name: LU
+        neighbor:
+        - {name: 192.168.0.110}
+        peer-as: '65401'
+        type: external
+      - advertise-peer-as: [null]
+        allow: [172.16.2.0/28]
+        export: [TOR]
+        family:
+          inet-vpn:
+            unicast: [null]
+        multihop:
+          no-nexthop-change: [null]
+          ttl: 5
+        name: TOR_VPNV4
+        peer-as: '65401'
+        type: external
+        vpn-apply-export: [null]
+      - '@': {inactive: true}
+        family:
+          inet-vpn:
+            unicast: [null]
+        name: SPINE_VPNV4
+        neighbor:
+        - export: [SPINE_1]
+          name: 87.250.226.113
+        - export: [SPINE_2]
+          name: 87.250.226.114
+        type: internal
+        vpn-apply-export: [null]
+      - family:
+          inet-vpn:
+            unicast: [null]
+        name: DC_RRS
+        neighbor:
+        - {name: 172.16.1.1}
+        - {name: 172.16.1.4}
+        - {name: 172.16.1.5}
+        type: internal
+        vpn-apply-export: [null]
+      local-address: 172.16.1.0
+  routing-instances:
+    instance:
+    - instance-type: vrf
+      name: Cloud_SPINE_1
+      route-distinguisher: {rd-type: '172.16.1.0:1'}
+      routing-options:
+        '@': {inactive: true}
+        aggregate:
+          defaults:
+            community: ['13238:35400', '13238:35002', '13238:3090', '13238:35011']
+          route:
+          - {name: 10.0.0.0/19}
+      vrf-target: {export: 'target:13238:1113', import: 'target:13238:1113'}
+    - instance-type: vrf
+      name: Cloud_SPINE_2
+      route-distinguisher: {rd-type: '172.16.1.0:2'}
+      routing-options:
+        '@': {inactive: true}
+        aggregate:
+          defaults:
+            community: ['13238:35400', '13238:35002', '13238:3090', '13238:35012']
+          route:
+          - {name: 10.0.0.0/19}
+      vrf-target: {export: 'target:13238:1113', import: 'target:13238:1113'}
+  routing-options:
+    autonomous-system: {as-number: '13238', loops: 5}
+    resolution:
+      rib:
+      - name: bgp.l3vpn.0
+        resolution-ribs: [inet.0]
+    rib:
+    - name: inet6.0
+      static:
+        route:
+        - name: ::/0
+          next-hop: ['2a02:6b8:bf00:1002::1']
+    router-id: 172.16.1.0
+    static:
+      route:
+      - name: 0.0.0.0/0
+        next-hop: [192.168.0.1]
+  system:
+    host-name: vrr
+    login:
+      user:
+      - authentication: {encrypted-password: $5$bkCufWN9$qsAolxSXY1wyGxn0O.IkYfhB5q88ADMhHzCGZeS/zy3}
+        class: super-user
+        name: admin
+        uid: 2000
+    root-authentication: {encrypted-password: $5$tMp7KGrj$9VlOBOOben.YE.Zz8gIjYi0XpLN9y.q/WcP7gHF13G5}
+    services:
+      netconf:
+        ssh: [null]
+      rest:
+        enable-explorer: [null]
+        http: {port: 8080}
+      ssh: [null]
+    syslog:
+      file:
+      - contents:
+        - name: any
+          notice: [null]
+        - info: [null]
+          name: authorization
+        name: messages
+      - contents:
+        - any: [null]
+          name: interactive-commands
+        name: interactive-commands
+      user:
+      - contents:
+        - emergency: [null]
+          name: any
+        name: '*'
+  version: 16.2R2-S3
