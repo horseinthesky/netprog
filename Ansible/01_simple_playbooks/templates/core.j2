@@ -1,0 +1,13 @@
+{% if core is defined %}
+mpls ldp router-id Loopback0 force
+!
+router ospf 1
+ mpls ldp autoconfig
+!
+{% for intf in core %}
+interface {{ intf.intf }}
+ ip address {{ intf.ip }} {{ intf.netmask }}
+ ip ospf 1 area 0
+!
+{% endfor %}
+{% endif %}

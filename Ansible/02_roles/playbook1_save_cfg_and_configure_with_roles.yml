@@ -1,0 +1,29 @@
+- name: Handle CE routers
+  hosts: CE
+  connection: network_cli
+  gather_facts: no
+  become: yes
+  become_method: enable
+
+  roles:
+    - CE
+
+- name: Handle PE routers
+  hosts: PE
+  connection: network_cli
+  gather_facts: no
+  become: yes
+  become_method: enable
+
+  roles:
+    - PE
+
+- name: Handle P routers
+  hosts: P
+  connection: network_cli
+  gather_facts: no
+  become: yes
+  become_method: enable
+
+  roles:
+    - P

@@ -1,0 +1,18 @@
+hostname: PE1
+lo: 3.3.3.3 255.255.255.255
+mgmt:
+  intf: GigabitEthernet4
+  ip: 192.168.0.203
+  netmask: 255.255.255.0
+core:
+  - intf: GigabitEthernet2
+    ip: 10.0.35.3
+    netmask: 255.255.255.0
+clients:
+  - intf: GigabitEthernet1
+    ip: 172.16.10.1
+    netmask: 255.255.255.0
+    vrf: CLIENT
+bgp:
+  - ip: 4.4.4.4
+    as: 1

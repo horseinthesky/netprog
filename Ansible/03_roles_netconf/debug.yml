@@ -1,0 +1,17 @@
+---
+
+- name: Gather facts (Cisco)
+  gather_facts: no
+  hosts: localhost
+  vars:
+    vrfs:
+      - name: CLIENT
+        rd: "1:1"
+        rt: "1:1"
+      - name: MGMT
+
+  tasks:
+    - name: Generate configs
+      template:
+        src: test.j2
+        dest: result.cfg

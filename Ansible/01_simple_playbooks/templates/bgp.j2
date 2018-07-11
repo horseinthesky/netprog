@@ -1,0 +1,22 @@
+{% if bgp is defined %}
+router bgp 1
+ bgp router-id interface Loopback0
+{% for peer in bgp %}
+ neighbor {{ peer.ip }} remote-as {{ peer.as }}
+ neighbor {{ peer.ip }} update-source Loopback0
+!
+ address-family ipv4
+  no neighbor {{ peer.ip }} activate
+!
+ address-family vpnv4
+  neighbor {{ peer.ip }} activate
+  neighbor {{ peer.ip }} next-hop-self
+  neighbor {{ peer.ip }} send-community extended
+!
+{% for vrf in vrfs %}
+ address-family ipv4 vrf {{ vrf.name }}
+  redistribute connected
+!
+{% endfor %}
+{% endfor %}
+{% endif %}

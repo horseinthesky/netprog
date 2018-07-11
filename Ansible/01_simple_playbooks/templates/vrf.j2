@@ -1,0 +1,9 @@
+{% if vrfs is defined %}
+{% for vrf in vrfs %}
+ip vrf {{ vrf.name }}
+ rd {{ vrf.rd }}
+ route-target export {{ vrf.rt }}
+ route-target import {{ vrf.rt }}
+!
+{% endfor %}
+{% endif %}

@@ -1,0 +1,21 @@
+hostname: PE1
+lo:
+  intf: 0
+  ip: 3.3.3.3
+  netmask: 255.255.255.255
+mgmt:
+  intf: 4
+  ip: 192.168.0.203
+  netmask: 255.255.255.0
+core:
+  - intf: 2
+    ip: 10.0.35.3
+    netmask: 255.255.255.0
+clients:
+  - intf: 1
+    ip: 172.16.10.1
+    netmask: 255.255.255.0
+    vrf: CLIENT
+bgp:
+  - ip: 4.4.4.4
+    as: 1

@@ -1,0 +1,10 @@
+- name: Generate configs
+  template:
+    src: PE_netconf.j2
+    dest: configs/{{ hostname }}.cfg
+  tags: gen
+
+- name: Configure devices
+  netconf_config:
+    src: configs/{{ hostname }}.cfg
+  tags: deploy

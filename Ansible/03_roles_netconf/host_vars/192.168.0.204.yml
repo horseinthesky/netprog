@@ -1,0 +1,21 @@
+hostname: PE2
+lo:
+  intf: 0
+  ip: 4.4.4.4
+  netmask: 255.255.255.255
+mgmt:
+  intf: 4
+  ip: 192.168.0.204
+  netmask: 255.255.255.0
+core:
+  - intf: 2
+    ip: 10.0.45.4
+    netmask: 255.255.255.0
+clients:
+  - intf: 1
+    ip: 172.16.20.1
+    netmask: 255.255.255.0
+    vrf: CLIENT
+bgp:
+  - ip: 3.3.3.3
+    as: 1

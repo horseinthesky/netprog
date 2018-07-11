@@ -1,0 +1,10 @@
+- name: Run show commands on routers
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Configure devices
+      ios_config:
+        src: base.j2

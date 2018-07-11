@@ -1,0 +1,5 @@
+vrfs:
+  - name: CLIENT
+    rd: "1:1"
+    rt: "1:1"
+  - name: MGMT

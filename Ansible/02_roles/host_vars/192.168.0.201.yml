@@ -1,0 +1,11 @@
+hostname: CE1
+lo: 172.16.1.1 255.255.255.255
+provider:
+  intf: GigabitEthernet1
+  ip: 172.16.10.2
+  netmask: 255.255.255.0
+  gateway: 172.16.10.1
+mgmt:
+  intf: GigabitEthernet4
+  ip: 192.168.0.201
+  netmask: 255.255.255.0

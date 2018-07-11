@@ -1,0 +1,4 @@
+interface {{ mgmt.intf }}
+ ip vrf forwarding MGMT
+ ip address {{ mgmt.ip }} {{ mgmt.netmask }}
+!

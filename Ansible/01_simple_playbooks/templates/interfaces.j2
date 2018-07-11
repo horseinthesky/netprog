@@ -1,0 +1,23 @@
+interface Loopback0
+ ip address {{ lo }}
+{% if core is defined %}
+ ip ospf 1 area 0
+{% endif %}
+!
+{% if clients is defined %}
+{% for intf in clients %}
+interface {{ intf.intf }}
+ ip vrf forwarding {{ intf.vrf }}
+ ip address {{ intf.ip }} {{ intf.netmask }}
+!
+{% endfor %}
+{% endif %}
+
+{% if provider is defined %}
+!
+ip route 0.0.0.0 0.0.0.0 {{ provider.gateway }}
+!
+interface {{ provider.intf }}
+ ip address {{provider.ip }} {{provider.netmask }}
+!
+{% endif %}

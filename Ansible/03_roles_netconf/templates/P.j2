@@ -1,0 +1,25 @@
+hostname {{ hostname }}
+!
+mpls ldp router-id Loopback0 force
+!
+{% for user in users %}
+username {{ user.name }} privilege 15 password 0 {{ user.pass }}
+{% endfor %}
+!
+interface Loopback0
+ ip address {{ lo }}
+ ip ospf 1 area 0
+!
+router ospf 1
+ mpls ldp autoconfig
+!
+{% for intf in core %}
+interface {{ intf.intf }}
+ ip address {{ intf.ip }} {{ intf.netmask }}
+ ip ospf 1 area 0
+!
+{% endfor %}
+interface {{ mgmt.intf }}
+ ip vrf forwarding MGMT
+ ip address {{ mgmt.ip }} {{ mgmt.netmask }}
+!

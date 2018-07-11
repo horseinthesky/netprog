@@ -1,0 +1,18 @@
+hostname {{ hostname }}
+!
+{% for user in users %}
+username {{ user.name }} privilege 15 password 0 {{ user.pass }}
+{% endfor %}
+!
+ip route 0.0.0.0 0.0.0.0 {{ provider.gateway }}
+!
+interface Loopback0
+ ip address {{ lo }}
+!
+interface {{ provider.intf }}
+ ip address {{provider.ip }} {{provider.netmask }}
+!
+interface {{ mgmt.intf }}
+ ip vrf forwarding MGMT
+ ip address {{ mgmt.ip }} {{ mgmt.netmask }}
+!
