@@ -1,0 +1,10 @@
+#jinja2: trim_blocks:True, lstrip_blocks:True
+    <system operation="replace">
+        <host-name>{{ hostname }}</host-name>
+        <root-authentication>
+            <encrypted-password>{{ root_pass }}</encrypted-password>
+        </root-authentication>
+        {% include 'login.j2' %}
+        {% include 'services.j2' %}
+        {% include 'syslog.j2' %}
+    </system>

@@ -1,0 +1,118 @@
+#jinja2: trim_blocks:True, lstrip_blocks:True
+<config>
+  <native xmlns="http://cisco.com/ns/yang/ned/ios">
+    <hostname>{{ hostname }}</hostname>
+    {% for user in users %}
+    <username>
+      <name>{{ user.name }}</name>
+      <privilege>15</privilege>
+      <password>
+        <encryption>0</encryption>
+        <password>{{ user.pass }}</password>
+      </password>
+    </username>
+    {% endfor %}
+    <ip>
+      {% for vrf in vrfs if vrf.name == 'MGMT'%}
+       <vrf>
+        <name>{{ vrf.name }}</name>
+        {% if vrf.rd is defined %}
+        <rd>{{ vrf.rd }}</rd>
+        <route-target>
+          <direction>export</direction>
+          <target>{{ vrf.rt}}</target>
+        </route-target>
+        <route-target>
+          <direction>import</direction>
+          <target>{{ vrf.rt }}</target>
+        </route-target>
+        {% endif %}
+      </vrf>
+      {% endfor %}
+    </ip>
+    <interface>
+      {% for intf in core %}
+      <GigabitEthernet>
+        <name>{{ intf.intf }}</name>
+        <negotiation>
+          <auto>true</auto>
+        </negotiation>
+        <ip>
+          <address>
+            <primary>
+              <address>{{ intf.ip }}</address>
+              <mask>{{ intf.netmask }}</mask>
+            </primary>
+          </address>
+          <ospf>
+            <process-id>
+              <id>1</id>
+              <area>0</area>
+            </process-id>
+          </ospf>
+        </ip>
+        <mop>
+          <enabled>false</enabled>
+        </mop>
+      </GigabitEthernet>
+      {% endfor %}
+      <GigabitEthernet>
+        <name>{{ mgmt.intf }}</name>
+        <negotiation>
+          <auto>true</auto>
+        </negotiation>
+        <ip>
+          <vrf>
+            <forwarding>
+              <word>MGMT</word>
+            </forwarding>
+          </vrf>
+          <address>
+            <primary>
+              <address>{{ mgmt.ip }}</address>
+              <mask>{{ mgmt.netmask }}</mask>
+            </primary>
+          </address>
+        </ip>
+        <mop>
+          <enabled>false</enabled>
+        </mop>
+      </GigabitEthernet>
+      <Loopback>
+        <name>{{ lo.intf }}</name>
+        <ip>
+          <address>
+            <primary>
+              <address>{{ lo.ip }}</address>
+              <mask>{{ lo.netmask }}</mask>
+            </primary>
+          </address>
+          <ospf>
+            <process-id>
+              <id>1</id>
+              <area>0</area>
+            </process-id>
+          </ospf>
+        </ip>
+      </Loopback>
+    </interface>
+    <mpls>
+      <ldp>
+        <router-id>
+          <interface>Loopback0</interface>
+          <force/>
+        </router-id>
+      </ldp>
+    </mpls>
+    <router>
+      <ospf>
+        <id>1</id>
+        <mpls>
+          <ldp>
+            <autoconfig></autoconfig>
+          </ldp>
+        </mpls>
+      </ospf>
+    </router>
+  </native>
+</config>

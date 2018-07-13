@@ -1,0 +1,27 @@
+#jinja2: trim_blocks:True, lstrip_blocks:True
+            <class>
+                <name>mon</name>
+                <permissions>secret</permissions>
+                <permissions>view</permissions>
+                <permissions>view-configuration</permissions>
+                <allow-commands>ping*|trace*|show*</allow-commands>
+            </class>
+            {% for user in users %}
+            <user>
+                <name>{{ user.name }}</name>
+                <uid>{{ user.uid }}</uid>
+                <class>{{ user.class }}</class>
+                <authentication>
+                    {% if user.pass is defined %}
+                    <encrypted-password>{{ user.pass }}</encrypted-password>
+                    {% endif %}
+                    {% if user.keys is defined %}
+                    {% for key in user.keys %}
+                    <ssh-rsa>
+                        <name>ssh-rsa {{ key }}</name>
+                    </ssh-rsa>
+                    {% endfor %}
+                    {% endif %}
+                </authentication>
+            </user>
+            {% endfor %}
