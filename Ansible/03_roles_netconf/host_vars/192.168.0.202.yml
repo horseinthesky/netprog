@@ -1,11 +1,16 @@
 hostname: CE2
-lo: 172.16.2.2 255.255.255.255
+lo:
+  intf: 0
+  ip: 172.16.2.2
+  netmask: 255.255.255.255
 provider:
-  intf: GigabitEthernet1
+  intf: 1
   ip: 172.16.20.2
   netmask: 255.255.255.0
-  gateway: 172.16.20.1
 mgmt:
-  intf: GigabitEthernet4
+  intf: 4
   ip: 192.168.0.202
   netmask: 255.255.255.0
+routes:
+  - net: 0.0.0.0/0
+    nexthop: 172.16.20.1

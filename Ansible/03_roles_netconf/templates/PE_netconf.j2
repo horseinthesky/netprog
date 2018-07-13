@@ -1,7 +1,8 @@
+#jinja2: trim_blocks:True, lstrip_blocks:True
 <config>
   <native xmlns="http://cisco.com/ns/yang/ned/ios">
     <hostname>{{ hostname }}</hostname>
-    {% for user in users -%}
+    {% for user in users %}
     <username>
       <name>{{ user.name }}</name>
       <privilege>15</privilege>
@@ -10,12 +11,12 @@
         <password>{{ user.pass }}</password>
       </password>
     </username>
-    {% endfor -%}
+    {% endfor %}
     <ip>
-      {% for vrf in vrfs -%}
+      {% for vrf in vrfs %}
        <vrf>
         <name>{{ vrf.name }}</name>
-        {% if vrf.rd is defined -%}
+        {% if vrf.rd is defined %}
         <rd>{{ vrf.rd }}</rd>
         <route-target>
           <direction>export</direction>
@@ -25,12 +26,12 @@
           <direction>import</direction>
           <target>{{ vrf.rt }}</target>
         </route-target>
-        {% endif -%}
+        {% endif %}
       </vrf>
-      {% endfor -%}
+      {% endfor %}
     </ip>
     <interface>
-      {% for intf in clients -%}
+      {% for intf in clients %}
       <GigabitEthernet>
         <name>{{ intf.intf }}</name>
         <negotiation>
@@ -53,8 +54,8 @@
           <enabled>false</enabled>
         </mop>
       </GigabitEthernet>
-      {% endfor -%}
-      {% for intf in core -%}
+      {% endfor %}
+      {% for intf in core %}
       <GigabitEthernet>
         <name>{{ intf.intf }}</name>
         <negotiation>
@@ -78,7 +79,7 @@
           <enabled>false</enabled>
         </mop>
       </GigabitEthernet>
-      {% endfor -%}
+      {% endfor %}
       <Loopback>
         <name>{{ lo.intf }}</name>
         <ip>
@@ -111,7 +112,7 @@
         <bgp>
           <log-neighbor-changes/>
         </bgp>
-        {% for peer in bgp -%}
+        {% for peer in bgp %}
         <neighbor>
           <id>{{ peer.ip }}</id>
           <remote-as>{{ peer.as }}</remote-as>
@@ -119,10 +120,10 @@
             <Loopback>0</Loopback>
           </update-source>
         </neighbor>
-        {% endfor -%}
+        {% endfor %}
         <address-family>
           <with-vrf>
-            {% for vrf in vrfs if vrf.name != 'MGMT' -%}
+            {% for vrf in vrfs if vrf.name != 'MGMT' %}
             <ipv4>
               <af-name>unicast</af-name>
               <vrf>
@@ -132,13 +133,13 @@
                 </redistribute>
               </vrf>
             </ipv4>
-            {% endfor -%}
+            {% endfor %}
           </with-vrf>
           <no-vrf>
             <ipv4>
               <af-name>unicast</af-name>
             </ipv4>
-            {% for peer in bgp -%}
+            {% for peer in bgp %}
             <vpnv4>
               <af-name>unicast</af-name>
               <neighbor>
@@ -150,7 +151,7 @@
                 </send-community>
               </neighbor>
             </vpnv4>
-            {% endfor -%}
+            {% endfor %}
           </no-vrf>
         </address-family>
       </bgp>

@@ -1,10 +1,10 @@
 - name: Generate configs
   template:
-    src: P.j2
+    src: P_netconf.j2
     dest: configs/{{ hostname }}.cfg
   tags: gen
 
 - name: Configure devices
-  ios_config:
+  netconf_config:
     src: configs/{{ hostname }}.cfg
   tags: deploy

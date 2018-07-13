@@ -1,13 +1,16 @@
 hostname: P
-lo: 5.5.5.5 255.255.255.255
+lo:
+  intf: 0
+  ip: 5.5.5.5
+  netmask: 255.255.255.255
 mgmt:
-  intf: GigabitEthernet4
+  intf: 4
   ip: 192.168.0.205
   netmask: 255.255.255.0
 core:
-  - intf: GigabitEthernet2
+  - intf: 2
     ip: 10.0.35.5
     netmask: 255.255.255.0
-  - intf: GigabitEthernet3
+  - intf: 3
     ip: 10.0.45.5
     netmask: 255.255.255.0

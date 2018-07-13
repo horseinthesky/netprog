@@ -6,12 +6,11 @@ from pprint import pprint
 import xmltodict
 
 ios_xe1 = {
-    'address': '192.168.0.203',
+    'address': '192.168.0.201',
     'port': 830,
     'username': 'admin',
     'password': 'admin',
 }
-
 
 if __name__ == '__main__':
     with manager.connect(host=ios_xe1['address'], port=ios_xe1['port'],
