@@ -1,0 +1,56 @@
+            {% if policy_options.policy_statements is defined %}
+            {% for policy_name, policy_data in policy_options.policy_statements.items() %}
+            <policy-statement>
+                <name>{{ policy_name }}</name>
+                {% for term_name, term_data in policy_data.items() %}
+                <term>
+                    <name>{{ term_name }}</name>
+                    {% if term_data.from is defined %}
+                    <from>
+                        {% for source_name, source_data in term_data.from.items() %}
+                        {% for element in source_data %}
+                        {% if source_name == "route-filters" %}
+                        {% for route_filter in source_data %}
+                        <route-filter>
+                            <address>{{ route_filter.address }}</address>
+                            <prefix-length-range>{{ route_filter.prefix_length_range }}</prefix-length-range>
+                        </route-filter>
+                        {% endfor %}
+                        {% elif source_name == "prefix-lists-filters" %}
+                        {% for prefix_list in source_data %}
+                        <prefix-list-filter>
+                            <list_name>{{ prefix_list.name }}</list_name>
+                            <{{ prefix_list.option }}/>
+                        </prefix-list-filter>
+                        {% endfor %}
+                        {% else %}
+                        <{{ source_name }}>{{ element }}</{{ source_name }}>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </from>
+                    {% endif %}
+                    <then>
+                        {% for action_name, action_data in term_data.then.items() %}
+                        {% if action_name == "metric" or action_name == "local-preference" %}
+                        <{{ action_name }}>
+                            <{{ action_name }}>{{ action_data }}</{{ action_name }}>
+                        </{{ action_name }}>
+                        {% elif action_name == "communities" %}
+                        {% for community in action_data %}
+                        <community>
+                            <{{ community.action }}/>
+                            <community-name>{{ community.name }}</community-name>
+                        </community>
+                        {% endfor %}
+                        {% else %}
+                        <{{ action_data }}/>
+                        {% endif %}
+                        {% endfor %}
+                    </then>
+                </term>
+                {% endfor %}
+            </policy-statement>
+            {% endfor %}
+            {% endif %}
+

@@ -1,0 +1,9 @@
+            {% if policy_options.communities is defined %}
+            {% for community_name, community_data in policy_options.communities.items() %}
+            <community>
+                <name>{{ community_name }}</name>
+                <members>{{ community_data }}</members>
+            </community>
+            {% endfor %}
+            {% endif %}
+

@@ -1,0 +1,148 @@
+policy_options:
+  prefix_lists:
+    BGP-PEERS:
+      prefixes:
+        - 172.16.0.0/24
+      apply_path: protocols bgp group \<*> neighbor <*>
+    BORDERS:
+      prefixes:
+        - 37.9.67.0/32
+        - 37.9.67.3/32
+        - 84.201.159.180/32
+        - 87.250.234.9/32
+        - 87.250.234.10/32
+        - 87.250.234.118/32
+        - 87.250.234.255/32
+        - 141.8.136.128/32
+        - 141.8.136.129/32
+  policy_statements:
+    CGW_IMPORT:
+      ALLOW_V4:
+        from:
+          community:
+            - YC_NET_AGG
+          route-filters:
+            - address: 130.193.32.0/19
+              prefix_length_range: /24-/24
+        then:
+          action: accept
+      ALLOW_test_NET:
+        from:
+          community:
+            - YC_NET_AGG
+          route-filters:
+            - address: 130.193.47.0/24
+              prefix_length_range: /24-/32
+        then:
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject
+    FV_IMPORT:
+      DENY_BORDERS:
+        from:
+          prefix-lists-filters:
+            - name: BORDERS
+              option: exact
+        then:
+          action: reject
+      ALLOW:
+        from:
+          community:
+            - EUROPE
+            - USA
+            - TRANSIT
+            - YANDEX_MONEY
+        then:
+          metric: 0
+          communities:
+            - action: delete
+              name: WILD
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject
+    LU_EXPORT:
+      LO:
+        from:
+          interface:
+            - lo0.0
+        then:
+          communities:
+            - action: add
+              name: GEO_DC
+            - action: add
+              name: GEO_MODULE
+            - action: add
+              name: YC
+            - action: add
+              name: CLOUD_FV_RR_LO
+            - action: add
+              name: CLOUD_RKUB_RR_LO
+            - action: add
+              name: CLOUD_SLB_RR_LO
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject
+    LU_IMPORT:
+      NO_ADVERTISE:
+        then:
+          communities:
+            - action: add
+              name: NO_ADVERTISE
+    NO_EXPORT:
+      NO_EXPORT:
+        then:
+          action: reject
+    RKUB_IMPORT:
+      ALLOW:
+        from:
+          community:
+            - RKUB
+        then:
+          local-preference: 400
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject
+    SLB_EXPORT:
+      ALLOW:
+        from:
+          community:
+            - YC_NET_AGG
+        then:
+          communities:
+            - action: add
+              name: FW_COMMUNITY
+            - action: add
+              name: YC
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject
+    SLB_IMPORT:
+      DENY_BORDERS:
+        from:
+          prefix-lists-filters:
+            - name: BORDERS
+              option: exact
+        then:
+          action: reject
+  communities:
+    CLOUD_FV_RR_LO: 13238:35112
+    CLOUD_RKUB_RR_LO: 13238:35110
+    CLOUD_SLB_RR_LO: 13238:35114
+    EUROPE: 13238:1000
+    FW_COMMUNITY: 13238:1013
+    GEO_DC: 13238:35701
+    GEO_MODULE: 13238:35720
+    NO_ADVERTISE: "no-advertise"
+    RKUB: 13238:1001
+    TRANSIT: 13238:1003
+    USA: 13238:1002
+    WILD: "*:*"
+    YANDEX_MONEY: 13238:1005
+    YC: 13238:35999
+    YC_NET_AGG: 13238:35201
+    YC_NET_SPECIFIC: 13238:35200

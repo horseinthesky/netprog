@@ -1,0 +1,16 @@
+            {% if policy_options.prefix_lists is defined %}
+            {% for prefix_list_name, prefix_list in policy_options.prefix_lists.items() %}
+            <prefix-list>
+                <name>{{ prefix_list_name }}</name>
+                {% for prefix in prefix_list.prefixes %}
+                <prefix-list-item>
+                    <name>{{ prefix }}</name>
+                </prefix-list-item>
+                {% endfor %}
+                {% if prefix_list.apply_path is defined %}
+                <apply-path>{{ prefix_list.apply_path }}</apply-path>
+                {% endif %}
+            </prefix-list>
+            {% endfor %}
+            {% endif %}
+

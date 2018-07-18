@@ -1,0 +1,35 @@
+        <interfaces operation="replace">
+            {% for intf_name, intf in interfaces.items() %}
+            <interface>
+                <name>{{ intf_name }}</name>
+                {% for unit_name, unit in intf.units.items() %}
+                <unit>
+                    <name>{{ unit_name }}</name>
+                    <family>
+                        {% for family_name, family in unit.families.items() %}
+                        <{{ family_name }}>
+                            {% if family.filters is defined %}
+                            <filter>
+                                {% for direction, filter_name in family.filters.items() %}
+                                <{{ direction }}>
+                                    <filter-name>{{ filter_name }}</filter_name>
+                                </{{ direction }}>
+                                {% endfor %}
+                            </filter>
+                            {% endif %}
+                            {% if family.addresses is defined %}
+                            {% for address in family.addresses %}
+                            <address>
+                                <name>{{ address }}</name>
+                            </address>
+                            {% endfor %}
+                            {% endif %}
+                        </{{ family_name }}>
+                        {% endfor %}
+                    </family>
+                </unit>
+                {% endfor %}
+            </interface>
+            {% endfor %}
+        </interfaces>
+

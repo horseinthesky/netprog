@@ -1,0 +1,49 @@
+        <routing-options operation="replace">
+            {% if routing_options.ribs is defined %}
+            {% for rib in routing_options.ribs %}
+            <rib>
+                <name>{{ rib.name }}</name>
+                <static>
+                    {% for route in rib.routes %}
+                    <route>
+                        <name>{{ route.name }}</name>
+                        <next-hop>{{ route.nexthop }}</next-hop>
+                    </route>
+                    {% endfor %}
+                </static>
+            </rib>
+            {% endfor %}
+            {% endif %}
+            {% if routing_options.static_routes is defined %}
+            {% for static_route in routing_options.static_routes %}
+            <static>
+                <route>
+                    <name>{{ static_route.net }}</name>
+                    <next-hop>{{ static_route.nexthop }}</next-hop>
+                </route>
+            </static>
+            {% endfor %}
+            {% endif %}
+            {% if routing_options.rib_groups is defined %}
+            <rib-groups>
+                {% for rib_group in routing_options.rib_groups %}
+                <name>{{ rib_group.name }}</name>
+                {% for rib in rib_group.ribs %}
+                <import-rib>{{ rib }}</import-rib>
+                {% endfor %}
+                {% endfor %}
+            </rib-groups>
+            {% endif %}
+            {% if routing_options.router_id is defined %}
+            <router-id>{{ routing_options.router_id }}</router-id>
+            {% endif %}
+            {% if routing_options.as is defined %}
+            <autonomous-system>
+                <as-number>{{ routing_options.as.number }}</as-number>
+                {% if routing_options.as.loops is defined %}
+                <loops>{{ routing_options.as.loops }}</loops>
+                {% endif %}
+            </autonomous-system>
+            {% endif %}
+        </routing-options>
+

@@ -2,10 +2,12 @@
   hosts: all
   connection: netconf
   gather_facts: no
-  # become: yes
-  # become_method: enable
 
   tasks:
+    - name: Include vars
+      include_vars:
+        dir: vars
+
     - name: Generate configs
       template:
         src: vRR.j2

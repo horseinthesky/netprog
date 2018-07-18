@@ -1,4 +1,10 @@
 #jinja2: trim_blocks:True, lstrip_blocks:True
-<configuration xmlns="http://xml.juniper.net/xnm/1.1/xnm" junos:commit-seconds="1531487146" junos:commit-localtime="2018-07-13 13:05:46 UTC" junos:commit-user="root">
-    {% include 'system.j2' %}
-</configuration>
+<config>
+    <configuration xmlns="http://xml.juniper.net/xnm/1.1/xnm" junos:commit-seconds="1531487146" junos:commit-localtime="2018-07-13 13:05:46 UTC" junos:commit-user="root">
+        {% include 'system.j2' -%}
+        {% include 'interfaces.j2' -%}
+        {% include 'routing-options.j2' -%}
+        {% include 'policy-options.j2' -%}
+        {% include 'firewall.j2' %}
+    </configuration>
+</config>
