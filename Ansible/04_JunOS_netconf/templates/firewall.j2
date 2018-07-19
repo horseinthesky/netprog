@@ -2,12 +2,12 @@
             {% for filter_name, filter_data in firewall.items() %}
             <filter>
                 <name>{{ filter_name }}</name>
-                {% for term_name, term_data in filter_data.items() %} 
+                {% for term_name, term_data in filter_data.items() %}
                 <term>
                     <name>{{ term_name }}</name>
                     {% if term_data.from is defined %}
                     <from>
-                        {% for source_name, source_data in term_data.from.items() %} 
+                        {% for source_name, source_data in term_data.from.items() %}
                         {% for element in source_data %}
                         {% if source_name == "prefix-list" %}
                         <{{ source_name }}>

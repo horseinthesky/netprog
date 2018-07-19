@@ -1,0 +1,43 @@
+        {% if routing_instances is defined %}
+        <routing-instances operation="replace">
+            {% for instance_name, instance_data in routing_instances.items() %}
+            <instance>
+                <name>{{ instance_name }}</name>
+                <instance-type>{{ instance_data.instance_type }}</instance-type>
+                {% if instance_data.interfaces is defined %}
+                {% for intf in instance_data.interfaces %}
+                <interface>
+                    <name>{{ intf }}</name>
+                </interface>
+                {% endfor %}
+                {% endif %}
+                <route-distinguisher>
+                    <rd-type>{{ instance_data.rd }}</rd-type>
+                </route-distinguisher>
+                <vrf-target>
+                    <community>{{ instance_data.rt }}</community>
+                </vrf-target>
+                {% if instance_data.routing_options is defined %}
+                <routing-options>
+                    {% if instance_data.routing_options.rib is defined %}
+                    <rib>
+                        <name>{{ instance_data.routing_options.rib.name }}</name>
+                        {% if instance_data.routing_options.rib.static_routes is defined %}
+                        <static>
+                            {% for route in instance_data.routing_options.rib.static_routes %}
+                            <route>
+                                <name>{{ route.net }}</name>
+                                <next-hop>{{ route.nexthop }}</next-hop>
+                            </route>
+                            {% endfor %}
+                        </static>
+                        {% endif %}
+                    </rib>
+                    {% endif %}
+                </routing-options>
+                {% endif %}
+            </instance>
+            {% endfor %}
+        </routing-instances>
+        {% endif %}
+

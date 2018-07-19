@@ -3,7 +3,7 @@ policy_options:
     BGP-PEERS:
       prefixes:
         - 172.16.0.0/24
-      apply_path: protocols bgp group \<*> neighbor <*>
+      apply_path: protocols bgp group &lt;*&gt; neighbor &lt;*&gt;
     BORDERS:
       prefixes:
         - 37.9.67.0/32

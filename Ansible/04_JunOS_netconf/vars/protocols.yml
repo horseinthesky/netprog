@@ -1,0 +1,96 @@
+protocols:
+  mpls:
+    interfaces:
+      - em0.5
+  bgp:
+    local_address: 37.140.141.80
+    groups:
+      LU:
+        type: external
+        local-address: 10.255.255.3
+        import: LU_IMPORT
+        families:
+          inet:
+            safi: labeled-unicast
+            rib_group: RESOLVE_NEXTHOPS
+        export: LU_EXPORT
+        peer-as: 65401
+        neighbors:
+          10.255.255.1:
+      FV:
+        type: internal
+        import: FV_IMPORT
+        families:
+          inet:
+            safi: unicast
+            add_path:
+              actions:
+                receive:
+            no_install:
+        export: NO_EXPORT
+        bfd:
+          min_interval: 3000
+          multiplier: 3
+        neighbors:
+          87.250.233.150:
+          87.250.233.190:
+      CGW:
+        type: internal
+        import: CGW_IMPORT
+        families:
+          inet:
+            safi: unicast
+        cluster: 37.140.141.80
+        allow: 172.16.0.0/24
+      SLB:
+        type: internal
+        import: SLB_IMPORT
+        families:
+          inet:
+            safi: unicast
+            add_path:
+              actions:
+                receive:
+                send:
+                  path: 6
+            no_install:
+        export: SLB_EXPORT
+        bfd:
+          min_interval: 3000
+          multiplier: 3
+        neighbors:
+          87.250.234.234:
+          87.250.233.132:
+          87.250.234.179:
+          87.250.234.14:
+      RKUB:
+        type: internal
+        import: RKUB_IMPORT
+        families:
+          inet:
+            safi: unicast
+            add_path:
+              actions:
+                receive:
+            no_install:
+        export: NO_EXPORT
+        bfd:
+          min_interval: 3000
+          multiplier: 3
+        neighbors:
+          87.240.234.149:
+          87.250.228.77:
+      BORDERS:
+        type: internal
+        families:
+          inet:
+            safi: unicast
+            no_install:
+        export: NO_EXPORT
+        bfd:
+          min_interval: 3000
+          multiplier: 3
+        neighbors:
+          87.250.234.121:
+          87.250.233.199:
+          87.250.234.255:
