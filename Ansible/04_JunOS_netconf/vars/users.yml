@@ -1,21 +1,17 @@
 users:
   - name: alex-limonov
-    uid: 1001
     pass: $1$ebzq$jGhcC83KJ0Rvhh/WdXQ.G1
     ssh_keys:
       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDCOVtb0JX+QkUgIOZlNixOXG1J9RkBW+dOAcw48YEK73lN/FyEaF1qwIr19NhMyh2wGIVhSI9V1sGV8CZEeGm7Wrgndj45gkq1FFxIvjIO/GWniz3UFGiedNDQp64p+C75TTfYHOartp1S3Sguzdhb4yPEaiUAzjMp+SZ6hwT7s9mrOB2+c59GH17e3OoqTdGY8Pgq+vmeisWqmkPwSNq1bAuNLL3mIErIet6Tm1yDx5dnAp6vP41Shx8ss/cDwRmCZf9HwCW82i2SiOwbj/2Md0Ac2WSEVqH12S8mMRDpomUV/vVuSLBqF4DH/NkKsxYvHP8Az8gSB4ysjrSh5a3z"
   - name: axscrew
-    uid: 1002
     pass: $1$j.jL$IQifM1R0lc/AFUIa3tKrr.
     ssh_keys:
       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQC2aU3tQRdplshyBPQH/cn1m82VWny6QJK05sYmRExLoboV+Nj3OlYrx1A6e1LD5oozmscpiUAmH8cEYbE4jdQ9ZXIaALYRjjaSIrXJIAFr7fo5iy8pXRbuHXyAcVimhHyAxfAwKsIs2rk91GX2JiCv6xYVN1xzlTMM6Eb0ZdEhrafen/74z5r6Dc5OZOwpz0pIPSgih3N1Mo1jvJPmxR8omZVLPkLM9OlepEbZikzfP1uEDNnuNYflPhpsJ/GeRhtU/7nS74cSgx+Up/05ATrnGLUSMhUtvcuQ2XR3xmRTGy9TzvrqDiKQc6TWHKC9zZKHK0rsYdi3Qasiaq2Lxqix"
   - name: horseinthesky
-    uid: 1003
     pass: $1$XGbE$f6bDn44e0XTDuk1NLQQSD0
     ssh_keys:
       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQDCozzyq5QJTEDO1MnJ0tycgVDhePolz0NmrfzQbz0fDkvIQoBkc4deLRUYJRwNyWHoDH7b/XU+L8F9XQHtjrUtxCXycCd/A9ncZK2AgizD6z1cXSGiorueHizznU2CFKRtxHWjOaeu9CucWn50oS2RlSMv5y8abHBTuK2luysF1GOtvDT7HBIl8fv2bCdYrlMXVcLl0JgvGtwzqeHzqU5psYFah3Rqd/Y9MZWkRN64wuh/XsYUxSZz0GfcmM7nsAypeQ+F/2HVRP+VkUuoP9fFnSBzPwI04S7ulc8pCmBoXCU8HfMicWS+rInl7IoH4NPmcwF9RJ4S6Qvq/0YkvOUF"
   - name: eucariot
-    uid: 1004
     pass: $1$lpvn$.l7NN1UbPhJD01m50A40q1
     ssh_keys:
       - "AAAAB3NzaC1yc2EAAAADAQABAAABAQCrQ1PBIWN8JQZRi9MsouWl7H7hUz4Y66l9n2BsNfMeDNqVOYP76LZcNP6j0XXGWdASm22v7quyz/bwyZBkPrNohWERnnuTqdaHqjgz5rI1/VXisu9o3O9k1xROlVKe/pipDCBkKxYyC6wJOcBhUdmi6S3bILW6EUYmX6JJ7gysx3kYkfBG1v2qqJek/UwuNdc6lSKZfr6IPnKdCb0Ovd1HrhVBhOeVmrNPrK8IUeARSa9V0WDTm/LhcgV0LVlt6MQtsBVH3tx0jLidZTC2d4SKm/D7TrQO5cCcv5Tcpnt+Aooqgz6118oekQdj6J3SZYoWmk7TD6f5+BlhoYJySpvj"

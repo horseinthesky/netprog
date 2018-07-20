@@ -1,54 +1,55 @@
 firewall:
-  CPP:
-    SSH:
-      from:
-        protocol:
-          - tcp
-        port:
-          - 22
-      then:
-        action: accept
-    NETCONF:
-      from:
-        protocol:
-          - tcp
-        port:
-          - 830
-      then:
-        action: accept
-    ICMP:
-      from:
-        protocol:
-          - icmp
-        icmp-type:
-          - echo-request
-          - echo-reply
-          - parameter-problem
-          - time-exceeded
-          - unreachable
-      then:
-        action: accept
-    BGP:
-      from:
-        prefix-list:
-          - BGP-PEERS
-        protocol:
-          - tcp
-        port:
-          - bgp
-      then:
-        action: accept
-    BFD:
-      from:
-        prefix-list:
-          - BGP-PEERS
-        protocol:
-          - udp
-        port:
-          - 3784
-          - 4784
-      then:
-        action: accept
-    DEFAULT_REJECT:
-      then:
-        action: reject
+  inet:
+    CPP:
+      SSH:
+        from:
+          protocol:
+            - tcp
+          port:
+            - 22
+        then:
+          action: accept
+      NETCONF:
+        from:
+          protocol:
+            - tcp
+          port:
+            - 830
+        then:
+          action: accept
+      ICMP:
+        from:
+          protocol:
+            - icmp
+          icmp-type:
+            - echo-request
+            - echo-reply
+            - parameter-problem
+            - time-exceeded
+            - unreachable
+        then:
+          action: accept
+      BGP:
+        from:
+          prefix-list:
+            - BGP-PEERS
+          protocol:
+            - tcp
+          port:
+            - bgp
+        then:
+          action: accept
+      BFD:
+        from:
+          prefix-list:
+            - BGP-PEERS
+          protocol:
+            - udp
+          port:
+            - 3784
+            - 4784
+        then:
+          action: accept
+      DEFAULT_REJECT:
+        then:
+          action: reject

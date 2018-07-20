@@ -18,9 +18,14 @@
                             </filter>
                             {% endif %}
                             {% if family.addresses is defined %}
-                            {% for address in family.addresses %}
+                            {% for address, address_options in family.addresses.items() %}
                             <address>
                                 <name>{{ address }}</name>
+                                {% if address_options is iterable %}
+                                {% for option in address_options %}
+                                <{{ option }}/>
+                                {% endfor %}
+                                {% endif %}
                             </address>
                             {% endfor %}
                             {% endif %}

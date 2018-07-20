@@ -5,7 +5,8 @@ interfaces:
         families:
           inet:
             addresses:
-              - 192.168.0.110/24
+              192.168.0.110/24:
+                - primary
           mpls:
   em1:
     units:
@@ -13,7 +14,7 @@ interfaces:
         families:
           inet6:
             addresses:
-              - "2a02:6b8:bf00:1002::cd:f1/64"
+              2a02:6b8:bf00:1002::cd:f1/64:
   lo0:
     units:
       0:
@@ -22,4 +23,4 @@ interfaces:
             filters:
               input: CPP
             addresses:
-              - 37.140.141.80/32
+              37.140.141.80/32:

@@ -6,8 +6,9 @@ routing_instances:
     rd: 37.140.141.80:1
     rt: target:1:1
     routing_options:
-      rib:
-        name: MGMT.inet6.0
-        static_routes:
-          - net: ::/0
-            nexthop: 2a02:6b8:bf00:1002::1
+      ribs:
+        MGMT.inet6.0:
+          static_routes:
+            ::/0:
+              nexthop: 2a02:6b8:bf00:1002::1
+              metric: 20
