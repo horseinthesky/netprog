@@ -1,0 +1,55 @@
+        {% if routing_instances is defined %}
+        <routing-instances operation="replace">
+            {% for instance_name, instance_data in routing_instances.items() %}
+            <instance>
+                <name>{{ instance_name }}</name>
+                <instance-type>{{ instance_data.instance_type }}</instance-type>
+                {% if instance_data.interfaces is defined %}
+                {% for intf in instance_data.interfaces %}
+                <interface>
+                    <name>{{ intf }}</name>
+                </interface>
+                {% endfor %}
+                {% endif %}
+                <route-distinguisher>
+                    <rd-type>{{ instance_data.rd }}</rd-type>
+                </route-distinguisher>
+                <vrf-target>
+                    <community>{{ instance_data.rt }}</community>
+                </vrf-target>
+                {% if instance_data.routing_options is defined %}
+                <routing-options>
+                    {% if instance_data.routing_options.ribs is defined %}
+                    {% for rib_name, rib_data in instance_data.routing_options.ribs.items() %}
+                    <rib>
+                        <name>{{ rib_name }}</name>
+                        {% if rib_data.static_routes is defined %}
+                        <static>
+                            {% for net, net_options in rib_data.static_routes.items() %}
+                            <route>
+                                <name>{{ net }}</name>
+                                {% for option_name, option_value in net_options.items() %}
+                                {% if option_name == "nexthop" %}
+                                <next-hop>{{ option_value }}</next-hop>
+                                {% elif option_name == "metric" %}
+                                <metric>
+                                    <metric-value>{{ option_value }}</metric-value>
+                                </metric>
+                                {% else %}
+                                <{{ option_name }}/>
+                                {% endif %}
+                                {% endfor %}
+                            </route>
+                            {% endfor %}
+                        </static>
+                        {% endif %}
+                    </rib>
+                    {% endfor %}
+                    {% endif %}
+                </routing-options>
+                {% endif %}
+            </instance>
+            {% endfor %}
+        </routing-instances>
+        {% endif %}
+

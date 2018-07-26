@@ -1,0 +1,11 @@
+- hosts: 192.168.0.111
+  connection: netconf
+
+  tasks:
+  - name: Configure vRR
+    tags: deploy
+    import_role:
+      name: vrr
+    vars:
+      ansible_ssh_user: root
+      ansible_ssh_pass: Juniper

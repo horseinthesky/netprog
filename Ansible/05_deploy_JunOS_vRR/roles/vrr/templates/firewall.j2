@@ -1,0 +1,39 @@
+        <firewall operation="replace">
+            {% for family_name, family_data in firewall.items() %}
+            <family>
+                <{{ family_name }}>
+                    {% for filter_name, filter_data in family_data.items() %}
+                    <filter>
+                        <name>{{ filter_name }}</name>
+                        {% for term_name, term_data in filter_data.items() %}
+                        <term>
+                            <name>{{ term_name }}</name>
+                            {% if term_data.from is defined %}
+                            <from>
+                                {% for source_name, source_data in term_data.from.items() %}
+                                {% for element in source_data %}
+                                {% if source_name == "prefix-list" %}
+                                <{{ source_name }}>
+                                    <name>{{ element }}</name>
+                                </{{ source_name }}>
+                                {% else %}
+                                <{{ source_name }}>{{ element }}</{{ source_name }}>
+                                {% endif %}
+                                {% endfor %}
+                                {% endfor %}
+                            </from>
+                            {% endif %}
+                            <then>
+                                {% for action in term_data.then %}
+                                <{{ term_data.then.action }}/>
+                                {% endfor %}
+                            </then>
+                        </term>
+                        {% endfor %}
+                    </filter>
+                    {% endfor %}
+                </{{ family_name }}>
+            </family>
+            {% endfor %}
+        </firewall>
+

@@ -1,0 +1,10 @@
+            {% if protocols.mpls is defined %}
+            <mpls>
+                {% for intf in protocols.mpls.interfaces %}
+                <interface>
+                    <name>{{ intf }}</name>
+                </interface>
+                {% endfor %}
+            </mpls>
+            {% endif %}
+

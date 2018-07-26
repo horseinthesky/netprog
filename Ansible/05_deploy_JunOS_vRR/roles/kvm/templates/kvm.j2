@@ -1,0 +1,70 @@
+<domain type='kvm'>
+  <name>{{ kvm.name }}</name>
+  <uuid></uuid>
+  <memory unit='KiB'>{{ kvm.memory }}</memory>
+  <currentMemory unit='KiB'>{{ kvm.memory }}</currentMemory>
+  <vcpu placement='static' cpuset='0-3'>{{ kvm.cpu }}</vcpu>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <sysinfo type='smbios'>
+    <bios>
+      <entry name='vendor'>{{ kvm.vendor }}</entry>
+    </bios>
+    <system>
+      <entry name='manufacturer'>{{ kvm.vendor }}</entry>
+      <entry name='product'>{{ kvm.product }}</entry>
+      <entry name='version'>{{ kvm.version }}</entry>
+    </system>
+  </sysinfo>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-xenial'>hvm</type>
+    <boot dev='hd'/>
+    <smbios mode='sysinfo'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <cpu mode='custom' match='minimum'>
+    <model fallback='allow'>SandyBridge</model>
+  </cpu>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <emulator>/usr/bin/kvm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' cache='none'/>
+      <source file='/var/lib/libvirt/images/{{ kvm.name }}.img'/>
+      <target dev='hda' bus='ide'/>
+    </disk>
+    {% for intf_name, intf_params in kvm.interfaces.items() %}
+    <interface type='bridge'>
+      <source bridge='{{ intf_params.bridge }}'/>
+      <target dev='{{ kvm.name }}-{{ intf_name }}'/>
+      <model type='{{ intf_params.type }}'/>
+    </interface>
+    {% endfor %}
+    {% if kvm.console is defined %}
+    <serial type='tcp'>
+      <source mode='bind' host='{{ kvm.console.host }}' service='{{ kvm.console.port }}'/>
+      <protocol type='{{ kvm.console.protocol }}'/>
+      <target port='0'/>
+    </serial>
+    <console type='tcp'>
+      <source mode='bind' host='{{ kvm.console.host }}' service='{{ kvm.console.port }}'/>
+      <protocol type='{{ kvm.console.protocol }}'/>
+      <target type='serial' port='0'/>
+    </console>
+    {% else %}
+    <console type='pty' tty='/dev/pts/0'>
+      <source path='/dev/pts/0'/>
+      <target type='serial' port='0'/>
+      <alias name='serial0'/>
+    </console>
+    {% endif %}
+  </devices>
+</domain>

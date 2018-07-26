@@ -1,0 +1,57 @@
+            {% if protocols.bgp is defined %}
+            <bgp>
+                <local-address>{{ protocols.bgp.local_address }}</local-address>
+                {% for group_name, group_data in protocols.bgp.groups.items() %}
+                <group>
+                    <name>{{ group_name }}</name>
+                    {% for param_name, param_data in group_data.items() %}
+                    {% if param_name == "families" %}
+                    {% for family_name, family_data in param_data.items() %}
+                    <family>
+                        <{{ family_name }}>
+                            <{{ family_data.safi }}>
+                                {% if family_data.rib_group is defined %}
+                                <rib-group>
+                                    <ribgroup-name>{{ family_data.rib_group }}</ribgroup-name>
+                                </rib-group>
+                                {% endif %}
+                                {% if family_data.add_path is defined %}
+                                <add-path>
+                                    {% for action_name, action_data in family_data.add_path.actions.items() %}
+                                    {% if action_name == "send" %}
+                                    <send>
+                                        <path-count>{{ action_data.path }}</path-count>
+                                    </send>
+                                    {% else %}
+                                    <{{ action_name }}/>
+                                    {% endif %}
+                                    {% endfor %}
+                                </add-path>
+                                {% endif %}
+                                {% if family_data.no_install is defined %}
+                                <no-install/>
+                                {% endif %}
+                            </{{ family_data.safi }}>
+                        </{{ family_name }}>
+                    </family>
+                    {% endfor %}
+                    {% elif param_name == "bfd" %}
+                    <bfd-liveness-detection>
+                        <minimum-interval>{{ param_data.min_interval }}</minimum-interval>
+                        <multiplier>{{ param_data.multiplier }}</multiplier>
+                    </bfd-liveness-detection>
+                    {% elif param_name == "neighbors" %}
+                    {% for neighbor in param_data %}
+                    <neighbor>
+                        <name>{{ neighbor }}</name>
+                    </neighbor>
+                    {% endfor %}
+                    {% else %}
+                    <{{ param_name }}>{{ param_data }}</{{ param_name}}>
+                    {% endif %}
+                    {% endfor %}
+                </group>
+            {% endfor %}
+            </bgp>
+            {% endif %}
+

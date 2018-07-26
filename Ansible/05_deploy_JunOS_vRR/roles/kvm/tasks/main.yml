@@ -1,0 +1,11 @@
+- name: Include vars
+  include_vars:
+    dir: vars
+
+- name: PERFORMING ONBOARDING
+  include_tasks: on.yml
+  when: operation == "deploy"
+
+- name: PERFORMING UNDEPLOYING
+  include_tasks: off.yml
+  when: operation == "undeploy"

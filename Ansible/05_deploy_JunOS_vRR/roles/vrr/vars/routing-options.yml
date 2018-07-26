@@ -1,0 +1,17 @@
+routing_options:
+  ribs:
+    inet6.0:
+      routes:
+        ::/0: 2a02:6b8:bf00:1002::1
+  static_routes:
+    0.0.0.0/0: 192.168.0.1
+  rib_groups:
+    RESOLVE_NEXTHOPS:
+      ribs:
+        - inet.0
+        - inet.3
+        - inet6.3
+  router_id: 37.140.141.81
+  as:
+    number: 13238
+    loops: 5

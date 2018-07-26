@@ -1,6 +1,6 @@
 #jinja2: trim_blocks:True, lstrip_blocks:True
 <config>
-  <native xmlns="http://cisco.com/ns/yang/ned/ios">
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
     <hostname>{{ hostname }}</hostname>
     {% for user in users %}
     <username>
@@ -34,7 +34,7 @@
       {% for intf in core %}
       <GigabitEthernet>
         <name>{{ intf.intf }}</name>
-        <negotiation>
+        <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
           <auto>true</auto>
         </negotiation>
         <ip>
@@ -44,7 +44,7 @@
               <mask>{{ intf.netmask }}</mask>
             </primary>
           </address>
-          <ospf>
+          <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
             <process-id>
               <id>1</id>
               <area>0</area>
@@ -58,7 +58,7 @@
       {% endfor %}
       <GigabitEthernet>
         <name>{{ mgmt.intf }}</name>
-        <negotiation>
+        <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
           <auto>true</auto>
         </negotiation>
         <ip>
@@ -87,7 +87,7 @@
               <mask>{{ lo.netmask }}</mask>
             </primary>
           </address>
-          <ospf>
+          <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
             <process-id>
               <id>1</id>
               <area>0</area>
@@ -97,15 +97,19 @@
       </Loopback>
     </interface>
     <mpls>
-      <ldp>
-        <router-id>
-          <interface>Loopback0</interface>
-          <force/>
-        </router-id>
+      <ldp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-mpls">
+        <enable2>
+          <router-id>
+            <interface>
+              <Loopback>0</Loopback>
+              <force/>
+            </interface>
+          </router-id>
+        </enable2>
       </ldp>
     </mpls>
     <router>
-      <ospf>
+      <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
         <id>1</id>
         <mpls>
           <ldp>

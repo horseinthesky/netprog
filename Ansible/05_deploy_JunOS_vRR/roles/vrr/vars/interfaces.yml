@@ -1,0 +1,26 @@
+interfaces:
+  em0:
+    units:
+      0:
+        families:
+          inet:
+            addresses:
+              192.168.0.111/24:
+                - primary
+          mpls:
+  em1:
+    units:
+      0:
+        families:
+          inet6:
+            addresses:
+              2a02:6b8:bf00:1002::cd:f2/64:
+  lo0:
+    units:
+      0:
+        families:
+          inet:
+            filters:
+              input: CPP
+            addresses:
+              37.140.141.81/32:

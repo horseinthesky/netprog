@@ -1,6 +1,6 @@
 #jinja2: trim_blocks:True, lstrip_blocks:True
 <config>
-  <native xmlns="http://cisco.com/ns/yang/ned/ios">
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
     <hostname>{{ hostname }}</hostname>
 		{% for user in users %}
     <username>
@@ -33,7 +33,7 @@
     <interface>
       <GigabitEthernet>
         <name>{{ provider.intf }}</name>
-        <negotiation>
+        <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
           <auto>true</auto>
         </negotiation>
         <ip>
@@ -50,7 +50,7 @@
       </GigabitEthernet>
       <GigabitEthernet>
         <name>{{ mgmt.intf }}</name>
-        <negotiation>
+        <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
           <auto>true</auto>
         </negotiation>
         <ip>
