@@ -1,0 +1,9 @@
+            {% if ntp is defined %}
+            <ntp>
+                {% for server in ntp %}
+                <server>
+                    <name>{{ server }}</name>
+                </server>
+                {% endfor %}
+            </ntp>
+            {% endif %}

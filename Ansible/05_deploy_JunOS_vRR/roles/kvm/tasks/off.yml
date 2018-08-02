@@ -1,0 +1,14 @@
+- name: Destroy VM
+  virt:
+    name: "{{ hostname }}"
+    command: destroy
+
+- name: Undefine VM
+  virt:
+    name: "{{ hostname }}"
+    command: undefine
+
+- name: Delete VM image
+  file:
+    path: "/var/lib/libvirt/images/{{ hostname }}.img"
+    state: absent

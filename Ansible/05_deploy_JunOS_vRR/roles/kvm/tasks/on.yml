@@ -3,25 +3,34 @@
     name: [qemu-kvm, libvirt-bin, ubuntu-vm-builder, bridge-utils]
     update_cache: yes
 
+- name: Verify if VM image exist
+  stat:
+    path: "/var/lib/libvirt/images/{{ hostname }}.img"
+  register: st
+
 - name: Copy vRR image
   copy:
     src: ~/junos-x86-64-16.2R2-S3.img
-    dest: /var/lib/libvirt/images/ansible_vrr.img
+    dest: "/var/lib/libvirt/images/{{ hostname }}.img"
+  when: not st.stat.exists
 
 - name: Define VM
   virt:
-    name: ansible_vrr
+    name: "{{ hostname }}"
     command: define
     xml: "{{ lookup('template', 'templates/kvm.j2') }}"
+    # autostart: true
 
 - name: Launch VM
   virt:
-    name: ansible_vrr
+    name: "{{ hostname }}"
     state: running
+  register: run
 
 - name: Waiting for VM to boot
   pause:
     seconds: 450
+  when: run.changed
 
 - name: Copy magic_wand script to host
   copy:
@@ -29,22 +38,45 @@
     dest: "/home/{{ lookup('env', 'USER') }}/"
   become: no
 
+- name: Edit root password in magic_wand script
+  replace:
+    path: "/home/{{ lookup('env', 'USER') }}/magic_wand2.py"
+    regexp: "encrypted-password "
+    replace: "encrypted-password {{ root_pass }}"
+
+- name: Add user login to magic_wand script
+  replace:
+    path: "/home/{{ lookup('env', 'USER') }}/magic_wand2.py"
+    regexp: "user "
+    replace: "user {{ lookup('env', 'USER') }} class super-user authentication encrypted-password {{ users[lookup('env', 'USER')].pass }}"
+
+- name: Edit mgmt ip in magic_wand script
+  replace:
+    path: "/home/{{ lookup('env', 'USER') }}/magic_wand2.py"
+    regexp: "address "
+    replace: "address {{ mgmt }}"
+
 - name: Making router reachable via CLI
   command: python "/home/{{ lookup('env', 'USER') }}/magic_wand2.py"
 
+- name: Delete magic_wand script
+  file:
+    path: "/home/{{ lookup('env', 'USER') }}/magic_wand2.py"
+    state: absent
+
 # - name: Making router reachable via CLI
 #   script: magic_wand.py
-#   become: no
 
 # - name: Configure management interface via telnet
 #   telnet:
 #     port: 3517
 #     user: root
-#     pause: 1
+#     pause: 0.5
 #     login_prompt: 'login: '
 #     prompts:
 #       - "[>|#]"
 #     command:
+#       - "\r\n"
 #       - cli
 #       - edit
 #       - set system services ssh

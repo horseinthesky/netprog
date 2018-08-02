@@ -6,19 +6,19 @@
                     <permissions>view-configuration</permissions>
                     <allow-commands>ping*|trace*|show*</allow-commands>
                 </class>
-                {% for user in users %}
+                {% for user_name, user_data in login.items() %}
                 <user>
-                    <name>{{ user.name }}</name>
-                    {% if user.uid is defined %}
-                    <uid>{{ user.uid }}</uid>
+                    <name>{{ user_name }}</name>
+                    {% if user_data.uid is defined %}
+                    <uid>{{ user_data.uid }}</uid>
                     {% endif %}
-                    <class>{{ user.class | default("super-user") }}</class>
+                    <class>{{ user_data.class | default("super-user") }}</class>
                     <authentication>
-                        {% if user.pass is defined %}
-                        <encrypted-password>{{ user.pass }}</encrypted-password>
+                        {% if user_data.pass is defined %}
+                        <encrypted-password>{{ user_data.pass }}</encrypted-password>
                         {% endif %}
-                        {% if user.ssh_keys is defined %}
-                        {% for key in user.ssh_keys %}
+                        {% if user_data.ssh_keys is defined %}
+                        {% for key in user_data.ssh_keys %}
                         <ssh-rsa>
                             <name>ssh-rsa {{ key }}</name>
                         </ssh-rsa>

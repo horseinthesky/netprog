@@ -1,10 +1,12 @@
         <system operation="replace">
             <host-name>{{ hostname }}</host-name>
+            <time-zone>Europe/Moscow</time-zone>
             <root-authentication>
                 <encrypted-password>{{ root_pass }}</encrypted-password>
             </root-authentication>
             {% include 'login.j2' %}
             {% include 'services.j2' %}
             {% include 'syslog.j2' %}
+            {% include 'ntp.j2' %}
         </system>
 

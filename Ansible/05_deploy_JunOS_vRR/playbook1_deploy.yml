@@ -1,30 +1,26 @@
-# - hosts: 192.168.0.95
-#   become: yes
+- hosts: fd1b:3198:44bb:0:250:56ff:fe89:248e
+  become: yes
 
-#   tasks:
-#   - name: Deploy vRR
-#     tags: deploy
-#     import_role:
-#       name: kvm
-#     vars:
-#       operation: deploy
+  tasks:
+  - name: Deploy vRR
+    tags: deploy
+    import_role:
+      name: kvm
+    vars:
+      operation: deploy
 
-#   - name: Undeploy vRR
-#     tags: undeploy
-#     import_role:
-#       name: kvm
-#     vars:
-#       operation: undeploy
+  - name: Undeploy vRR
+    tags: undeploy
+    import_role:
+      name: kvm
+    vars:
+      operation: undeploy
 
 - hosts: 192.168.0.111
   connection: netconf
 
   tasks:
-  - name: Configure vRR
+  - name: Include vars
     tags: deploy
     import_role:
       name: vrr
-    vars:
-      ansible_ssh_user: root
-      ansible_ssh_pass: Juniper
-      operation: deploy
