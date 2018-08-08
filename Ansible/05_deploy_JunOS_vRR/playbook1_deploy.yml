@@ -1,4 +1,4 @@
-- hosts: fd1b:3198:44bb:0:250:56ff:fe89:248e
+- hosts: 192.168.0.95
   become: yes
 
   tasks:
@@ -23,4 +23,4 @@
   - name: Include vars
     tags: deploy
     import_role:
-      name: vrr
+      name: fvrr

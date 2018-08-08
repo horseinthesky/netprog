@@ -6,6 +6,25 @@
                         <emergency/>
                     </contents>
                 </user>
+                {% if syslog.hosts is defined %}
+                {% for host in syslog.hosts %}
+                <host>
+                    <name>{{ host }}</name>
+                    <contents>
+                        <name>any</name>
+                        <notice/>
+                    </contents>
+                    <contents>
+                        <name>authorization</name>
+                        <any/>
+                    </contents>
+                    <contents>
+                        <name>change-log</name>
+                        <any/>
+                    </contents>
+                </host>
+                {% endfor %}
+                {% endif %}
                 <file>
                     <name>messages</name>
                     <contents>

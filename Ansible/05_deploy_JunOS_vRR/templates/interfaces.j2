@@ -1,24 +1,30 @@
         <interfaces operation="replace">
-            {% for intf_name, intf in interfaces.items() %}
+            {% for intf_name, intf_data in interfaces.items() %}
             <interface>
                 <name>{{ intf_name }}</name>
-                {% for unit_name, unit in intf.units.items() %}
+                {% if intf_data.vlan_tagging is defined %}
+                <vlan-tagging/>
+                {% endif %}
+                {% for unit_name, unit_data in intf_data.units.items() %}
                 <unit>
                     <name>{{ unit_name }}</name>
+                    {% if intf_data.vlan_tagging is defined %}
+                    <vlan-id>{{ unit_data.vlan_id }}</vlan-id>
+                    {% endif %}
                     <family>
-                        {% for family_name, family in unit.families.items() %}
+                        {% for family_name, family_data in unit_data.families.items() %}
                         <{{ family_name }}>
-                            {% if family.filters is defined %}
+                            {% if family_data.filters is defined %}
                             <filter>
-                                {% for direction, filter_name in family.filters.items() %}
+                                {% for direction, filter_name in family_data.filters.items() %}
                                 <{{ direction }}>
                                     <filter-name>{{ filter_name }}</filter-name>
                                 </{{ direction }}>
                                 {% endfor %}
                             </filter>
                             {% endif %}
-                            {% if family.addresses is defined %}
-                            {% for address, address_options in family.addresses.items() %}
+                            {% if family_data.addresses is defined %}
+                            {% for address, address_options in family_data.addresses.items() %}
                             <address>
                                 <name>{{ address }}</name>
                                 {% if address_options is iterable %}

@@ -1,7 +1,4 @@
 protocols:
-  mpls:
-    interfaces:
-      - em0.5
   bgp:
     local_address: 37.140.141.81
     groups:

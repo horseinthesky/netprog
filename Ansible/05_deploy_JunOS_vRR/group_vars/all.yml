@@ -1,4 +1,7 @@
-login:
+hostname: ansible_vrr
+mgmt: 192.168.0.111/24
+root_pass: $5$1kWEUbk6$LZa2PZygkPhZLAgq6eWW9b.vxzXmfqKispBs2vtQZz7
+users:
   alex-limonov:
     pass: $1$ebzq$jGhcC83KJ0Rvhh/WdXQ.G1
     ssh_keys:
@@ -24,8 +27,3 @@ login:
   admin:
     uid: 5000
     pass: $5$RopcsHcH$P8LP3GPIhvEwmmlVt5XcrrKEr6Pj3fKfwjMr5MNz3OB
-ntp:
-  2a02:6b8:0:829::100:
-  2a02:6b8:0:829::101:
-  2a02:6b8:0:1a01::100:
-  2a02:6b8:0:1a01::101:

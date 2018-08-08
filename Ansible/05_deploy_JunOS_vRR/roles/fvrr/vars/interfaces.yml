@@ -9,8 +9,10 @@ interfaces:
                 - primary
           mpls:
   em1:
+    vlan_tagging:
     units:
       0:
+        vlan_id: 5
         families:
           inet6:
             addresses:

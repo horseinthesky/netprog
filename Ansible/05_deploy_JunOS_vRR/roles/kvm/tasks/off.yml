@@ -2,11 +2,13 @@
   virt:
     name: "{{ hostname }}"
     command: destroy
+  ignore_errors: yes
 
 - name: Undefine VM
   virt:
     name: "{{ hostname }}"
     command: undefine
+  ignore_errors: yes
 
 - name: Delete VM image
   file:

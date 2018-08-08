@@ -45,5 +45,17 @@
                 {% endif %}
             </autonomous-system>
             {% endif %}
+            {% if routing_options.resolution is defined %}
+            <resolution>
+                {% for rib_name, rib_data in routing_options.resolution.items() %}
+                <rib>
+                    <name>{{ rib_name }}</name>
+                    {% for rib in rib_data.res_ribs %}
+                    <resolution-ribs>{{ rib }}</resolution-ribs>
+                    {% endfor %}
+                </rib>
+                {% endfor %}
+            </resolution>
+            {% endif %}
         </routing-options>
 
