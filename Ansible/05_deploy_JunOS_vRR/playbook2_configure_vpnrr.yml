@@ -1,0 +1,7 @@
+- hosts: 192.168.0.111
+  connection: netconf
+
+  tasks:
+  - name: Include vars
+    import_role:
+      name: vpnrr
