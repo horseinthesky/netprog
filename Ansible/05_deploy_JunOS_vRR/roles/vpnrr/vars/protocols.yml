@@ -1,0 +1,26 @@
+protocols:
+  bgp:
+    local_address: 37.140.141.80
+    groups:
+      LU:
+        type: external
+        local-address: 10.255.255.2
+        families:
+          inet:
+            safi: labeled-unicast
+        export: LO
+        peer-as: 65401
+        neighbors:
+          10.255.255.1:
+      TOR_VPNV4:
+        type: external
+        multihop:
+          ttl: 5
+          no_nexthop_change:
+        advertise_peer_as:
+        families:
+          inet-vpn:
+            safi: unicast
+        export: TOR
+        peer-as: 65401
+        allow: 172.16.2.0/24

@@ -1,0 +1,36 @@
+policy_statements:
+  LO:
+    LO:
+      from:
+        interface:
+          - lo0.0
+      then:
+        communities:
+          - name: GEO_DC
+            action: add
+          - name: GEO_MODULE
+            action: add
+          - name: CLOUD_VPN_RR_LO
+            action: add
+          - name: YC
+            action: add
+        action: accept
+    DEFAULT_REJECT:
+      then:
+        action: reject
+  TOR:
+    ALLOW_REMOTE_DC_AGGREGATE:
+      from:
+        community:
+          - VPN_CLOUD_AGG
+      then:
+        action: accept
+    ALLOW_REMOTE_VPN_CLOUD_SPECIFIC:
+      form:
+        community:
+          - VPN_CLOUD_SPECIFIC
+      then:
+        action: accept
+    DEFAULT_REFECT:
+      then:
+        action: reject

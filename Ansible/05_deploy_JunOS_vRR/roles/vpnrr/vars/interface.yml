@@ -1,0 +1,25 @@
+interfaces:
+  em0:
+    units:
+      0:
+        families:
+          inet:
+            addresses:
+              192.168.0.111/24:
+          mpls:
+  em1:
+    vlan_tagging:
+    units:
+      0:
+        vlan_id: 5
+        families:
+          inet6:
+            addresses:
+              2a02:6b8:bf00:1002::cd:d1/64:
+  lo0:
+    units:
+      0:
+        families:
+          inet:
+            addresses:
+              37.140.141.80/32:

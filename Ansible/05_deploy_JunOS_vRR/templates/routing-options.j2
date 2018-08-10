@@ -14,21 +14,11 @@
             </rib>
             {% endfor %}
             {% endif %}
-            {% if routing_options.static_routes is defined %}
-            {% for net, nexthop in routing_options.static_routes.items() %}
-            <static>
-                <route>
-                    <name>{{ net }}</name>
-                    <next-hop>{{ nexthop }}</next-hop>
-                </route>
-            </static>
-            {% endfor %}
-            {% endif %}
             {% if routing_options.rib_groups is defined %}
             <rib-groups>
                 {% for group_name, group_data in routing_options.rib_groups.items() %}
                 <name>{{ group_name }}</name>
-                {% for rib in group_data.ribs %}
+                {% for rib in group_data %}
                 <import-rib>{{ rib }}</import-rib>
                 {% endfor %}
                 {% endfor %}
@@ -50,7 +40,7 @@
                 {% for rib_name, rib_data in routing_options.resolution.items() %}
                 <rib>
                     <name>{{ rib_name }}</name>
-                    {% for rib in rib_data.res_ribs %}
+                    {% for rib in rib_data %}
                     <resolution-ribs>{{ rib }}</resolution-ribs>
                     {% endfor %}
                 </rib>

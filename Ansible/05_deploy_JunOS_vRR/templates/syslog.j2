@@ -6,8 +6,8 @@
                         <emergency/>
                     </contents>
                 </user>
-                {% if syslog.hosts is defined %}
-                {% for host in syslog.hosts %}
+                {% if syslog is defined %}
+                {% for host in syslog %}
                 <host>
                     <name>{{ host }}</name>
                     <contents>

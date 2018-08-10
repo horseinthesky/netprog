@@ -35,6 +35,17 @@
                         </{{ family_name }}>
                     </family>
                     {% endfor %}
+                    {% elfi param_name == "multihop" %}
+                    <multihop>
+                        {% if ttl in param_data %}
+                        <ttl>{{ param_data.ttl }}</ttl>
+                        {% endif %}
+                        {% if no_nexthop_change in param_data %}
+                        <no-nexthop-change/>
+                        {% endif %}
+                    </multihop>
+                    {% elif param_name == "advertise-peer-as" %}
+                    <advertise-peer-as/>
                     {% elif param_name == "bfd" %}
                     <bfd-liveness-detection>
                         <minimum-interval>{{ param_data.min_interval }}</minimum-interval>

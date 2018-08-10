@@ -1,0 +1,12 @@
+- name: Include vars
+  include_vars:
+    dir: vars
+
+- name: Generate configs
+  template:
+    src: RR.j2
+    dest: roles/vpnrr/files/{{ hostname }}.cfg
+
+- name: Configure devices
+  netconf_config:
+    src: roles/vpnrr/files/{{ hostname }}.cfg

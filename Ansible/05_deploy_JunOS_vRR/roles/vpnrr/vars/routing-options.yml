@@ -6,12 +6,10 @@ routing_options:
     inet.0:
       static_routes:
         0.0.0.0/0: 192.168.0.1
-  rib_groups:
-    RESOLVE_NEXTHOPS:
-      - inet.0
-      - inet.3
-      - inet6.3
-  router_id: 37.140.141.81
+  router_id: 37.140.141.80
   as:
     number: 13238
     loops: 5
+  resolution:
+    bgp.l3vpn.0:
+      - inet.0

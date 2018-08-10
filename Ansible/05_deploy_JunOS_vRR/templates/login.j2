@@ -6,7 +6,7 @@
                     <permissions>view-configuration</permissions>
                     <allow-commands>ping*|trace*|show*</allow-commands>
                 </class>
-                {% for user_name, user_data in login.items() %}
+                {% for user_name, user_data in users.items() %}
                 <user>
                     <name>{{ user_name }}</name>
                     {% if user_data.uid is defined %}
