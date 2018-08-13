@@ -1,3 +1,4 @@
+        {% if firewall is defined %}
         <firewall operation="replace">
             {% for family_name, family_data in firewall.items() %}
             <family>
@@ -36,4 +37,6 @@
             </family>
             {% endfor %}
         </firewall>
-
+        {% else %}
+        <firewall operation="remove"/>
+        {% endif %}

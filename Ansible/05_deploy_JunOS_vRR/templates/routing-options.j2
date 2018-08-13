@@ -4,7 +4,7 @@
             <rib>
                 <name>{{ rib_name }}</name>
                 <static>
-                    {% for net, nexthop in rib_data.routes.items() %}
+                    {% for net, nexthop in rib_data.static_routes.items() %}
                     <route>
                         <name>{{ net }}</name>
                         <next-hop>{{ nexthop }}</next-hop>

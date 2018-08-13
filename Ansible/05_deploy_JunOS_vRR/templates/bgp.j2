@@ -35,12 +35,12 @@
                         </{{ family_name }}>
                     </family>
                     {% endfor %}
-                    {% elfi param_name == "multihop" %}
+                    {% elif param_name == "multihop" %}
                     <multihop>
-                        {% if ttl in param_data %}
+                        {% if param_data.ttl is defined %}
                         <ttl>{{ param_data.ttl }}</ttl>
                         {% endif %}
-                        {% if no_nexthop_change in param_data %}
+                        {% if param_data.no_nexthop_change is defined %}
                         <no-nexthop-change/>
                         {% endif %}
                     </multihop>

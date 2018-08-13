@@ -1,7 +1,7 @@
 routing_options:
   ribs:
     inet6.0:
-      routes:
+      static_routes:
         ::/0: 2a02:6b8:bf00:1002::1
     inet.0:
       static_routes:

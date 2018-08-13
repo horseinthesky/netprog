@@ -17,10 +17,21 @@ protocols:
         multihop:
           ttl: 5
           no_nexthop_change:
-        advertise_peer_as:
+        advertise-peer-as:
         families:
           inet-vpn:
             safi: unicast
         export: TOR
         peer-as: 65401
         allow: 172.16.2.0/24
+      VPN_RRS:
+        type: internal
+        families:
+          inet-vpn:
+            safi: unicast
+        neighbors:
+          172.16.1.1:
+          172.16.1.4:
+          172.16.1.5:
+          172.16.1.8:
+          172.16.1.9:
