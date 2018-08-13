@@ -5,8 +5,8 @@
 - name: Generate configs
   template:
     src: RR.j2
-    dest: roles/fvrr/files/{{ hostname }}.cfg
+    dest: "roles/fvrr/files/{{ hostname }}.cfg"
 
 - name: Configure devices
   netconf_config:
-    src: roles/fvrr/files/{{ hostname }}.cfg
+    src: "roles/fvrr/files/{{ hostname }}.cfg"
