@@ -1,0 +1,58 @@
+version: '2.1'
+
+services:
+  salt-master:
+    image: mirceaulinic/salt-master:2018.3.0
+    hostname: salt-master
+    container_name: salt-master
+    environment:
+      - LOG_LEVEL
+    volumes:
+      - ./master:/etc/salt/master
+      - ./pillar/:/etc/salt/pillar/
+      - ./states/:/etc/salt/states/
+  ios-proxy:
+    image: mirceaulinic/salt-proxy:2018.3.0
+    hostname: ${ID1}
+    container_name: salt-proxy-${ID1}
+    volumes:
+      - ./proxy:/etc/salt/proxy
+    environment:
+      - LOG_LEVEL
+      - PROXYID=${ID1}
+    depends_on:
+      - salt-master
+  junos-proxy:
+    image: mirceaulinic/salt-proxy:2018.3.0
+    hostname: ${ID2}
+    container_name: salt-proxy-${ID2}
+    volumes:
+      - ./proxy:/etc/salt/proxy
+    environment:
+      - LOG_LEVEL
+      - PROXYID=${ID2}
+    depends_on:
+      - salt-master
+  xr-proxy:
+    image: mirceaulinic/salt-proxy:2018.3.0
+    hostname: ${ID3}
+    container_name: salt-proxy-${ID3}
+    volumes:
+      - ./proxy:/etc/salt/proxy
+      - ./config:/root/.ssh/config
+    environment:
+      - LOG_LEVEL
+      - PROXYID=${ID3}
+    depends_on:
+      - salt-master
+  xe-proxy:
+    image: mirceaulinic/salt-proxy:2018.3.0
+    hostname: ${ID4}
+    container_name: salt-proxy-${ID4}
+    volumes:
+      - ./proxy:/etc/salt/proxy
+    environment:
+      - LOG_LEVEL
+      - PROXYID=${ID4}
+    depends_on:
+      - salt-master

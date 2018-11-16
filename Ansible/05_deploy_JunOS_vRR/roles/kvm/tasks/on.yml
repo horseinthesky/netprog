@@ -1,36 +1,36 @@
-- name: Install packages
-  apt:
-    name: [qemu-kvm, libvirt-bin, ubuntu-vm-builder, bridge-utils]
-    update_cache: yes
+# - name: Install packages
+#   apt:
+#     name: [qemu-kvm, libvirt-bin, ubuntu-vm-builder, bridge-utils]
+#     update_cache: yes
 
-- name: Verify if VM image exist
-  stat:
-    path: "/var/lib/libvirt/images/{{ hostname }}.img"
-  register: st
+# - name: Verify if VM image exist
+#   stat:
+#     path: "/var/lib/libvirt/images/{{ hostname }}.img"
+#   register: st
 
-- name: Copy vRR image
-  copy:
-    src: ~/junos-x86-64-16.2R2-S3.img
-    dest: "/var/lib/libvirt/images/{{ hostname }}.img"
-  when: not st.stat.exists
+# - name: Copy vRR image
+#   copy:
+#     src: ~/junos-x86-64-18.3R1.9.img
+#     dest: "/var/lib/libvirt/images/{{ hostname }}.img"
+#   when: not st.stat.exists
 
-- name: Define VM
-  virt:
-    name: "{{ hostname }}"
-    command: define
-    xml: "{{ lookup('template', 'templates/kvm.j2') }}"
-    # autostart: true
+# - name: Define VM
+#   virt:
+#     name: "{{ hostname }}"
+#     command: define
+#     xml: "{{ lookup('template', 'templates/kvm.j2') }}"
+#     # autostart: true
 
-- name: Launch VM
-  virt:
-    name: "{{ hostname }}"
-    state: running
-  register: run
+# - name: Launch VM
+#   virt:
+#     name: "{{ hostname }}"
+#     state: running
+#   register: run
 
-- name: Waiting for VM to boot
-  pause:
-    seconds: 450
-  when: run.changed
+# - name: Waiting for VM to boot
+#   pause:
+#     seconds: 450
+#   when: run.changed
 
 - name: Copy magic_wand script to host
   copy:

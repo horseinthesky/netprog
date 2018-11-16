@@ -1,0 +1,2 @@
+Host 10.10.10.5
+  KexAlgorithms +diffie-hellman-group1-sha1
