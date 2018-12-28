@@ -1,0 +1,38 @@
+telemetry model-driven
+ destination-group DGROUP1
+  address-family ipv4 192.168.0.97 port 5432
+   encoding self-describing-gpb
+   protocol grpc no-tls
+  !
+ !
+ sensor-group SGROUP1
+  sensor-path Cisco-IOS-XR-qos-ma-oper:qos/interface-table/interface/output/statistics
+  sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+ !
+ sensor-group SGROUP2
+  sensor-path Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization
+  sensor-path Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary
+ !
+ sensor-group SGROUP3
+  sensor-path Cisco-IOS-XR-plat-chas-invmgr-oper:platform-inventory/racks/rack/attributes/basic-info
+  sensor-path Cisco-IOS-XR-controller-optics-oper-sub1:optics-oper/optics-ports/optics-port/optics-info
+  sensor-path Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/brief-card/brief-locations/brief-location/active
+  sensor-path Cisco-IOS-XR-pmengine-oper:performance-management/otu/otu-ports/otu-port/otu-current/otu-second30/otu-second30fecs/otu-second30fec
+  sensor-path Cisco-IOS-XR-pmengine-oper:performance-management/otu/otu-ports/otu-port/otu-current/otu-second30/otu-second30otns/otu-second30otn
+  sensor-path Cisco-IOS-XR-pmengine-oper:performance-management/ethernet/ethernet-ports/ethernet-port/ethernet-current/ethernet-second30/second30-ethers/second30-ether
+  sensor-path Cisco-IOS-XR-pmengine-oper:performance-management/optics/optics-ports/optics-port/optics-current/optics-second30/optics-second30-optics/optics-second30-optic
+  sensor-path Cisco-IOS-XR-plat-chas-invmgr-oper:platform-inventory/racks/rack/slots/slot/cards/card/port-slots/port-slot/portses/ports/hw-components/hw-component/attributes/basic-info
+ !
+ subscription Sub1
+  sensor-group-id SGROUP1 sample-interval 5000
+  destination-id DGROUP1
+ !
+ subscription Sub2
+  sensor-group-id SGROUP2 sample-interval 30000
+  destination-id DGROUP1
+ !
+ subscription Sub3
+  sensor-group-id SGROUP3 sample-interval 10000
+  destination-id DGROUP1
+ !
+!

@@ -4,10 +4,10 @@
 from lxml import etree
 from ncclient import manager
 
-host = '10.10.10.6'
+host = '10.10.30.6'
 port = 830
-user = 'cisco'
-pwd = 'cisco'
+user = 'admin'
+pwd = 'admin'
 
 
 device = manager.connect(

@@ -9,17 +9,17 @@ import sys
 # the variables below assume the user is requesting access to a
 # device running in VIRL
 # use the IP address or hostname of your device
-HOST = '10.10.10.3'
+HOST = '10.10.30.6'
 # use the NETCONF port for your Nexus device
-PORT = 22
+PORT = 830
 # use the user credentials for your Nexus device
-USER = 'cisco'
-PASS = 'cisco'
+USER = 'admin'
+PASS = 'admin'
 
 
 # create a main() method
 def main():
-    logging.basicConfig(level=logging.DEBUG)
+    # logging.basicConfig(level=logging.DEBUG)
     """Main method that prints NETCONF capabilities of remote device."""
     with manager.connect(host=HOST, port=PORT, username=USER, password=PASS,
                          hostkey_verify=False, device_params={'name': 'csr'},

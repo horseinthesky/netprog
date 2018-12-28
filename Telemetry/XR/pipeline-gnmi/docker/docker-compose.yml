@@ -1,0 +1,41 @@
+version: '3'
+services:
+  pipeline:
+    build: .
+    environment:
+      - PIPELINE_gnmi_stage=xport_input
+      - PIPELINE_gnmi_type=gnmi
+      - PIPELINE_gnmi_server=10.10.30.5:57777
+      - PIPELINE_gnmi_path1=Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters@2
+      - PIPELINE_gnmi_path2=Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization@3
+      - PIPELINE_gnmi_path3=Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary@3
+      - PIPELINE_gnmi_tls=false
+      - PIPELINE_gnmi_username=admin
+      - PIPELINE_gnmi__password=admin
+      - PIPELINE_metrics_stage=xport_output
+      - PIPELINE_metrics_type=metrics
+      - PIPELINE_metrics_file=/etc/pipeline/metrics.json
+      - PIPELINE_metrics_output=influx
+      - PIPELINE_metrics_influx=http://influxdb:8086
+      - PIPELINE_metrics_database=telemetry
+      - PIPELINE_metrics_username=admin
+      - PIPELINE_metrics__password=admin
+
+  influxdb:
+    image: influxdb:alpine
+    environment:
+      - INFLUXDB_DB=telemetry
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    ports:
+      - 8086:8086
+
+  chronograf:
+    image: chronograf:alpine
+    command: --influxdb-url=http://influxdb:8086
+    ports:
+      - 8888:8888
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
