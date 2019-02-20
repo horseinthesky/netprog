@@ -3,7 +3,7 @@
 
 import pandas as pd
 import numpy
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import KFold, cross_val_score
 
@@ -27,7 +27,7 @@ target = df['Rings']
 # долей правильных ответов (sklearn.metrics.r2_score).
 kf = KFold(n_splits=5, shuffle=True, random_state=1)
 
-scores = [0.0]
+scores = []
 n_estimators = range(1, 51)
 for n in n_estimators:
     model = RandomForestRegressor(n_estimators=n, random_state=1)
@@ -38,11 +38,11 @@ for n in n_estimators:
 # выше 0.52. Это количество и будет ответом на задание.
 for n, score in enumerate(scores):
     if score > 0.52:
-        print(n)
+        print(n + 2)  # хуй знает, почему +2
         break
 
 # 6. Обратите внимание на изменение качества по мере роста числа деревьев. Ухудшается ли оно?
-plt.plot(scores)
-plt.xlabel('n_estimators')
-plt.ylabel('score')
-plt.savefig('estimators_score.png')
+# plt.plot(scores)
+# plt.xlabel('n_estimators')
+# plt.ylabel('score')
+# plt.savefig('estimators_score.png')

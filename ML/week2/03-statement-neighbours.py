@@ -54,5 +54,4 @@ top_accuracy = accuracy.head(1)
 answer3 = top_accuracy.index[0]
 answer4 = top_accuracy.values[0]
 
-
 print(answer1, '{:.2f}'.format(answer2), answer3, '{:.2f}'.format(answer4), sep='\n')
