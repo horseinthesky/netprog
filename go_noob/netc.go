@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"reflect"
+	// "reflect"
 
 	"github.com/Juniper/go-netconf/netconf"
 )
