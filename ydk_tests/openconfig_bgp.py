@@ -7,14 +7,27 @@ from ydk.models.openconfig import openconfig_bgp_types as oc_bgp_types
 from ydk.filters import YFilter
 
 logger = logging.getLogger('ydk')
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 handler = logging.StreamHandler()
 formatter = logging.Formatter(("%(asctime)s - %(name)s - "
                                "%(levelname)s - %(message)s"))
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-DEVICES = ['10.10.30.4', '10.10.30.5', '10.10.30.6']
+DEVICES = {
+    'junos': {
+        'ip': '10.10.30.4',
+        'pass': 'Juniper'
+    },
+    'xr': {
+        'ip': '10.10.30.5',
+        'pass': 'admin'
+    },
+    'xe': {
+        'ip': '10.10.30.6',
+        'pass': 'admin'
+    }
+}
 
 
 def config_bgp(bgp):
@@ -55,16 +68,18 @@ if __name__ == '__main__':
     # codec = CodecService()
 
     bgp = oc_bgp.Bgp()
-    bgp.yfilter = YFilter.replace
+    # bgp.yfilter = YFilter.replace
     config_bgp(bgp)
 
-    # print(codec.encode(provider, native))
+    # print(codec.encode(provider, bgp))
+
+    device = DEVICES['junos']
 
     provider = NetconfServiceProvider(
-        address='10.10.30.5',
-        port=22,
+        address=device['ip'],
+        port=830,
         username='admin',
-        password='admin',
+        password=device['pass'],
         protocol='ssh'
     )
     crud = CRUDService()

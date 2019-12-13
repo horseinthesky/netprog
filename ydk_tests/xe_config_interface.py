@@ -1,19 +1,17 @@
 import logging
 
-from ydk.services import CodecService, CRUDService
-from ydk.providers import CodecServiceProvider, NetconfServiceProvider
+from ydk.services import CRUDService
+from ydk.providers import NetconfServiceProvider
 from ydk.models.cisco_ios_xe import Cisco_IOS_XE_native as xe_native
 from ydk.filters import YFilter
 
 logger = logging.getLogger('ydk')
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 handler = logging.StreamHandler()
 formatter = logging.Formatter(("%(asctime)s - %(name)s - "
-                              "%(levelname)s - %(message)s"))
+                               "%(levelname)s - %(message)s"))
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
-DEVICES = ['10.10.30.4', '10.10.30.5', '10.10.30.6']
 
 
 def config_interface(native):
@@ -36,13 +34,8 @@ def config_interface(native):
 
 
 if __name__ == '__main__':
-    # provider = CodecServiceProvider(type='xml')
-    # codec = CodecService()
-
     native = xe_native.Native()
     config_interface(native)
-
-    # print(codec.encode(provider, native))
 
     provider = NetconfServiceProvider(
         address='10.10.30.6',
