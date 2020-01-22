@@ -1,7 +1,7 @@
 config:
   native:
     interface:
-      gigabit_ethernet:
+      gigabit,ethernet:
         - name: "2"
           description: Configured via ydk
           ip:
@@ -12,10 +12,10 @@ config:
               secondary:
                 - address: 192.168.20.1
                   mask: 255.255.255.254
-                  secondary: empty
+                  secondary:
                 - address: 192.168.20.3
                   mask: 255.255.255.254
-                  secondary: empty
+                  secondary:
         - name: "3"
           description: Configured via ydk
           ip:
@@ -46,9 +46,6 @@ config:
           neighbor:
             - id: 10.10.30.5
               remote_as: 5
-          # address_family:
-          #   no_vrf:
-          #     ipv4:
           # redistribute:
           #   connected:
           #     empty:

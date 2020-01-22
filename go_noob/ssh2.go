@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/Juniper/go-netconf/netconf"
 	"golang.org/x/crypto/ssh"
 )
 

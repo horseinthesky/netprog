@@ -1,6 +1,7 @@
 from ydk.services import CRUDService, CodecService
 from ydk.providers import NetconfServiceProvider, CodecServiceProvider
-from ydk.models.cisco_ios_xe.Cisco_IOS_XE_native import Native
+from ydk.models.openconfig.openconfig_interfaces import Interfaces
+from ydk.models.openconfig.openconfig_bgp import Bgp
 
 import yaml
 import logging
@@ -16,22 +17,22 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 if __name__ == '__main__':
-    with open('xe_config_native.yml') as f:
+    with open('junos_config.yml') as f:
         config = yaml.load(f)['config']
 
     for model_name, model_data in config.items():
-        binding = globals().get(model_name.capitalize())()
         for k, v in model_data.items():
+            binding = globals().get(model_name.capitalize())()
             instantiate(binding, k, v)
 
     # codec = CodecService()
     # provider = CodecServiceProvider(type='xml')
-    # print(codec.encode(provider, binding))
+    # print(codec.encode(provider, native))
     provider = NetconfServiceProvider(
-        address='10.10.30.6',
+        address='10.10.30.4',
         port=830,
         username='admin',
-        password='admin',
+        password='Juniper',
         protocol='ssh'
     )
     crud = CRUDService()

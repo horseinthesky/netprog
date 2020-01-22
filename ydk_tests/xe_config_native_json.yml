@@ -1,0 +1,50 @@
+Cisco-IOS-XE-native:native:
+  interface:
+    GigabitEthernet:
+      - name: "2"
+        description: Configured via ydk
+        ip:
+          address:
+            primary:
+              address: 172.16.2.0
+              mask: 255.255.255.254
+            secondary:
+              - address: 192.168.20.1
+                mask: 255.255.255.254
+                secondary:
+              - address: 192.168.20.3
+                mask: 255.255.255.254
+                secondary:
+      - name: "3"
+        description: Configured via ydk
+        ip:
+          address:
+            primary:
+              address: 172.16.3.0
+              mask: 255.255.255.254
+      - name: "4"
+        description: Configured via ydk
+        ip:
+          address:
+            primary:
+              address: 172.16.4.0
+              mask: 255.255.255.254
+    Loopback:
+      - name: 0
+        description: ROUTER ID
+        ip:
+          address:
+            primary:
+              address: 1.1.1.6
+              mask: 255.255.255.255
+  # router:
+  #   bgp:
+  #     - id: 6
+  #       bgp:
+  #         router_id: 1.1.1.6
+  #       neighbor:
+  #         - id: 10.10.30.5
+  #           remote_as: 5
+  # redistribute:
+  #   connected:
+  #     empty:

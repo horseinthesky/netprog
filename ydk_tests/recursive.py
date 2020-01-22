@@ -3,7 +3,7 @@ from ydk.filters import YFilter
 
 
 def instantiate(binding, model_key, model_value, action='assign'):
-    if model_value == 'empty':
+    if model_value is None:
         if action == 'return':
             return Empty()
         elif action == 'assign':
@@ -14,7 +14,7 @@ def instantiate(binding, model_key, model_value, action='assign'):
         elif action == 'assign':
             setattr(binding, model_key, model_value)
     elif isinstance(model_value, list):
-        model_key_joined = ''.join([x for x in model_key.split('_')])
+        model_key_joined = ''.join([x for x in model_key.split(',')])
         list_obj = getattr(binding, model_key_joined.lower())
         for el in model_value:
             obj = instantiate(binding, model_key, el, action='return')
@@ -23,7 +23,7 @@ def instantiate(binding, model_key, model_value, action='assign'):
     elif isinstance(model_value, dict):
         # special case handling enum type
         if all([x is None for x in model_value.values()]):
-            enum_name = ''.join([x.capitalize() for x in model_key.split('_')]) + 'Enum'
+            enum_name = ''.join([x.capitalize() for x in model_key.split(',')]) + 'Enum'
             enum_class = getattr(binding, enum_name)
             for el in model_value.keys():
                 enum = getattr(enum_class, el)
@@ -36,7 +36,7 @@ def instantiate(binding, model_key, model_value, action='assign'):
             if container and container.__class__.__name__ not in ['YList', 'YLeafList']:
                 container_instance = container
             else:
-                model_key_camelized = ''.join([x.capitalize() for x in model_key.split('_')])
+                model_key_camelized = ''.join([x.capitalize() for x in model_key.split(',')])
                 container_instance = getattr(binding, model_key_camelized)()
 
             for k, v in model_value.items():

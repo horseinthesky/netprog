@@ -3,6 +3,7 @@ from ydk.providers import NetconfServiceProvider, CodecServiceProvider
 from ydk.models.cisco_ios_xe.Cisco_IOS_XE_native import Native
 
 import yaml
+import json
 import logging
 
 from recursive import instantiate
@@ -16,17 +17,16 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 if __name__ == '__main__':
-    with open('xe_config_native.yml') as f:
-        config = yaml.load(f)['config']
+    with open('xe_config_native_json.yml', 'r') as yaml_config:
+        config_dict = yaml.safe_load(yaml_config)
+        json_str = json.dumps(config_dict, indent=2)
+        # print(json_str)
 
-    for model_name, model_data in config.items():
-        binding = globals().get(model_name.capitalize())()
-        for k, v in model_data.items():
-            instantiate(binding, k, v)
+    codec = CodecService()
+    codec_provider = CodecServiceProvider(type='json')
+    binding = codec.decode(codec_provider, json_str)
+    # print(codec.encode(codec_provider, binding))
 
-    # codec = CodecService()
-    # provider = CodecServiceProvider(type='xml')
-    # print(codec.encode(provider, binding))
     provider = NetconfServiceProvider(
         address='10.10.30.6',
         port=830,

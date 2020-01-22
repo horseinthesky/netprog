@@ -1,0 +1,58 @@
+config:
+  # interfaces:
+  #   interface:
+  #     - name: ge-0/0/1
+  #       subinterfaces:
+  #         subinterface:
+  #           - index: 0
+  #             ipv4:
+  #               addresses:
+  #                 address:
+  #                   - ip: 12.12.12.2/24
+  #                     config:
+  #                       ip: 12.12.2.2
+  #                       prefix_length: 24
+  #     - name: lo0
+  #       subinterfaces:
+  #         subinterface:
+  #           - index: 0
+  #             ipv4:
+  #               addresses:
+  #                 address:
+  #                   - ip: 1.1.1.4/32
+  #                     config:
+  #                       ip: 1.1.1.4
+  #                       prefix_length: 32
+  # openconfig-policy:
+  #   policy_definitions:
+  #     policy_definition:
+  #       - name: CONNECTED->BGP
+  #         statements:
+  #           statement:
+  #             - name: Loopback0
+  #               conditions:
+  #                 match_interface:
+  #                   config:
+  #                     interface: lo0
+  #                     subinterface: 0
+  #               actions:
+  #                 config:
+  #                   accept_route: empty
+  bgp:
+    global_:
+      config:
+        as_: 4
+    neighbors:
+      neighbor:
+        - neighbor_address: 10.10.30.6
+          config:
+            peer_group: YANG
+    peer_groups:
+      peer_group:
+        - peer_group_name: YANG
+          config:
+            peer_as: 6
+          apply_policy:
+            config:
+              export_policy:
+                - CONNECTED->BGP

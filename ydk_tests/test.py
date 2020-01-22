@@ -3,13 +3,15 @@ import logging
 from ydk.services import CodecService, CRUDService
 from ydk.providers import CodecServiceProvider, NetconfServiceProvider
 from ydk.models.openconfig import openconfig_bgp as oc_bgp
+from ydk.models.openconfig import openconfig_network_instance as oc_ni
+from ydk.models.openconfig import openconfig_policy_types as oc_policy
 from ydk.models.openconfig import openconfig_bgp_types as oc_bgp_types
 from ydk.filters import YFilter
 
 from devices import DEVICES
 
 logger = logging.getLogger('ydk')
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 formatter = logging.Formatter(("%(asctime)s - %(name)s - "
                                "%(levelname)s - %(message)s"))
@@ -51,15 +53,28 @@ def config_bgp(bgp):
 
 
 if __name__ == '__main__':
-    # provider = CodecServiceProvider(type='xml')
-    # codec = CodecService()
+    nis = oc_ni.NetworkInstances()
+    ni = oc_ni.NetworkInstances.NetworkInstance()    # list element has 1 key
+    ni.name = 'default'    # must define network instance key
+    nis.network_instance.append(ni)   # must add network instance to the list
 
-    bgp = oc_bgp.Bgp()
-    # bgp.yfilter = YFilter.replace
+    pr = oc_ni.NetworkInstances.NetworkInstance.Protocols.Protocol()  # list element has 2 keys
+    pr.name = 'BGP-5'  # must define protocol key
+    pr.identifier = oc_policy.BGP()  # must define protocol key
+
+    ni.protocols.protocol.append(pr)  # must add protocol to the list
+
+    # Also need to define protocol.config attributes
+    pr.config.name = 'BGP-5'
+    pr.config.identifier = oc_policy.BGP()
+    pr.config.enabled = True
+
+    bgp = pr.bgp   # bgp is attribute of protocol and has already been instantiated above
     config_bgp(bgp)
 
-    # print(codec.encode(provider, bgp))
-
+    # codec = CodecService()
+    # pr = CodecServiceProvider(type='xml')
+    # print(codec.encode(pr, nis))
     device = DEVICES['junos']
 
     provider = NetconfServiceProvider(
@@ -70,4 +85,4 @@ if __name__ == '__main__':
         protocol='ssh'
     )
     crud = CRUDService()
-    crud.create(provider, bgp)
+    crud.create(provider, nis)

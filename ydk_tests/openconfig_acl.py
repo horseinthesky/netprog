@@ -4,6 +4,8 @@ from ydk.services import CodecService, CRUDService
 from ydk.providers import CodecServiceProvider, NetconfServiceProvider
 from ydk.models.openconfig import openconfig_acl as oc_acl
 
+from devices import DEVICES
+
 logger = logging.getLogger('ydk')
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
@@ -11,21 +13,6 @@ formatter = logging.Formatter(("%(asctime)s - %(name)s - "
                                "%(levelname)s - %(message)s"))
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
-DEVICES = {
-    'junos': {
-        'ip': '10.10.30.4',
-        'pass': 'Juniper'
-    },
-    'xr': {
-        'ip': '10.10.30.5',
-        'pass': 'admin'
-    },
-    'xe': {
-        'ip': '10.10.30.6',
-        'pass': 'admin'
-    }
-}
 
 
 def config_acl(acl):

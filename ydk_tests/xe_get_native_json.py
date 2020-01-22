@@ -1,7 +1,8 @@
 import logging
 
-from ydk.services import NetconfService, Datastore, CodecService
-from ydk.providers import NetconfServiceProvider, CodecServiceProvider
+from ydk.services import NetconfService, Datastore
+from ydk.providers import NetconfServiceProvider
+from ydk.entity_utils import JsonSubtreeCodec
 
 from devices import DEVICES
 
@@ -14,7 +15,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 if __name__ == '__main__':
-    device = DEVICES['xr']
+    device = DEVICES['xe']
 
     provider = NetconfServiceProvider(
         address=device['ip'],
@@ -27,8 +28,7 @@ if __name__ == '__main__':
     netconf = NetconfService()
     config = netconf.get_config(provider, Datastore.running)
 
-    codec = CodecService()
-    pr = CodecServiceProvider(type='xml')
+    jcodec = JsonSubtreeCodec()
 
-    xml_list = codec.encode(pr, config.entities(), pretty=True)
-    print('\nGOT DEVICE CONFIGURATION:\n{}'.format('\n'.join(xml_list)))
+    payload = jcodec.encode(config.entities()[0], provider.get_session().get_root_schema(), True)
+    print(payload)
