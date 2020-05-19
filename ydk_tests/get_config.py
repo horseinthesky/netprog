@@ -14,7 +14,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 if __name__ == '__main__':
-    device = DEVICES['xr']
+    device = DEVICES['junos']
 
     provider = NetconfServiceProvider(
         address=device['ip'],
